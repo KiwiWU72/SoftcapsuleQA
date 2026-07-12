@@ -1,0 +1,1525 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>軟膠囊製程技術白皮書｜第一性原理系列</title>
+<style>
+:root{--accent:#1F4E79;--accent2:#2E5A8C;--light:#eaf1f9;--line:#d5deea;--ink:#1c2733;--muted:#5b6b7b;}
+*{box-sizing:border-box;}
+body{font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",system-ui,sans-serif;color:var(--ink);line-height:1.85;margin:0;background:#f5f7fa;}
+.wrap{max-width:960px;margin:0 auto;background:#fff;padding:0 54px 80px;box-shadow:0 0 24px rgba(0,0,0,.06);}
+.cover{text-align:center;padding:90px 0 60px;border-bottom:3px solid var(--accent);margin-bottom:10px;}
+.cover h1{font-size:2.5rem;color:var(--accent);margin:0 0 10px;letter-spacing:2px;}
+.cover .sub{color:var(--muted);font-size:1.15rem;}
+.cover .chap{margin-top:34px;font-weight:700;font-size:1.05rem;}
+.cover .meta{margin-top:34px;color:#444;font-size:.95rem;}
+.cover .ver{margin-top:40px;color:#999;font-size:.85rem;}
+h2{color:var(--accent);font-size:1.55rem;border-bottom:2px solid var(--accent);padding-bottom:8px;margin-top:54px;}
+h3{color:var(--accent2);font-size:1.2rem;margin-top:34px;border-left:5px solid var(--accent2);padding-left:12px;}
+h4{color:#33475b;font-size:1.05rem;margin:22px 0 8px;}
+p{margin:10px 0;text-align:justify;}
+.lead{font-size:1.02rem;}
+strong{color:#0f2d4a;}
+ul,ol{padding-left:26px;}
+li{margin:6px 0;}
+a{color:var(--accent);}
+/* callouts */
+.callout{background:var(--light);border-left:6px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;margin:18px 0;}
+.callout .t{font-weight:700;color:var(--accent);display:block;margin-bottom:4px;}
+.plain{background:#eefaf0;border-left:6px solid #38a169;padding:12px 18px;border-radius:0 8px 8px 0;margin:14px 0;}
+.plain .t{font-weight:700;color:#2f855a;display:block;margin-bottom:2px;}
+.plain .t::before{content:"🎓 白話解釋　";}
+.note{background:#fff8e6;border-left:6px solid #d69e2e;padding:12px 18px;border-radius:0 8px 8px 0;margin:14px 0;font-size:.96rem;}
+.note .t{font-weight:700;color:#b7791f;display:block;margin-bottom:2px;}
+.note .t::before{content:"📝 名詞備註　";}
+.prio{background:#fdf2f8;border:1px solid #e9b8d4;border-radius:8px;padding:12px 18px;margin:16px 0;}
+.prio .t{font-weight:700;color:#a83a70;display:block;margin-bottom:4px;}
+.prio .t::before{content:"⚙️ 修正優先順序　";}
+/* equations */
+.eq{text-align:center;font-family:"Cambria Math","Times New Roman",serif;font-style:italic;font-size:1.12rem;background:#f7f9fc;border:1px dashed var(--line);border-radius:6px;padding:10px;margin:14px auto;}
+/* tables */
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.94rem;}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;}
+th{background:var(--accent);color:#fff;font-weight:600;}
+tbody tr:nth-child(even){background:#f4f8fc;}
+td.c,th.c{text-align:center;}
+.pro{color:#248a3d;font-weight:600;}
+.con{color:#c0392b;font-weight:600;}
+/* figure */
+figure{margin:22px 0;text-align:center;}
+figure svg{max-width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px;}
+figcaption{color:var(--muted);font-size:.9rem;margin-top:8px;font-style:italic;}
+/* TOC */
+.toc{background:#fafcff;border:1px solid var(--line);border-radius:10px;padding:20px 28px;margin:30px 0;}
+.toc h2{border:none;margin:0 0 10px;font-size:1.3rem;}
+.toc ol{list-style:none;padding-left:0;counter-reset:c1;}
+.toc>ol>li{counter-increment:c1;font-weight:700;color:var(--accent);margin-top:10px;}
+.toc>ol>li>a{text-decoration:none;}
+.toc ul{list-style:none;padding-left:18px;}
+.toc ul li{font-weight:400;color:#33475b;}
+.toc ul li a{text-decoration:none;color:#33475b;}
+.toc a:hover{text-decoration:underline;}
+.chap-band{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;padding:18px 24px;border-radius:10px;margin:56px 0 8px;}
+.chap-band .n{font-size:.8rem;letter-spacing:3px;opacity:.85;}
+.chap-band .ti{font-size:1.35rem;font-weight:700;margin-top:2px;}
+.src{font-size:.85rem;color:var(--muted);}
+hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
+.qa{margin:26px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.qa .q{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;padding:14px 20px;font-weight:700;font-size:1.05rem;}
+.qa .q .tag{background:#fff;color:var(--accent);border-radius:6px;padding:1px 9px;margin-right:10px;font-size:.9rem;}
+.qa .a{padding:16px 22px;}
+.qa .a h5{color:var(--accent);margin:16px 0 6px;font-size:1rem;border-left:4px solid var(--accent2);padding-left:10px;}
+.brandmap td:first-child{font-weight:600;}
+.sim{background:#f7f9fc;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:20px 0;}
+.sim h4{margin:0 0 6px;color:var(--accent);}
+.sim .ctrl{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:10px 0;}
+.sim label{font-weight:600;min-width:120px;}
+.sim input[type=range]{flex:1;min-width:170px;accent-color:var(--accent);}
+.sim .val{font-family:Cambria Math,serif;color:#c0392b;min-width:88px;text-align:right;font-weight:700;}
+.sim .read{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0;}
+.sim .read div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:.9rem;}
+.sim .read b{color:var(--accent);}
+.sim .lane{position:relative;height:150px;background:linear-gradient(#eaf1f9,#cfe0f2);border:1px solid #2E5A8C;border-radius:8px;overflow:hidden;margin-top:10px;}
+.sim .bub{position:absolute;bottom:-24px;border-radius:50%;background:rgba(255,255,255,.85);border:1px solid #2E5A8C;animation:rise linear infinite;}
+@keyframes rise{from{transform:translateY(0);opacity:.9;}to{transform:translateY(-176px);opacity:.5;}}
+.sim .verdict{margin-top:10px;font-weight:700;}
+.sim .warn{color:#c0392b;font-weight:700;margin-top:6px;min-height:1.2em;}
+@media print{.wrap{box-shadow:none;max-width:100%;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="cover">
+  <h1>軟膠囊製程技術白皮書</h1>
+  <div class="sub">第一性原理（First Principles）系列</div>
+  <div class="chap">第一章　明膠溶膠化、真空脫氣之流變學控制與環境熱力學干擾</div>
+  <div class="chap">第二章　模具封裝動力學、界面融合與幾何形狀異常之流變學解析</div>
+  <div class="chap">第三章　內容物化學交互作用、膠殼物理化學穩定性與跨國物流熱力學風險評估</div>
+  <div class="meta">參考 GELITA（EASYSEAL®、RXL®、RAPISOL®、DELASOL® 等）與 Rousselot（StabiCaps® 等）原廠技術文獻</div>
+  <div class="ver">版本 2.0（HTML 圖解版）　｜　2026 年 7 月</div>
+</div>
+
+<div class="callout">
+  <span class="t">本白皮書的閱讀方式</span>
+  全文以「第一性原理」拆解每個製程現象到最底層的分子與物理機制，但每個艱澀概念都附上 <b>🎓 白話解釋</b>（大學程度即可理解）與 <b>📝 名詞備註</b>。凡涉及製程異常，皆提供 <b>⚙️ 修正優先順序</b>：<u>一律先從一般加工製程與配方（明膠添加量、甘油／山梨醇、水比例、溫度時間）著手，特殊型明膠僅列為最後的進階選項</u>。
+</div>
+
+<div class="toc">
+  <h2>目錄</h2>
+  <ol>
+    <li><a href="#c1">第一章　明膠溶膠化、真空脫氣之流變學控制與環境熱力學干擾</a>
+      <ul>
+        <li><a href="#s10">1.0　導論：為何從單一分子的鍵結談起</a></li>
+        <li><a href="#s11">1.1　水和與煮膠的分子熱力學</a></li>
+        <li><a href="#s12">1.2　真空脫氣動力學與參數耦合</a></li>
+        <li><a href="#s13">1.3　隔夜保溫的化學風險：胜肽鏈熱裂解</a></li>
+        <li><a href="#s14">1.4　台灣季節性溫濕度對製程的極限干擾</a></li>
+        <li><a href="#s15b">1.5　膠皮偏軟／偏硬的標準應變措施（SOP）</a></li>
+        <li><a href="#s15">1.6　本章結論</a></li>
+      </ul>
+    </li>
+    <li><a href="#c2">第二章　模具封裝動力學、界面融合與幾何形狀異常之流變學解析</a>
+      <ul>
+        <li><a href="#s21">2.1　接縫融合機制：界面高分子鏈擴散與纏結</a></li>
+        <li><a href="#s22">2.2　注射製程三要素的精密耦合</a></li>
+        <li><a href="#s23">2.3　梨形膠囊的底層成因分析</a></li>
+        <li><a href="#s24">2.4　封裝缺陷綜合對策</a></li>
+      </ul>
+    </li>
+    <li><a href="#c3">第三章　內容物化學交互作用、膠殼穩定性與跨國物流熱力學</a>
+      <ul>
+        <li><a href="#s31">3.1　植物萃取油（飽和 vs 不飽和）的交聯干擾</a></li>
+        <li><a href="#s32">3.2　磷蝦油與磷脂質的界面與物理干擾</a></li>
+        <li><a href="#s33">3.3　外銷油脂產品的物流抉擇：海運 vs 空運</a></li>
+      </ul>
+    </li>
+    <li><a href="#appx">附錄 A　軟膠囊製程技術 Q&amp;A 與極限故障排除指南</a>
+      <ul>
+        <li><a href="#q1">Q1　夏天高溫高濕：接縫強度下降＋烘乾延長</a></li>
+        <li><a href="#q2">Q2　黑種草油／高粉混懸：反覆梨形，調壓無效</a></li>
+        <li><a href="#q3">Q3　儲存半年後溫水不崩解（不溶薄膜）</a></li>
+        <li><a href="#q4">Q4　海運到港嚴重黏連與漏油</a></li>
+      </ul>
+    </li>
+    <li><a href="#refs">參考文獻與知識庫來源</a></li>
+  </ol>
+</div>
+
+<div class="chap-band" id="c1">
+  <div class="n">CHAPTER 01</div>
+  <div class="ti">第一章　明膠溶膠化、真空脫氣之流變學控制與環境熱力學干擾</div>
+</div>
+
+<h2 id="s10">1.0　導論：為何從單一分子的鍵結談起</h2>
+<p class="lead">軟膠囊的所有下游缺陷——接縫不密（漏油）、膠皮偏軟或偏硬、氣泡殘留、<b>丸重不穩</b>——在根本上都回溯到同一個問題：<strong>溶膠狀態的明膠分子，其鏈段構型、分子量分佈與界面行為，是否在正確的熱力學窗口內被建立、被保持、被凝結。</strong></p>
+
+<div class="note">
+  <span class="t"></span>
+  <b>「丸重不穩」是什麼意思？</b>　指每一顆軟膠囊<b>所填充的內容物重量忽多忽少、不一致</b>。因為每顆膠囊的有效成分劑量取決於填充量，丸重飄動代表<b>劑量不均</b>——有的膠囊有效成分偏多、有的偏少，會直接影響產品的合格率與法規符合性。
+</div>
+
+<div class="callout">
+  <span class="t">客戶現場觀察</span>
+  當化膠環境溫度高於 26℃ 或低於 15℃ 時，即使採用相同膠液配方與製程條件，膠液抽真空後之性狀仍產生明顯差異——高室溫下膠液流動性較快、48℃ 保溫隔夜後展出膠皮偏軟；低室溫下隔夜膠液流動性較差、展出膠皮偏硬。本章即從第一性原理解釋此現象的分子與物理機制。
+</div>
+
+<h2 id="s11">1.1　水和與煮膠的分子熱力學</h2>
+
+<h3>1.1.1　明膠的分子本質與三股螺旋的穩定來源</h3>
+<p>明膠是膠原蛋白經部分水解所得的蛋白質，其結構由 α 鏈構成，特徵為 <b>(Gly–X–Y)ₙ</b> 的三聯體重複序列（X 常為脯胺酸 Pro、Y 常為羥脯胺酸 Hyp）。三條鏈纏繞成「三股螺旋」。</p>
+<ul>
+  <li><b>甘胺酸（Gly）每三個殘基出現一次</b>：其側鏈最小，是唯一能塞進三股螺旋幾何中心的殘基。</li>
+  <li><b>羥脯胺酸（Hyp）的羥基是螺旋穩定的關鍵</b>：Hyp 的 –OH 透過「水橋氫鍵」在三條鏈之間形成額外的鏈間連結。</li>
+</ul>
+
+<div class="note">
+  <span class="t"></span>
+  <b>「Hyp 的羥基透過水橋氫鍵在三條鏈之間形成額外的鏈間連結」怎麼理解？</b><br>
+  把三股螺旋想像成三條擰在一起的繩子。要讓它們擰得牢，需要「連結點」把三條繩綁住。氫鍵就是這種分子級的「魔鬼氈」。<b>水橋氫鍵</b>的意思是：不是兩個原子直接牽手，而是<b>中間夾著一個水分子當「橋樑」</b>——羥基（–OH）→ 水分子 → 另一條鏈，透過這個水分子接力形成氫鍵。Hyp 的羥基特別擅長抓水搭橋，所以含 Hyp 越多的明膠，三股螺旋越穩、熱穩定性越高。這也是為什麼明膠遇水、遇熱的行為，本質上是在「拆橋」與「搭橋」。
+</div>
+
+<p>此處必須強調：明膠幾乎不含半胱胺酸（Cysteine），故其結構穩定<b>並非來自雙硫鍵</b>，而是大量弱氫鍵的「協同效應」。單一氫鍵很弱（約 8–25 kJ/mol），但成千上萬個一起作用，就能在室溫下把螺旋鎖住。這是明膠「溫度一到即化、溫度一降即凝」可逆行為的分子前提。</p>
+
+<h3>1.1.2　水和（吸水溶脹）：擴散控制的前置階段</h3>
+<p>乾明膠顆粒入水後<b>不會立刻溶解</b>，而是先「吸水膨脹」。水分子沿濃度梯度滲入顆粒（遵循 Fick 擴散定律），把原本「蛋白–蛋白」的氫鍵換成「蛋白–水」氫鍵，鬆開鏈的堆疊，體積可脹大數倍；在冷水中則呈「脹而不溶」的凝膠態（這正是量測 Bloom 值的狀態）。</p>
+<div class="plain">
+  <span class="t"></span>
+  就像泡乾香菇：要先讓它「泡開吸飽水」，之後才能煮。如果沒泡透就下鍋大火，外層先熟糊、把水路封死，裡面還是硬的（俗稱「夾生」）。明膠若水和不完全就升溫，會產生沒溶開的團塊，之後在膠皮上變成「魚眼」與接縫弱點。
+</div>
+
+<h3 id="melt">1.1.3　煮膠（Melting）：螺旋→捲曲轉變的協同熔解熱力學</h3>
+<p>充分水和後升溫，三股螺旋會解開成「無規捲曲」。這是軟膠囊全製程最核心的熱力學事件，本質是<b>由「亂度（熵）」驅動的熔解</b>。</p>
+
+<figure>
+<svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="760" height="320" fill="#ffffff"/>
+  <!-- left: triple helix ordered -->
+  <text x="150" y="34" text-anchor="middle" font-size="15" font-weight="700" fill="#1F4E79">低溫：三股螺旋（有序 · 低熵）</text>
+  <g stroke-width="4" fill="none">
+    <path d="M70,80 Q110,60 150,80 T230,80" stroke="#2E5A8C"/>
+    <path d="M70,110 Q110,90 150,110 T230,110" stroke="#3f7cae"/>
+    <path d="M70,140 Q110,120 150,140 T230,140" stroke="#63a0cc"/>
+    <path d="M70,95 Q110,75 150,95 T230,95" stroke="#2E5A8C" opacity=".5"/>
+    <path d="M70,125 Q110,105 150,125 T230,125" stroke="#3f7cae" opacity=".5"/>
+  </g>
+  <!-- hydrogen bond ticks -->
+  <g stroke="#d69e2e" stroke-width="2" stroke-dasharray="3,3">
+    <line x1="110" y1="80" x2="110" y2="140"/><line x1="150" y1="80" x2="150" y2="140"/><line x1="190" y1="80" x2="190" y2="140"/>
+  </g>
+  <text x="150" y="185" text-anchor="middle" font-size="12" fill="#b7791f">氫鍵（黃色虛線）把三條鏈鎖在一起</text>
+  <!-- arrow -->
+  <g>
+    <line x1="265" y1="110" x2="360" y2="110" stroke="#c0392b" stroke-width="5" marker-end="url(#ah)"/>
+    <text x="312" y="98" text-anchor="middle" font-size="14" font-weight="700" fill="#c0392b">加熱 ↑T</text>
+    <text x="312" y="132" text-anchor="middle" font-size="12" fill="#c0392b">打斷氫鍵</text>
+  </g>
+  <defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#c0392b"/></marker></defs>
+  <!-- right: random coils -->
+  <text x="600" y="34" text-anchor="middle" font-size="15" font-weight="700" fill="#c0392b">高溫：無規捲曲（無序 · 高熵）</text>
+  <g stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M420,70 q20,-15 35,5 t30,-8 t35,12 t30,-15 t40,10" stroke="#2E5A8C"/>
+    <path d="M415,110 q25,18 45,-5 t35,15 t40,-12 t35,10 t30,-6" stroke="#3f7cae"/>
+    <path d="M425,155 q18,-16 40,4 t35,-10 t38,14 t34,-12 t28,8" stroke="#63a0cc"/>
+  </g>
+  <text x="600" y="190" text-anchor="middle" font-size="12" fill="#5b6b7b">三條鏈各自散開、自由扭動 → 低黏度溶膠</text>
+  <!-- bottom thermodynamics -->
+  <rect x="60" y="220" width="640" height="82" rx="8" fill="#f7f9fc" stroke="#d5deea"/>
+  <text x="380" y="248" text-anchor="middle" font-size="17" font-style="italic" font-family="Cambria Math,serif" fill="#1c2733">ΔG = ΔH − T·ΔS</text>
+  <text x="380" y="272" text-anchor="middle" font-size="12.5" fill="#33475b">ΔH &gt; 0（拆氫鍵要吸熱）　ΔS &gt; 0（散開後亂度大增）</text>
+  <text x="380" y="292" text-anchor="middle" font-size="12.5" fill="#1F4E79">當溫度升到 Tₘ ≈ 35–40℃：ΔG=0，各半；升到約 40–45℃ 幾乎全捲曲</text>
+</svg>
+<figcaption>圖 1-1　煮膠的本質：加熱把「鎖住三股螺旋的氫鍵」拆開，鏈段從有序的低熵螺旋，變成自由亂動的高熵捲曲。溫度越高越有利捲曲，因為 −T·ΔS 這一項會壓過吸熱的 ΔH。</figcaption>
+</figure>
+
+<div class="plain">
+  <span class="t"></span>
+  為什麼「加熱就會化」？大自然總是往「亂度更高、能量更低」的方向走。三股螺旋很「整齊」（低亂度），捲曲很「散亂」（高亂度）。溫度就像「亂度的放大器」：溫度越高，散亂狀態的吸引力（−T·ΔS）越大。當溫度到達 <b>Tₘ（約 35–40℃）</b>，散亂的好處剛好抵過拆氫鍵要花的能量，明膠就開始化開。這也是為什麼化膠對溫度非常敏感——差幾度，就決定膠液是「濃稠」還是「稀水」。
+</div>
+
+<div class="note">
+  <span class="t"></span>
+  <b>「純粹的氫鍵與構型熵之間的競爭」是什麼意思？</b><br>
+  明膠沒有雙硫鍵這種「強力焊點」，維繫三股螺旋的只有<b>大量弱氫鍵</b>。決定它「化」或「凝」的，就只是兩股力量在拔河：<br>
+  ①&nbsp;<b>氫鍵（焓 ΔH，維持有序）</b>：想把三條鏈綁在一起、維持整齊螺旋（放熱、穩定）。<br>
+  ②&nbsp;<b>構型熵（−T·ΔS，追求混亂）</b>：分子的熱運動想讓鏈自由亂扭、散成一堆亂麻（高亂度、高熵）。<br>
+  低溫時氫鍵贏（凝膠）；升溫使「−T·ΔS」這股追求混亂的力量變強，到某個溫度後熵贏（化開）。<b>因為沒有共價焊點插手，這場拔河「純粹」由氫鍵與熵決定，所以明膠才會如此可逆——冷則凝、熱則化，來回無數次。</b>
+</div>
+<div class="callout">
+  <span class="t">要多少熱？——把數字算給你看</span>
+  <b>單一氫鍵</b>約 8–25 kJ/mol，聽起來很小：室溫熱擾動能量 RT ≈ 2.5 kJ/mol，所以單一氫鍵約等於「室溫熱擾動的 3–10 倍」——一個一個很容易被熱打斷。<br>
+  <b>一段三股螺旋連結區（junction zone）</b>由數十個氫鍵協同組成，要一起打斷需累積<b>數百 kJ/mol</b>等級的能量，這就是「協同性」讓熔解變陡的原因。<br>
+  但實務上，把整鍋膠液加熱要供應的能量，<b>絕大部分不是用來拆氫鍵，而是「升溫的顯熱」</b>：明膠溶液比熱約 3–4 J/(g·K)，把膠液由 25℃ 升到 60℃（升 35 度）約需 <b>110–140 J/g</b>；相較之下，打斷三股螺旋本身的熔解焓（DSC 量測）僅約 <b>5–20 J/g</b>。<u>換句話說：拆掉維繫螺旋的氫鍵其實不太耗能，真正花掉的熱幾乎都在「把整鍋料加熱」這件事上。</u>
+</div>
+<div class="note">
+  <span class="t"></span>
+  <b>「再升高」是升到多少？</b>　Tₘ（約 35–40℃）只是「螺旋與捲曲各半」的中點。再往上約 <b>40–45℃</b>，殘餘螺旋幾乎全部解開、變成完全的無規捲曲；<b>實務化膠設在 60–70℃</b>，就是為了確保「完全解旋、消除殘留螺旋核」，得到分子級均勻的溶膠——但如前述，溫度越高、時間越久，熱裂解也越多，所以化膠不會設更高。
+</div>
+<p><b>協同性（一起崩）</b>：螺旋不是一根根氫鍵慢慢斷，而是「一旦局部斷夠多，旁邊的就跟著連鎖崩解」，所以熔解很陡峭。<b>實務化膠</b>常先把甘油與水加熱、於約 80℃ 投入明膠使其快速溶解，再於負壓下降溫至約 60–75℃ 進行溶膠與脫氣。客戶以旋轉黏度計於 60℃ 監控，隔夜膠液黏度約 15,000–18,000 cps，即對應此溶膠窗口。<strong>但溫度不可過高或久放——每高於 Tₘ 一度、每多一分鐘，都在下一節的「熱裂解時鐘」上累積不可逆的斷鏈。</strong></p>
+
+<h2 id="s12">1.2　真空脫氣動力學與參數耦合</h2>
+
+<h3>1.2.1　氣泡上浮的第一性定律：Stokes 定律</h3>
+<p>配膠、攪拌、輸送會把空氣捲進膠液。殘留到壓丸會造成針孔、丸重偏差、接縫夾氣（漏油）。脫氣的目標，是在膠液凝固前把氣泡趕出去。單一氣泡的上浮速度由 Stokes 定律決定：</p>
+<div class="eq">v = (2/9) · (ρ<sub>液</sub> − ρ<sub>氣</sub>) · g · r² / η</div>
+
+<figure>
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="40" y="20" width="240" height="210" rx="8" fill="#eaf1f9" stroke="#1F4E79"/>
+  <text x="160" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#1F4E79">氣泡受力平衡</text>
+  <circle cx="160" cy="150" r="34" fill="#ffffff" stroke="#2E5A8C" stroke-width="3"/>
+  <text x="160" y="155" text-anchor="middle" font-size="13" fill="#2E5A8C">氣泡 r</text>
+  <line x1="160" y1="150" x2="160" y2="80" stroke="#248a3d" stroke-width="4" marker-end="url(#up)"/>
+  <text x="200" y="95" font-size="12" fill="#248a3d">浮力 ↑</text>
+  <line x1="160" y1="150" x2="160" y2="210" stroke="#c0392b" stroke-width="3" marker-end="url(#dn)"/>
+  <text x="185" y="205" font-size="11" fill="#c0392b">黏滯阻力</text>
+  <defs>
+    <marker id="up" markerWidth="12" markerHeight="12" refX="4" refY="2" orient="auto"><path d="M4,0 L8,6 L0,6 Z" fill="#248a3d"/></marker>
+    <marker id="dn" markerWidth="12" markerHeight="12" refX="4" refY="6" orient="auto"><path d="M0,0 L8,0 L4,6 Z" fill="#c0392b"/></marker>
+  </defs>
+  <!-- levers -->
+  <g>
+    <rect x="330" y="40" width="350" height="80" rx="8" fill="#eefaf0" stroke="#38a169"/>
+    <text x="505" y="66" text-anchor="middle" font-size="14" font-weight="700" fill="#2f855a">槓桿 1：放大氣泡半徑 r（v ∝ r²）</text>
+    <text x="505" y="90" text-anchor="middle" font-size="12.5" fill="#33475b">半徑變 2 倍 → 速度變 4 倍</text>
+    <text x="505" y="108" text-anchor="middle" font-size="12.5" fill="#33475b">→ 由「真空減壓」使氣泡膨脹達成</text>
+  </g>
+  <g>
+    <rect x="330" y="135" width="350" height="80" rx="8" fill="#fff8e6" stroke="#d69e2e"/>
+    <text x="505" y="161" text-anchor="middle" font-size="14" font-weight="700" fill="#b7791f">槓桿 2：降低黏度 η（v ∝ 1/η）</text>
+    <text x="505" y="185" text-anchor="middle" font-size="12.5" fill="#33475b">黏度越低，氣泡越好浮</text>
+    <text x="505" y="203" text-anchor="middle" font-size="12.5" fill="#33475b">→ 由「提高溫度」達成（Arrhenius）</text>
+  </g>
+</svg>
+<figcaption>圖 1-2　Stokes 定律揭示脫氣只有兩個槓桿：把氣泡「變大」（真空）、把膠液「變稀」（升溫）。</figcaption>
+</figure>
+
+<div class="plain">
+  <span class="t"></span>
+  想像氣泡在蜂蜜裡往上浮：氣泡越大浮得越快（而且是「平方」關係，半徑加倍、速度快 4 倍）；蜂蜜越稀（黏度低）也浮得越快。真空脫氣就是同時操作這兩件事。
+</div>
+
+<div class="sim">
+  <h4>🔧 互動模擬：真空度 × 溫度 × 保溫時間 → 氣泡 vs 熱裂解</h4>
+  <p style="margin:2px 0 8px;font-size:.9rem;color:#5b6b7b">拖曳三支拉桿。前兩支決定「氣泡好不好排」，第三支「保溫時間」則帶出<b>雙面刃</b>：時間越久氣泡排得越乾淨，但 Bloom 熱裂解也越多。目標是找<b>剛好把氣泡排乾淨、又不過度裂解</b>的甜蜜點。（基準：1013 mbar、60℃）</p>
+  <div class="ctrl"><label>真空度（絕對壓）</label><input id="vac" type="range" min="20" max="1013" step="1" value="200"><span class="val" id="vacv">200 mbar</span></div>
+  <div class="ctrl"><label>膠液溫度</label><input id="temp" type="range" min="30" max="70" step="1" value="55"><span class="val" id="tempv">55 ℃</span></div>
+  <div class="ctrl"><label>保溫時間</label><input id="time" type="range" min="0.5" max="16" step="0.5" value="6"><span class="val" id="timev">6.0 h</span></div>
+  <div class="read">
+    <div>氣泡半徑 <b id="rr">×—</b></div>
+    <div>黏度 <b id="er">×—</b></div>
+    <div>上浮速度 <b id="vr">×—</b></div>
+    <div>殘留氣泡 <b id="res">—</b></div>
+    <div>沸點(絕對壓) <b id="psat">—</b></div>
+    <div>Bloom 衰減估計 <b id="bloom">—</b></div>
+  </div>
+  <div class="lane" id="lane"></div>
+  <div class="verdict" id="verdict"></div>
+  <div class="verdict" id="verdict2"></div>
+  <div class="warn" id="warn"></div>
+</div>
+
+<h3>1.2.2　真空度（減壓）的雙重作用機制</h3>
+<figure>
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <!-- Panel A Boyle -->
+  <rect x="20" y="20" width="330" height="260" rx="10" fill="#f7f9fc" stroke="#1F4E79"/>
+  <text x="185" y="46" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1F4E79">(A) 氣泡膨脹（Boyle 定律 P·V=常數）</text>
+  <text x="105" y="80" text-anchor="middle" font-size="12" fill="#5b6b7b">常壓 1013 mbar</text>
+  <circle cx="105" cy="130" r="14" fill="#dbe7f5" stroke="#2E5A8C" stroke-width="2"/>
+  <text x="265" y="80" text-anchor="middle" font-size="12" fill="#c0392b">真空 50 mbar</text>
+  <circle cx="265" cy="140" r="38" fill="#ffffff" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="4,3"/>
+  <line x1="130" y1="130" x2="215" y2="140" stroke="#333" stroke-width="2" marker-end="url(#a2)"/>
+  <defs><marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#333"/></marker></defs>
+  <text x="185" y="235" text-anchor="middle" font-size="12" fill="#33475b">體積脹 ≈20 倍、半徑 ≈2.7 倍</text>
+  <text x="185" y="256" text-anchor="middle" font-size="12.5" font-weight="700" fill="#248a3d">→ 上浮速度提升 ≈7 倍</text>
+  <!-- Panel B Henry -->
+  <rect x="370" y="20" width="330" height="260" rx="10" fill="#f7f9fc" stroke="#1F4E79"/>
+  <text x="535" y="46" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1F4E79">(B) 溶解氣體逸出（Henry 定律 C=k·P）</text>
+  <rect x="400" y="70" width="270" height="150" rx="6" fill="#eaf1f9" stroke="#2E5A8C"/>
+  <g fill="#c0392b">
+    <circle cx="430" cy="110" r="3.5"/><circle cx="470" cy="140" r="3.5"/><circle cx="510" cy="105" r="3.5"/><circle cx="560" cy="150" r="3.5"/><circle cx="610" cy="120" r="3.5"/><circle cx="460" cy="185" r="3.5"/><circle cx="540" cy="195" r="3.5"/><circle cx="600" cy="180" r="3.5"/>
+  </g>
+  <g stroke="#c0392b" stroke-width="1.5">
+    <line x1="430" y1="110" x2="430" y2="80" marker-end="url(#a3)"/>
+    <line x1="510" y1="105" x2="510" y2="78" marker-end="url(#a3)"/>
+    <line x1="610" y1="120" x2="610" y2="82" marker-end="url(#a3)"/>
+  </g>
+  <defs><marker id="a3" markerWidth="9" markerHeight="9" refX="4" refY="2" orient="auto"><path d="M4,0 L8,6 L0,6 Z" fill="#c0392b"/></marker></defs>
+  <text x="535" y="245" text-anchor="middle" font-size="12" fill="#33475b">減壓 → 溶解度驟降</text>
+  <text x="535" y="266" text-anchor="middle" font-size="12.5" font-weight="700" fill="#248a3d">→ 溶在膠液裡的氣體析出被抽走</text>
+</svg>
+<figcaption>圖 1-3　真空的兩個獨立功效：(A) 把既有氣泡「吹大」讓它浮更快；(B) 把「溶解在膠液裡、肉眼看不見的氣體」逼出來。</figcaption>
+</figure>
+<div class="plain">
+  <span class="t"></span>
+  (A) 像深海潛水員上升時，身上的氣泡會越變越大——壓力變小、氣體就膨脹。(B) 像開汽水瓶蓋的「嘶——」聲：一減壓，原本溶在液體裡的氣體就冒出來。真空脫氣兩種效果一起用。
+</div>
+
+<div class="note">
+  <span class="t"></span>
+  <b>「真空 50 mbar」「50 bar」是一般明膠製作的真空度嗎？——科學考證</b><br>
+  先釐清單位：<b>1 bar = 1000 mbar ≈ 1 大氣壓</b>。所以「<b>50 bar</b>」＝ 50,000 mbar ＝ 約 50 大氣壓，那是<b>高壓</b>，脫氣是「減壓抽真空」而非加壓，<u>50 bar 在脫氣製程中不存在、也不可能</u>。圖中的「50 mbar」指的是<b>絕對壓 50 mbar</b>（約為常壓的 1/20，即真空表約 −0.95 bar）。<br>
+  <b>科學上的關鍵限制——水的沸點</b>：脫氣時膠液絕對壓<b>不能低於該溫度下水的飽和蒸氣壓</b>，否則膠液會沸騰（暴沸）。水的飽和蒸氣壓在 48℃ 約 <b>110 mbar</b>、60℃ 約 <b>200 mbar</b>。因此在 48–60℃ 操作時，若把絕對壓拉到 50 mbar，膠液其實會沸騰——圖中 50 mbar 是為了凸顯 Boyle 膨脹效應的<b>理想示意值</b>。<br>
+  <b>實務常見範圍</b>：軟膠囊化膠／保溫脫氣多操作在<b>絕對壓約 100–300 mbar（真空表約 −0.7 至 −0.9 bar）</b>，且刻意<b>貼近但不低於</b>該溫度的水蒸氣壓——利用「接近沸騰」的微沸幫助排氣，同時避免劇烈暴沸與失水。這也是為何「深真空＋高溫」會撞到沸騰極限、必須權衡（見下）。
+</div>
+
+<h3>1.2.3　溫度–黏度耦合與三參數窗口</h3>
+<p>膠液黏度隨溫度上升而指數下降（Arrhenius：η = A·e^(Ea/RT)）。所以溫度太低→黏度太高→脫氣停滯。真空度、時間、溫度三者耦合成一個「脫氣效率」的權衡：</p>
+<table>
+<thead><tr><th>參數</th><th>提高的效果</th><th>過度的代價</th></tr></thead>
+<tbody>
+<tr><td><b>真空度</b>（更低壓）</td><td class="pro">氣泡膨脹更大、溶解氣逸出更多</td><td class="con">過低壓引發暴沸、劇烈起泡反而夾氣</td></tr>
+<tr><td><b>保溫時間</b>（更長）</td><td class="pro">小氣泡有足夠時間上浮排出</td><td class="con">累積熱裂解（見 1.3），黏度與 Bloom 下降</td></tr>
+<tr><td><b>膠液溫度</b>（更高）</td><td class="pro">黏度指數下降、上浮加速</td><td class="con">加速胜肽鏈水解、劣化</td></tr>
+</tbody>
+</table>
+
+<h4>以 GELITA 牛骨明膠 180 Bloom 為例：三參數的高→低區間與品質影響</h4>
+<p>下表以 180 Bloom 牛骨明膠（中高 Bloom、黏度中等的常用等級）為例，列出三個參數各自「偏高端 vs 偏低端」對品質的影響與優缺點。實際數值仍須以各廠設備與批次驗證，此處為科學導向之典型區間。</p>
+<table>
+<thead><tr><th>參數</th><th>建議操作區間<br>（180 骨膠典型）</th><th>偏高／偏長／偏深端（優 / 缺）</th><th>偏低／偏短／偏淺端（優 / 缺）</th></tr></thead>
+<tbody>
+<tr>
+  <td><b>真空度</b><br>(絕對壓)</td>
+  <td class="c">−0.85～−0.92 bar<br>(約 80–150 mbar)</td>
+  <td><span class="pro">優</span>：氣泡膨脹大、溶解氣逸出多、脫氣快。<br><span class="con">缺</span>：逼近 48–60℃ 水蒸氣壓（110–200 mbar）→ 暴沸、失水、局部濃化、丸重不穩。</td>
+  <td><span class="pro">優</span>：溫和、不暴沸、失水少。<br><span class="con">缺</span>：氣泡膨脹小、脫氣慢、殘泡多。</td>
+</tr>
+<tr>
+  <td><b>保溫時間</b></td>
+  <td class="c">目標 ≤ 8–12 h<br>上限：隔夜(~16 h)</td>
+  <td><span class="pro">優</span>：微氣泡上浮充分、應力鬆弛、均質。<br><span class="con">缺</span>：48℃ 熱裂解累積 → Bloom↓、黏度↓、膠皮偏軟（180 骨膠久放後凝膠強度明顯下滑）。</td>
+  <td><span class="pro">優</span>：分子量與 Bloom 保全、膠皮強度足。<br><span class="con">缺</span>：脫氣／鬆弛不足 → 夾氣、膠皮厚薄不均、丸重不穩。</td>
+</tr>
+<tr>
+  <td><b>膠液溫度</b></td>
+  <td class="c">化膠 60–65℃<br>保溫 48–52℃</td>
+  <td><span class="pro">優</span>：黏度低、完全解旋、脫氣快。<br><span class="con">缺</span>：&gt;65℃ 長時 → 水解加速、Bloom／黏度快速下滑、色澤變深。</td>
+  <td><span class="pro">優</span>：熱裂解慢、分子完整。<br><span class="con">缺</span>：接近凝膠溫度(~30℃)時黏度急升、氣泡浮不上來、甚至局部凝膠。</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+  <span class="t">180 骨膠的操作心法</span>
+  三參數的共同矛盾是「<b>把氣泡排乾淨</b>」與「<b>把分子量與 Bloom 保住</b>」的拔河。對 180 Bloom 牛骨膠，建議<b>以『足夠但不過度』為原則</b>：真空貼近但不越過水蒸氣壓、溫度用能完全解旋的最低值（60–65℃化膠）、時間以達成脫氣的最短為佳、把「隔夜」當上限而非常態，並以 60℃ 旋轉黏度與 Bloom 衰減率設放行判準。
+</div>
+
+<h3 id="rest">1.2.6　保溫罐維持真空並以 48℃ 保溫隔夜：差異分析</h3>
+<p>膠液輸出至保溫罐後，維持真空並控溫於 48℃（低於化膠溫度、高於凝膠溫度，讓膠液維持溶膠態且黏度適中）。以下用兩張表拆解關鍵決策的優缺點。</p>
+
+<h4>差異分析 ①：靜置隔夜 vs 不靜置（配好即用）</h4>
+<table>
+<thead><tr><th>比較項目</th><th>靜置隔夜（~16 h）</th><th>靜置 3~6 小時（折衷）</th><th>不靜置（配好即用）</th></tr></thead>
+<tbody>
+<tr><td><b>微氣泡排除</b></td><td class="pro">✔ 連深層微泡都排出</td><td class="pro">✔ 大部分微泡已排出（極深微泡可能殘留）</td><td class="con">✘ 微泡來不及浮出 → 針孔、接縫夾氣</td></tr>
+<tr><td><b>黏彈性應力鬆弛</b></td><td class="pro">✔ 應力充分鬆弛</td><td class="pro">✔ 應力大致鬆弛，膠帶流變已穩定</td><td class="con">✘ 應力未鬆弛 → 膠皮厚薄不均</td></tr>
+<tr><td><b>溫度／濃度均質</b></td><td class="pro">✔ 完全均質</td><td class="pro">✔ 已均質（罐內梯度大致消除）</td><td class="con">✘ 梯度殘留 → 膠皮性質漂移</td></tr>
+<tr><td><b>分子完整性</b></td><td class="con">✘ 48℃×隔夜累積熱裂解 → Bloom↓、膠皮偏軟</td><td class="pro">✔ 熱裂解有限（3–6 h 遠少於隔夜）→ Bloom 保持較佳</td><td class="pro">✔ 幾乎無熱裂解、分子量保持</td></tr>
+<tr><td><b>丸重穩定性</b></td><td class="pro">✔ 流變穩定 → 丸重穩定</td><td class="pro">✔ 流變已穩定 → 丸重穩定</td><td class="con">✘ 夾氣＋流變不穩 → 丸重不穩</td></tr>
+<tr><td><b>綜合定位</b></td><td>脫氣/鬆弛最徹底，但有熱裂解代價</td><td><b>多數情況的最佳折衷</b>：兼顧脫氣、鬆弛與低熱裂解</td><td>省時但缺陷風險高，<b>不建議</b></td></tr>
+</tbody>
+</table>
+<div class="callout">
+  <span class="t">核心張力</span>
+  靜置在<b>物理上</b>是必要的（排氣、鬆弛、均質），但在<b>化學上</b>是有代價的（熱裂解）。因此「保溫隔夜」不是免費的品質保證，而是一個必須<b>界定時間與溫度上限</b>的權衡——建議以黏度／Bloom 衰減率設放行標準，並盡量縮短膠液滯留。
+</div>
+
+<h4>差異分析 ②：保溫時「維持真空（持續脫氣）」vs「不維持真空」</h4>
+<table>
+<thead><tr><th>比較項目</th><th>維持真空脫氣</th><th>不維持真空</th></tr></thead>
+<tbody>
+<tr><td><b>殘餘氣泡</b></td><td class="pro">✔ 隔夜持續排出殘泡，界面乾淨</td><td class="con">✘ 氣泡回溶／殘留，隔天需重新抽</td></tr>
+<tr><td><b>氧化交聯（防止）</b></td><td class="pro">✔ 低氧環境抑制側鏈氧化交聯</td><td class="con">✘ 殘氧促進氧化交聯，黏度異常上升、溶解變差</td></tr>
+<tr><td><b>水分與濃度</b></td><td class="con">✘ 長時抽真空可能失水、濃度上升，需監控</td><td class="pro">✔ 水分較不流失</td></tr>
+<tr><td><b>能耗／設備</b></td><td class="con">✘ 需持續真空、能耗與設備負擔較高</td><td class="pro">✔ 較省能</td></tr>
+<tr><td><b>綜合定位</b></td><td><b>建議</b>：兼具脫氣與「抑氧防交聯」雙重價值，惟須監控失水</td><td>僅在有其他抑氧惰性氣體保護時可考慮</td></tr>
+</tbody>
+</table>
+<div class="plain">
+  <span class="t"></span>
+  「維持真空」在隔夜保溫時其實有兩個好處：一是繼續把氣泡趕光，二是<b>沒有氧氣</b>，就不會讓明膠被氧「焊」在一起（氧化交聯）。缺點是抽太久膠液可能失水變濃，所以要盯著水分。
+</div>
+
+<h2 id="s13">1.3　隔夜保溫的化學風險：胜肽鏈熱裂解</h2>
+<p>48℃ 遠低於明膠焦化溫度，直覺「安全」。但第一性原理要看的不是瞬間破壞力，而是<b>時間累積</b>：斷鏈速率雖低，隔夜（12–16 小時）的積分足以造成可觀斷裂。主導路徑是<b>主鏈醯胺鍵的水解斷裂</b>：</p>
+<div class="eq">–CO–NH– + H₂O → –COOH + H₂N–　（把長鏈剪成短鏈）</div>
+<p>斷鏈近似一級動力學，速率 k = A·e^(−Ea/RT)；分子量倒數隨時間線性上升，即<b>熱裂解量 ∝ 時間 × e^(−Ea/RT)</b>。48℃ 的 k 雖小，但乘上「隔夜」這個大時間就不可忽略；若溫度失控上飄，k 指數放大、劣化急遽。</p>
+
+<figure>
+<svg viewBox="0 0 760 150" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="760" height="150" fill="#fff"/>
+  <g font-size="12.5" text-anchor="middle">
+    <rect x="10" y="45" width="120" height="60" rx="8" fill="#eaf1f9" stroke="#1F4E79"/><text x="70" y="70">48℃ × 隔夜</text><text x="70" y="90" font-size="11" fill="#5b6b7b">長時熱處理</text>
+    <rect x="160" y="45" width="120" height="60" rx="8" fill="#f7f9fc" stroke="#2E5A8C"/><text x="220" y="72">醯胺鍵</text><text x="220" y="90" font-size="11">水解斷鏈</text>
+    <rect x="310" y="45" width="130" height="60" rx="8" fill="#f7f9fc" stroke="#2E5A8C"/><text x="375" y="72">分子量↓</text><text x="375" y="90" font-size="11">MWD 變寬</text>
+    <rect x="470" y="45" width="130" height="60" rx="8" fill="#fff8e6" stroke="#d69e2e"/><text x="535" y="72">Bloom↓ · G′↓</text><text x="535" y="90" font-size="11">黏度↓</text>
+    <rect x="630" y="45" width="120" height="60" rx="8" fill="#fdeaea" stroke="#c0392b"/><text x="690" y="72" fill="#c0392b">膠皮偏軟</text><text x="690" y="90" font-size="11" fill="#c0392b">接縫易漏</text>
+  </g>
+  <g stroke="#666" stroke-width="2" marker-end="url(#a4)">
+    <line x1="132" y1="75" x2="158" y2="75"/><line x1="282" y1="75" x2="308" y2="75"/><line x1="442" y1="75" x2="468" y2="75"/><line x1="602" y1="75" x2="628" y2="75"/>
+  </g>
+  <defs><marker id="a4" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#666"/></marker></defs>
+</svg>
+<figcaption>圖 1-4　「隔夜偏軟」的完整因果鏈：熱把長鏈剪短 → 能形成的三股螺旋連結區變少 → 凝膠網絡變弱 → 膠皮軟、接縫易漏。此鏈正對應客戶「高室溫、48℃ 隔夜後膠皮偏軟」的觀察。</figcaption>
+</figure>
+
+<div class="plain">
+  <span class="t"></span>
+  <b>Bloom 值</b>是明膠「凝膠強度」的指標。凝膠的強度來自「長鏈互相纏繞、形成的連結點」。熱把長鏈剪短後，連結點變少變短，凝膠自然變軟——就像把一團長毛線剪成短毛線，就再也打不出牢固的結。
+</div>
+<p>並行的次要反應還有：<b>氧化交聯</b>（有殘氧時側鏈被氧「焊」在一起，使黏度異常上升——維持真空可抑制）與<b>醛類誘發交聯</b>（植物萃取物中的醛／多酚與明膠反應，第三章詳述）。</p>
+
+<figure>
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="720" height="250" fill="#fff"/>
+  <text x="360" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#1F4E79">圖：保溫殘氧下的「氧化交聯」與真空抑制</text>
+  <!-- left: with residual O2 -> crosslink -->
+  <rect x="25" y="45" width="320" height="180" rx="10" fill="#fdeaea" stroke="#c0392b"/>
+  <text x="185" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#c0392b">有殘氧（不抽真空）</text>
+  <!-- two chains -->
+  <path d="M55,110 q40,-14 80,0 t80,0 t80,0" fill="none" stroke="#2E5A8C" stroke-width="4"/>
+  <path d="M55,175 q40,14 80,0 t80,0 t80,0" fill="none" stroke="#3f7cae" stroke-width="4"/>
+  <!-- side chains -->
+  <line x1="135" y1="110" x2="135" y2="140" stroke="#2E5A8C" stroke-width="2"/>
+  <line x1="135" y1="175" x2="135" y2="145" stroke="#3f7cae" stroke-width="2"/>
+  <line x1="215" y1="110" x2="215" y2="140" stroke="#2E5A8C" stroke-width="2"/>
+  <line x1="215" y1="175" x2="215" y2="145" stroke="#3f7cae" stroke-width="2"/>
+  <!-- O2 welds -->
+  <circle cx="135" cy="142" r="6" fill="#c0392b"/><text x="135" y="146" text-anchor="middle" font-size="8" fill="#fff">O</text>
+  <circle cx="215" cy="142" r="6" fill="#c0392b"/><text x="215" y="146" text-anchor="middle" font-size="8" fill="#fff">O</text>
+  <text x="185" y="205" text-anchor="middle" font-size="11.5" fill="#c0392b">氧把兩鏈側鏈「焊」成共價交聯 → 黏度異常上升、溶解變差</text>
+  <!-- floating O2 -->
+  <g fill="#c0392b" opacity=".8"><circle cx="90" cy="85" r="3"/><circle cx="270" cy="90" r="3"/><circle cx="300" cy="130" r="3"/></g>
+  <!-- right: vacuum removes O2 -->
+  <rect x="375" y="45" width="320" height="180" rx="10" fill="#eefaf0" stroke="#248a3d"/>
+  <text x="535" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#248a3d">維持真空（抽走氧）</text>
+  <path d="M405,110 q40,-14 80,0 t80,0 t80,0" fill="none" stroke="#2E5A8C" stroke-width="4"/>
+  <path d="M405,175 q40,14 80,0 t80,0 t80,0" fill="none" stroke="#3f7cae" stroke-width="4"/>
+  <line x1="485" y1="110" x2="485" y2="140" stroke="#2E5A8C" stroke-width="2"/>
+  <line x1="565" y1="175" x2="565" y2="145" stroke="#3f7cae" stroke-width="2"/>
+  <!-- O2 leaving up -->
+  <g stroke="#248a3d" stroke-width="1.6">
+    <line x1="470" y1="95" x2="470" y2="60" marker-end="url(#ox)"/>
+    <line x1="540" y1="100" x2="540" y2="62" marker-end="url(#ox)"/>
+    <line x1="610" y1="98" x2="610" y2="60" marker-end="url(#ox)"/>
+  </g>
+  <defs><marker id="ox" markerWidth="9" markerHeight="9" refX="4" refY="2" orient="auto"><path d="M4,0 L8,6 L0,6 Z" fill="#248a3d"/></marker></defs>
+  <text x="535" y="205" text-anchor="middle" font-size="11.5" fill="#248a3d">無氧可焊 → 無氧化交聯，黏度穩定</text>
+</svg>
+<figcaption>圖 1-4b　氧化交聯：殘氧會把明膠兩條鏈的側鏈（如酪胺酸、離胺酸）氧化偶合、以共價鍵「焊」在一起，使黏度異常上升、溶解性變差。<b>保溫維持真空抽走氧氣，即可從源頭抑制此反應</b>——這正是「保溫真空」除了脫氣之外的第二層價值。</figcaption>
+</figure>
+<div class="note">
+  <span class="t"></span>
+  <b>隔夜保溫中間會緩慢攪拌（STIR）嗎？轉速多少？</b>　會，而且應該。保溫罐通常配<b>錨式／框式（anchor/gate）慢速攪拌</b>，目的是<b>維持溫度與濃度均勻、避免表面結皮與罐壁局部過熱</b>。關鍵是「<b>慢</b>」——典型約 <b>5–20 rpm</b>（視罐體大小），<u>務必低於會把空氣重新捲入液面的臨界轉速</u>（避免形成漩渦 vortex）。攪拌太快＝把辛苦脫掉的氣泡又打回去；完全不攪＝表面結皮、上下溫度/濃度分層。故原則是「<b>維持真空＋慢速、無漩渦、剛好均質</b>」。</div>
+
+<h2 id="s14">1.4　台灣季節性溫濕度對製程的極限干擾</h2>
+<p>台灣夏季高溫高濕、冬季濕冷。溶膠–凝膠轉變與脫氣都是溫度與含水量的強函數，環境會直接穿透廠房。客戶已界定異常閾值：環境 &gt;26℃ 與 &lt;15℃。</p>
+
+<h3>1.4.1　高溫高濕（&gt;26℃）：冷卻鼓上的凝膠遲滯與膠皮軟黏</h3>
+<p>膠帶從展膠箱（57–60℃ 溶膠）流到冷卻鼓（表面 13–18℃）急速冷卻凝膠，再進旋轉模具壓丸。凝膠化的驅動力正比於<b>過冷度 ΔT = Tₘ − 當地溫度</b>。環境 &gt;26℃ 時：冷卻鼓熱負荷增加、膠帶最低溫上升、<b>過冷度變小 → 凝膠變慢 → 到模具時凝膠強度 G′ 不足 → 膠帶過軟</b>。高濕則讓膠帶表面吸水，<b>水是明膠最強的增塑劑</b>，使膠皮更軟更黏。這就是「高室溫、膠皮偏軟」的完整物理路徑。</p>
+<div class="prio">
+  <span class="t"></span>
+  <ol>
+    <li><b>加工製程優先</b>：以 HVAC 把化膠／成型區控制在 <b>22–24℃、RH 30–40%</b>，直接恢復過冷度、抑制吸濕；並依環境適度下調冷卻鼓／冷媒溫度（避免低於露點結露）。</li>
+    <li><b>配方調整次之</b>：高濕季<b>適度下調甘油／山梨醇比例</b>（減少增塑），或微調明膠：甘油：水比例提高凝膠強度基線。</li>
+    <li><b>進階選項（最後手段）</b>：若上述仍不足，再評估導入 GELITA EASYSEAL®（拓寬接縫熔合寬容度）等特殊型明膠。</li>
+  </ol>
+</div>
+<div class="note">
+  <span class="t"></span>
+  <b>HVAC 是什麼？</b>　HVAC = <b>Heating, Ventilation, and Air Conditioning</b>（暖氣、通風與空調），中文常稱「<b>空調暖通系統</b>」。它是廠房用來<b>同時控制溫度、濕度與換氣</b>的整套設備（含冷氣、除濕、加濕、送/排風）。對軟膠囊而言，HVAC 的核心價值是把化膠／成型／乾燥區的<b>溫度與相對濕度鎖在窄窗口（如 22–24℃、RH 30–40%）</b>，直接穩住第一章反覆強調的三個底層變數：過冷度 ΔT、黏度 η、膠皮含水量。
+</div>
+<h4>配方調整方法總表（膠皮軟硬 × 優缺點）</h4>
+<p>當環境與製程對策仍不足時，可調整配方。下表列出所有常見的配方槓桿與其優缺點——<b>調整前務必單一變因、小幅、並留樣驗證</b>。</p>
+<table>
+<thead><tr><th>配方槓桿</th><th>方向</th><th>對膠皮的效果</th><th>優點</th><th>缺點／風險</th></tr></thead>
+<tbody>
+<tr><td rowspan="2"><b>甘油／山梨醇</b><br>(增塑劑)</td><td>↑ 提高</td><td>更軟、更韌</td><td class="pro">低濕/低溫季防過硬脆裂、提升韌性與抗衝擊</td><td class="con">過多→過軟、丸黏連、吸濕回潮、丸型軟塌</td></tr>
+<tr><td>↓ 降低</td><td>更硬挺</td><td class="pro">高溫高濕季提高凝膠強度、抗軟黏</td><td class="con">過低→膠皮脆、接縫易裂</td></tr>
+<tr><td rowspan="2"><b>水分</b></td><td>↑ 提高</td><td>較軟、好展膠</td><td class="pro">低溫季降黏易展、避免過硬</td><td class="con">黏度低、乾燥時間拉長、易黏連</td></tr>
+<tr><td>↓ 降低</td><td>硬挺、快定形</td><td class="pro">提高初始凝膠強度、抗漏油（客戶植物油既有經驗）</td><td class="con">黏度高難展、膠皮偏硬脆</td></tr>
+<tr><td><b>明膠添加量／濃度</b></td><td>↑ 提高</td><td>凝膠強度↑</td><td class="pro">接縫強、抗軟黏、丸型挺</td><td class="con">黏度高、脫氣困難、成本上升</td></tr>
+<tr><td><b>明膠 Bloom 等級</b></td><td>選較高 Bloom</td><td>凝膠強度基線↑</td><td class="pro">高溫季維持膠帶 G′、接縫穩</td><td class="con">黏度較高、展膠與脫氣較費力</td></tr>
+<tr><td><b>山梨醇部分取代甘油</b></td><td>複配</td><td>保濕性較低、抗遷移</td><td class="pro">降低回潮與被磷脂萃取（見 3.2）、季節穩定性佳</td><td class="con">比例過高有結晶風險、口感與柔韌需再平衡</td></tr>
+<tr><td><b>抗交聯明膠</b><br>(RXL®／StabiCaps®)</td><td>導入</td><td>不直接改軟硬，改善貨架穩定</td><td class="pro">植物油/反應性內料長期溶離穩定</td><td class="con">屬進階選項、成本與導入驗證（見 3.1）</td></tr>
+</tbody>
+</table>
+
+<h3>1.4.2　低溫（&lt;15℃）：黏度急升、微氣泡受困、膠皮偏硬</h3>
+<p>環境 &lt;15℃ 時，膠液與周邊溫差大、散熱快（Fourier 定律 q=−k·A·dT/dx），膠液降溫過快。後果：<b>黏度在脫氣完成前就急升</b>（近凝膠點更依 WLF 方程超指數陡升）；回到 Stokes 定律 v ∝ 1/η，黏度暴增使<b>微氣泡被「凍」在膠液中浮不上來</b>——這正是客戶「抽真空後溫降過多、消泡不穩」的物理本質。同時低溫低濕下膠皮失水、含水量低（增塑減弱），<b>膠皮偏硬、脆、接縫易裂</b>。</p>
+<div class="prio">
+  <span class="t"></span>
+  <ol>
+    <li><b>加工製程優先</b>：<b>管線／罐體伴熱保溫</b>，維持膠液全程於目標溫度（展膠 57–60℃、保溫 48℃），對抗散熱；並以 HVAC 把廠房拉回 22–24℃。</li>
+    <li><b>脫氣參數補償</b>：低溫季適度延長真空脫氣時間或<b>加深真空度</b>（Boyle 放大氣泡半徑）補回上浮速度。</li>
+    <li><b>配方調整</b>：低濕季<b>適度上調甘油／山梨醇比例</b>維持膠皮柔韌，抵銷低含水造成的偏硬。</li>
+    <li><b>進階選項（最後手段）</b>：若製程與配方仍不足，再洽原廠（GELITA／Rousselot）評估較低黏度／適當 Bloom 等級之明膠，以拓寬低溫脫氣操作窗口。</li>
+  </ol>
+</div>
+
+<h3>1.4.3　季節性擾動的統一原則</h3>
+<p>無論高溫或低溫，干擾本質都是對三個底層變數的擾動：<b>過冷度 ΔT、黏度 η、膠皮含水量（增塑程度）</b>。</p>
+<table>
+<thead><tr><th>環境條件</th><th>底層物理路徑</th><th>第一線修正（製程＋配方）</th><th>進階選項</th></tr></thead>
+<tbody>
+<tr><td><b>&gt;26℃ 高濕</b></td><td>過冷度↓、水增塑 → 膠皮軟黏</td><td>降溫控濕、冷卻鼓補償、下調甘油</td><td class="src">EASYSEAL®</td></tr>
+<tr><td><b>&lt;15℃</b></td><td>散熱↑→黏度急升、微泡受困、失水</td><td>伴熱保溫、加深真空／延時、上調甘油</td><td class="src">原廠低黏等級明膠</td></tr>
+<tr><td><b>22–24℃／RH 30–40%</b></td><td>三變數落於目標窗口</td><td>維持穩態、設定放行判準</td><td>—</td></tr>
+</tbody>
+</table>
+<div class="callout">
+  <span class="t">統一結論</span>
+  穩定製程的第一要務，不是逐案救火，而是建立一套能<b>主動補償季節性擾動</b>、把 ΔT、η、含水量鎖定於窄窗口的環境與參數控制系統。<u>特殊型明膠是「拓寬容錯窗口」的加分項，不應取代對製程與配方的基本掌控。</u>
+</div>
+
+<h2 id="s15b">1.5　膠皮偏軟／偏硬的標準應變措施（SOP）</h2>
+<p>本節把第一章的機制收斂成可直接執行的對照表，回答客戶最實務的問題：<b>膠皮偏軟或偏硬時，該調原料？調製程？調水分？調甘油？</b>兩種症狀的根因相反（偏軟＝凝膠強度不足／過度增塑；偏硬＝凝膠過度／增塑不足或失水），故對策方向亦相反。</p>
+<div class="callout">
+  <span class="t">排查與調整原則</span>
+  一律<b>先製程、後配方、最後特殊明膠</b>；每次<b>只動一個變因、小幅調整、留樣對照</b>；並以 60℃ 旋轉黏度＋展膠狀態＋Bloom 衰減率作為判準。切忌一次同時大改多項。
+</div>
+
+<h4>症狀 A：膠皮偏軟（常見於高溫高濕、48℃ 保溫隔夜後）</h4>
+<table>
+<thead><tr><th>槓桿</th><th>應變措施</th><th>優點</th><th>缺點／注意</th></tr></thead>
+<tbody>
+<tr><td class="c"><b>製程</b><br>(第一線)</td><td>HVAC 降溫控濕至 22–24℃/RH 30–40%；下調冷卻鼓/冷媒溫度恢復過冷度；<b>縮短 48℃ 保溫時間、避免隔夜久放</b>（減少熱裂解）</td><td class="pro">治本、不動配方、立即見效</td><td class="con">需環境與設備條件；注意鼓面勿低於露點結露</td></tr>
+<tr><td class="c"><b>水分</b></td><td><b>適度降低水分</b>（提高凝膠強度、加快定形）</td><td class="pro">膠皮變挺、抗漏油</td><td class="con">黏度上升、展膠較難；過低偏脆</td></tr>
+<tr><td class="c"><b>甘油</b></td><td><b>適度下調甘油／山梨醇</b>（減少增塑）</td><td class="pro">直接讓膠皮變硬挺</td><td class="con">過低→脆、接縫易裂</td></tr>
+<tr><td class="c"><b>原料</b></td><td>選<b>較高 Bloom／分子量</b>等級；縮短高溫滯留保住分子量</td><td class="pro">凝膠強度基線提高、接縫更穩</td><td class="con">黏度較高、脫氣費力；換料需驗證</td></tr>
+</tbody>
+</table>
+
+<h4>症狀 B：膠皮偏硬（常見於低溫 &lt;15℃、隔夜流動性差）</h4>
+<table>
+<thead><tr><th>槓桿</th><th>應變措施</th><th>優點</th><th>缺點／注意</th></tr></thead>
+<tbody>
+<tr><td class="c"><b>製程</b><br>(第一線)</td><td>管線/罐體<b>伴熱保溫</b>維持目標溫度；HVAC 回溫至 22–24℃；<b>控濕避免過乾失水</b>；必要時延長真空/加深真空補脫氣</td><td class="pro">治本、維持流動性與脫氣、不動配方</td><td class="con">需伴熱設備；加深真空注意勿越過水蒸氣壓暴沸</td></tr>
+<tr><td class="c"><b>水分</b></td><td><b>適度提高水分</b>（增塑、降黏、好展）</td><td class="pro">膠皮變軟、易展膠</td><td class="con">乾燥時間拉長、易黏連</td></tr>
+<tr><td class="c"><b>甘油</b></td><td><b>適度上調甘油／山梨醇</b>（增塑、抗脆）</td><td class="pro">直接讓膠皮柔韌、抵銷低含水偏硬</td><td class="con">過多→過軟、黏連、吸濕回潮</td></tr>
+<tr><td class="c"><b>原料</b></td><td>選<b>較低黏度／適當 Bloom</b> 等級；避免過度交聯（殘氧/醛）造成假性偏硬</td><td class="pro">低溫仍好展、拓寬操作窗口</td><td class="con">凝膠強度基線略降；換料需驗證</td></tr>
+</tbody>
+</table>
+<div class="plain">
+  <span class="t"></span>
+  一句話記法：<b>太軟 → 少水、少甘油、降溫少放、用高 Bloom；太硬 → 多水、多甘油、保溫別失水、用較低黏度膠。</b>但永遠先從「製程與環境」下手，配方是第二線，換特殊明膠是最後一步。
+</div>
+
+<h4>老師傅的「現場急救」：來不及重煮，該加、該減、還是該調？</h4>
+<div class="callout">
+  <span class="t">師傅心法（一句話）</span>
+  當下發現太軟或太硬、又<b>不可能立刻重煮一鍋</b>時：<b>第一優先永遠是「調製程」（不加減料、零風險、可逆）；真要動料，只能加「預先化好、同溫的預混液」，絕不可直接丟乾明膠粉或倒純甘油/純水。</b>「加」比「減」實際（罐裡的料很難減），但「加什麼、怎麼加」有嚴格順序。
+</div>
+
+<p><b>為什麼「調製程」優先於「加減料」？</b>因為罐中膠液已是均勻混合體，<b>要「減」水或甘油幾乎做不到</b>（只能靠延長真空/加熱把水蒸掉，屬製程手段）；而「加」乾料（明膠粉）會<b>夾生結塊</b>、加純甘油/純水會<b>局部不勻與分層</b>。所以動料的正確作法是加「<b>預混/母膠</b>」。以下給現場<b>排行與相對權重</b>。</p>
+
+<h5 style="color:#c0392b;margin:14px 0 4px">🔴 膠皮太軟（凝膠強度不足）— 現場急救排行</h5>
+<table>
+<thead><tr><th class="c">優先序</th><th>動作</th><th class="c">類型</th><th class="c">相對權重</th><th>原因／風險</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td><b>延長／加深真空去水濃縮</b>＋降保溫溫度、縮短使用時程</td><td class="c">調製程</td><td class="c pro">40%</td><td>不動料、去水即提高濃度與凝膠強度；注意勿越過沸點暴沸</td></tr>
+<tr><td class="c">2</td><td>加入<b>高濃度／高 Bloom「母膠液」</b>（預先化好、同溫）拉高明膠濃度</td><td class="c">加(預混)</td><td class="c pro">30%</td><td>「加料」首選；邊攪邊少量加、維持均質</td></tr>
+<tr><td class="c">3</td><td><b>降冷卻鼓溫度、增厚膠帶、降車速</b></td><td class="c">調製程</td><td class="c">20%</td><td>提高過冷度與膠帶 G′，直接讓展出膠皮變挺</td></tr>
+<tr><td class="c">4</td><td>（下一鍋再做）下修甘油／水配方</td><td class="c">配方</td><td class="c">10%</td><td>當鍋難減料，屬預防性調整</td></tr>
+<tr><td class="c">✗</td><td>直接丟乾明膠粉</td><td class="c con">禁止</td><td class="c con">0%</td><td>夾生結塊、魚眼、接縫弱點</td></tr>
+</tbody>
+</table>
+
+<h5 style="color:#1F4E79;margin:14px 0 4px">🔵 膠皮太硬（增塑不足／失水／凝膠過度）— 現場急救排行</h5>
+<table>
+<thead><tr><th class="c">優先序</th><th>動作</th><th class="c">類型</th><th class="c">相對權重</th><th>原因／風險</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td><b>伴熱回溫維持流動＋控濕防失水</b>、必要時縮短真空避免過度去水</td><td class="c">調製程</td><td class="c pro">40%</td><td>不動料、先止住「失水變硬」的源頭</td></tr>
+<tr><td class="c">2</td><td>加入<b>「甘油＋水」同溫預混液</b>，少量、邊攪邊加</td><td class="c">加(預混)</td><td class="c pro">35%</td><td>「加料」首選，直接軟化；務必預混同溫、慢加防局部不勻</td></tr>
+<tr><td class="c">3</td><td>加入少量<b>同溫純水</b></td><td class="c">加(預混)</td><td class="c">15%</td><td>可軟化但會降黏、拉長乾燥；幅度要小</td></tr>
+<tr><td class="c">4</td><td><b>減薄膠帶、微調冷卻鼓</b></td><td class="c">調製程</td><td class="c">10%</td><td>降低展出膠皮的硬挺感</td></tr>
+<tr><td class="c">✗</td><td>直接倒純甘油不預混</td><td class="c con">禁止</td><td class="c con">0%</td><td>局部過軟、分層、丸型不穩</td></tr>
+</tbody>
+</table>
+<div class="plain">
+  <span class="t"></span>
+  結論一句話：<b>先動「旋鈕」（溫度、真空、時間、冷卻鼓、膠帶厚薄），不動料</b>；非動料不可時，太軟就加「<b>高 Bloom 母膠液</b>」、太硬就加「<b>甘油＋水預混液</b>」，而且<b>都要預先化好、同溫、少量、邊攪邊加</b>。乾粉與純液直接倒，是師傅眼中的大忌。
+</div>
+
+<h2 id="s15">1.6　本章結論</h2>
+<p>本章從氫鍵協同穩定的三股螺旋（而非雙硫鍵），談到水和擴散、螺旋–捲曲的熵驅動熔解；再以 Stokes／Boyle／Henry 解構真空脫氣，以 Arrhenius 一級動力學解釋 48℃×隔夜如何經「分子量↓→Bloom↓→G′↓」使膠皮偏軟；最後落到台灣高溫與低溫兩極端如何分別透過「過冷度遲滯」與「黏度急升／氣泡受困」破壞良率。<strong>貫穿全章的工程哲學是：每個參數設定，都是在「流變學可加工性」與「化學分子完整性」之間、在「熱力學窗口」與「動力學時間」之間的定量權衡。</strong></p>
+
+<div class="chap-band" id="c2">
+  <div class="n">CHAPTER 02</div>
+  <div class="ti">第二章　模具封裝動力學、界面融合與幾何形狀異常之流變學解析</div>
+</div>
+
+<p class="lead">旋轉模具壓丸的瞬間，同時發生三件被壓縮到毫秒級的事：<b>兩片膠帶在界面熔接（接縫）、內料被定量注入、模具把膠囊切斷密封</b>。任何一件的時序或流變偏移，都會以「漏油」或「梨形」呈現。本章拆解為界面高分子物理、注射流體動力學、液滴界面科學三層，並以客戶「石蠟油正常、黑種草油與混懸產品呈梨形」的對照為核心案例。</p>
+
+<h2 id="s21">2.1　接縫融合機制：界面高分子鏈的相互擴散與纏結</h2>
+
+<h3>2.1.1　接縫不是「黏合」，而是「癒合」</h3>
+<p>兩片膠帶壓合成縫，本質<b>不是膠水式黏著，而是高分子界面的相互擴散與癒合</b>：兩片溫熱膠帶接觸時，界面兩側的明膠鏈段互相滲透、纏結，讓原本的界面在分子尺度上「消失」，形成與膠皮本體連續的結構。所以好的接縫強度能接近膠皮本體。</p>
+<div class="note">
+  <span class="t"></span>
+  <b>從「氫鍵」的角度看，接縫真的是「癒合」嗎？</b>　是的，而且更精確。分兩步：<b>①（熱＋壓，鏈段互穿）</b>兩片溫熱膠帶的明膠鏈段先跨過界面互相鑽入、纏結；<b>②（冷卻／乾燥，重建氫鍵）</b>接著在降溫與失水時，界面兩側原本各自的氫鍵網絡「跨過界面」重新連成一體，並重建三股螺旋連結區。<b>「癒合」在氫鍵層次的意思，就是把界面兩側的氫鍵網絡縫成一張連續的網。</b>反之，如果第一步沒發生（溫度不足、缺塑化、或被油污染），就算冷卻，也只是「兩片各自結各自的氫鍵」，界面仍是一道弱面——這正是漏油與磷蝦油破壞接縫（見 3.2）的根本原因。
+</div>
+
+<figure>
+<svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="760" height="260" fill="#fff"/>
+  <text x="130" y="28" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1F4E79">剛接觸：兩片各自為界</text>
+  <text x="380" y="28" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2E5A8C">加熱＋加壓：鏈段跨界擴散</text>
+  <text x="630" y="28" text-anchor="middle" font-size="13.5" font-weight="700" fill="#248a3d">完成癒合：界面消失</text>
+  <!-- stage1 -->
+  <rect x="40" y="50" width="180" height="70" fill="#eaf1f9" stroke="#2E5A8C"/>
+  <rect x="40" y="122" width="180" height="70" fill="#dbe7f5" stroke="#2E5A8C"/>
+  <line x1="40" y1="121" x2="220" y2="121" stroke="#c0392b" stroke-width="3"/>
+  <text x="130" y="215" text-anchor="middle" font-size="11" fill="#c0392b">紅線＝清楚的界面（弱）</text>
+  <!-- stage2 -->
+  <rect x="290" y="50" width="180" height="70" fill="#eaf1f9" stroke="#2E5A8C"/>
+  <rect x="290" y="122" width="180" height="70" fill="#dbe7f5" stroke="#2E5A8C"/>
+  <g stroke="#1F4E79" stroke-width="2" fill="none">
+    <path d="M330,121 q6,-20 14,0 t14,0"/><path d="M370,121 q6,20 14,0 t14,0"/><path d="M410,121 q6,-18 14,0 t14,0"/>
+  </g>
+  <text x="380" y="215" text-anchor="middle" font-size="11" fill="#1F4E79">鏈像蛇一樣鑽過界面互相纏繞</text>
+  <!-- stage3 -->
+  <rect x="540" y="50" width="180" height="142" fill="#eefaf0" stroke="#248a3d"/>
+  <g stroke="#248a3d" stroke-width="2" fill="none" opacity=".7">
+    <path d="M560,90 q20,-10 40,6 t40,-8 t40,10"/><path d="M560,130 q20,14 40,-4 t40,10 t40,-8"/><path d="M560,165 q20,-12 40,6 t40,-8 t40,10"/>
+  </g>
+  <text x="630" y="215" text-anchor="middle" font-size="11" fill="#248a3d">界面消失＝縫如同本體</text>
+</svg>
+<figcaption>圖 2-1　接縫是「界面癒合」：溫度提供鏈段運動的動力、壓力提供緊密接觸，兩片膠帶的分子鏈互相鑽入纏結，界面在分子尺度上消融。</figcaption>
+</figure>
+
+<p>此癒合可由高分子的<b>爬行理論（reptation，分子鏈像蛇般沿自身管道擴散）</b>描述。鏈段跨越界面所需的特徵時間，本白皮書統一稱為<b>「接縫癒合時間 τ」</b>（healing／welding time，源自 reptation 時間），界面強度隨接觸時間依標度律成長：</p>
+<div class="eq">σ(t) ∝ (t / τ)<sup>1/4</sup>　，　τ ∝ M³（M＝分子量）</div>
+
+<div class="note">
+  <span class="t"></span>
+  先前草稿寫的 <b>t_w</b> 就是這裡的<b>「接縫癒合時間 τ」</b>——指「兩片膠帶的分子鏈完成互相鑽入纏結所需的時間」。τ 越短，代表相同接觸時間內接縫癒合得越完全、越牢。它與分子量的三次方成正比（τ ∝ M³），所以分子量稍微變化，癒合快慢就差很多。以下一律用 τ。
+</div>
+
+<p>此標度律揭示接縫的三個控制變數：</p>
+<table>
+<thead><tr><th>控制變數</th><th>對接縫的影響</th><th>第一性理由</th></tr></thead>
+<tbody>
+<tr><td><b>溫度</b>（楔溫）</td><td class="pro">越高 → 癒合越快</td><td>鏈段運動快、τ 縮短 → 相同時間內癒合更完全（∴ 注射楔要加熱）</td></tr>
+<tr><td><b>接觸時間</b>（機速）</td><td class="con">機速越快 → 時間越短</td><td>停留時間短，若 τ 未縮短則界面來不及癒合 → 弱縫、漏油</td></tr>
+<tr><td><b>分子量與 MWD</b></td><td>需精密取捨</td><td>τ ∝ M³：太高癒合太慢；太低（或劣化後過寬）膠皮本體又不夠強</td></tr>
+</tbody>
+</table>
+
+<h3>2.1.2　GELITA EASYSEAL® 的技術原理（進階選項）</h3>
+<div class="prio">
+  <span class="t"></span>
+  在導入特殊型明膠前，<u>請先窮盡一般製程與配方對策</u>：調整<b>明膠添加量、甘油／山梨醇比例、水分、楔溫與機速、膠帶厚度</b>。以下 EASYSEAL® 為<b>上述仍不足時的進階選項</b>。
+</div>
+<p>漏油是多因子問題（填充料、模具、機速、溫度、明膠、色素皆有影響）。GELITA 的觀察是：其他條件不變下，單換明膠等級即可顯著影響漏油。EASYSEAL® 以分子量分佈與熱流變特性最佳化，效益如下（原廠技術資料）：</p>
+<ul>
+  <li><b>接縫增厚</b>：預設參數下，牛皮明膠接縫厚度較標準增加逾 <b>50%</b>、豬皮版逾 <b>40%</b>，接縫均質、厚度接近膠囊壁。</li>
+  <li><b>爆破強度提升</b>：更厚更均質的接縫更耐乾燥、翻滾、運輸應力。</li>
+  <li><b>溫度非依賴性</b>：接縫形成對楔溫的依賴大幅降低 → 化膠／保溫時間的變異對封裝衝擊變小、製程更穩健（正好對接第一章「隔夜保溫造成流變漂移」的問題）。</li>
+</ul>
+<table>
+<thead><tr><th>情境（參考：標準 160 Bloom，2.7 rpm，820 µm 膠帶）</th><th class="c">拖尾接縫厚度</th><th class="c">機速</th></tr></thead>
+<tbody>
+<tr><td>標準明膠（基準）</td><td class="c">100%</td><td class="c">基準</td></tr>
+<tr><td>EASYSEAL®，設定不變</td><td class="c pro">142%</td><td class="c">不變</td></tr>
+<tr><td>EASYSEAL®，提速 +20%、調整膠帶</td><td class="c pro">152%</td><td class="c">+20%</td></tr>
+<tr><td>EASYSEAL®，提速 +30%、減薄膠帶 −15%</td><td class="c">100%</td><td class="c">+30%</td></tr>
+</tbody>
+</table>
+<figcaption class="src" style="text-align:left">資料來源：GELITA EASYSEAL® 技術型錄（2025）。即便提速 30% 並減薄膠帶，接縫厚度仍守住標準基準值。實測漏油：參考批（標準 175 Bloom）全數翻滾筒漏油報廢；改用 EASYSEAL® 後試驗一 9 筒中 8 筒無漏油、試驗二 10 筒中 7 筒無漏油。</figcaption>
+<div class="callout">
+  <span class="t">對客戶的應用意涵</span>
+  植物油產品（印加果油、黑種草油、沙棘果油）漏油風險高於一般魚油，目前對策為降低膠液含水量（清油水比 0.95、黑種草 0.90、混懸 0.88）。降水固然提高膠皮初始強度，但也抬高黏度、加劇偏硬與脆化。<b>第一線仍應以「明膠：甘油：水」比例與製程微調取得密封與韌性的平衡</b>；EASYSEAL® 則作為「以明膠等級直接強化接縫本體、減少對極端降水依賴」的進階備案。
+</div>
+
+<h2 id="s22">2.2　注射製程三要素的精密耦合</h2>
+<p>內料由計量泵（活塞泵）經加熱注射楔，在兩片膠帶即將封合的瞬間注入。品質取決於三要素在時空上的精密同步：<b>注射點（位置）、注射流量、注射時機</b>，三者與模具轉速構成一個耦合的流體–結構系統。</p>
+<div class="note">
+  <span class="t"></span>
+  <b>注射器是在上面嗎？</b>　是的。旋轉壓丸機的<b>注射楔（injection wedge）位於兩個模具輥的正上方</b>，是一個加熱的楔形塊；內料由計量泵（活塞泵）沿楔內管路送到楔尖，<b>由上往下、在兩片膠帶會合並即將被模具凹穴封合的瞬間注入</b>。所以順序是：膠帶從兩側經冷卻鼓下來 → 在楔（上方）處被加熱軟化並注入內料 → 立刻被下方兩個對轉的模具輥壓合、切斷成丸。下圖 2-2 即為此上方注射、下方封合的配置。
+</div>
+
+<figure>
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="720" height="300" fill="#fff"/>
+  <!-- two die rolls -->
+  <circle cx="230" cy="150" r="90" fill="#f4f8fc" stroke="#2E5A8C" stroke-width="2"/>
+  <circle cx="470" cy="150" r="90" fill="#f4f8fc" stroke="#2E5A8C" stroke-width="2"/>
+  <text x="230" y="150" text-anchor="middle" font-size="12" fill="#5b6b7b">模具輥</text>
+  <text x="470" y="150" text-anchor="middle" font-size="12" fill="#5b6b7b">模具輥</text>
+  <!-- pockets -->
+  <g fill="#dbe7f5" stroke="#2E5A8C"><circle cx="318" cy="120" r="10"/><circle cx="322" cy="150" r="10"/><circle cx="318" cy="180" r="10"/></g>
+  <g fill="#dbe7f5" stroke="#2E5A8C"><circle cx="382" cy="120" r="10"/><circle cx="378" cy="150" r="10"/><circle cx="382" cy="180" r="10"/></g>
+  <!-- ribbons -->
+  <path d="M120,70 Q300,70 350,120" fill="none" stroke="#63a0cc" stroke-width="5"/>
+  <path d="M580,70 Q400,70 350,120" fill="none" stroke="#63a0cc" stroke-width="5"/>
+  <text x="150" y="60" font-size="11" fill="#3f7cae">膠帶</text><text x="560" y="60" font-size="11" fill="#3f7cae">膠帶</text>
+  <!-- wedge -->
+  <path d="M330,20 L370,20 L352,110 L348,110 Z" fill="#fdeaea" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="350" y="16" text-anchor="middle" font-size="12" font-weight="700" fill="#c0392b">注射楔（加熱）</text>
+  <!-- injection -->
+  <line x1="350" y1="110" x2="350" y2="150" stroke="#c0392b" stroke-width="3" marker-end="url(#a5)"/>
+  <circle cx="350" cy="150" r="9" fill="#f6c453" stroke="#b7791f"/>
+  <text x="350" y="185" text-anchor="middle" font-size="11" fill="#b7791f">內料注入</text>
+  <defs><marker id="a5" markerWidth="10" markerHeight="10" refX="4" refY="6" orient="auto"><path d="M0,0 L8,0 L4,6 Z" fill="#c0392b"/></marker></defs>
+  <!-- three elements labels -->
+  <g font-size="12">
+    <rect x="30" y="235" width="200" height="52" rx="6" fill="#eaf1f9" stroke="#1F4E79"/><text x="130" y="256" text-anchor="middle" font-weight="700" fill="#1F4E79">① 注射點（位置）</text><text x="130" y="276" text-anchor="middle" font-size="10.5" fill="#33475b">決定膠帶受熱與拉伸的位置</text>
+    <rect x="255" y="235" width="205" height="52" rx="6" fill="#eefaf0" stroke="#38a169"/><text x="357" y="256" text-anchor="middle" font-weight="700" fill="#2f855a">② 注射流量</text><text x="357" y="276" text-anchor="middle" font-size="10.5" fill="#33475b">V=Q·Δt 必須＝目標丸重體積</text>
+    <rect x="485" y="235" width="205" height="52" rx="6" fill="#fff8e6" stroke="#d69e2e"/><text x="587" y="256" text-anchor="middle" font-weight="700" fill="#b7791f">③ 注射時機（相位）</text><text x="587" y="276" text-anchor="middle" font-size="10.5" fill="#33475b">推料相位須對齊凹穴到位</text>
+  </g>
+</svg>
+<figcaption>圖 2-2　旋轉模具封裝：兩片膠帶在楔尖會合、內料在封合瞬間注入兩片之間，模具凹穴同時把膠囊切壓成形。三要素必須與模具旋轉精密同步。</figcaption>
+</figure>
+
+<p><b>① 注射點</b>決定膠帶「被撐開瞬間」的局部溫度與軟化度，以及流體推力施加的方向；對位不良會使膠帶一端過度拉伸、另一端鬆弛。<b>② 注射流量</b>須與凹穴容積形成速率匹配：太高→撐爆溢料、太低→丸重偏低。<b>③ 注射時機</b>是活塞推料相對於凹穴到位的相位：超前→內料噴在未就位的膠帶、滯後→凹穴已半封才注料、局部高壓拉伸不均。</p>
+<div class="callout">
+  <span class="t">關鍵耦合命題</span>
+  三要素的容錯窗口，<b>隨機速提高而收窄</b>（凹穴通過時間 Δt ∝ 1/轉速），且<b>隨內料黏度提高而因「黏彈性延遲」偏移</b>——高黏度內料的泵送壓力與實際流量之間有相位延遲（像電路的時間常數）。因此「同一台機、同一組參數」換填高黏度植物油或混懸料時，即便清油正常，仍可能落到窗口之外。<u>這正是形狀缺陷「換料才出現」的系統性原因。</u>
+</div>
+<div class="plain">
+  <span class="t"></span>
+  想像用擠花袋擠奶油到快速通過的模子裡：奶油越稠（黏度高），你「用力」和「奶油真的擠出來」之間就有延遲，很難每一格都擠得剛好又對準。清水（低黏度）就很好對時，稠奶油（高黏度）就容易擠歪、擠不對時機。
+</div>
+
+<h2 id="s23">2.3　梨形膠囊的底層成因分析</h2>
+<p>客戶觀察：填充黑種草油及部分混懸產品時，膠囊呈梨形（一端尖、一端圓）；前期試填石蠟油則正常。這是近乎完美的受控實驗——<b>膠皮、模具、機台不變，唯一變項是內料</b>——所以答案必在「內料的流變與界面性質」及其如何耦合注射動力學。</p>
+
+<h3>2.3.1　控制變因：石蠟油 vs 黑種草油／混懸料</h3>
+<table>
+<thead><tr><th>物性</th><th>石蠟油（正常）</th><th>黑種草油／植物油</th><th>混懸料（含粉體）</th></tr></thead>
+<tbody>
+<tr><td>流變行為</td><td class="pro">牛頓、黏度穩定</td><td>近牛頓、黏度較高</td><td class="con">非牛頓、剪切稀化、常具降伏應力</td></tr>
+<tr><td>黏度</td><td class="pro">低且與剪切無關</td><td>中～高</td><td class="con">高、且隨沉降變動</td></tr>
+<tr><td>密度</td><td>低</td><td>中</td><td class="con">高（粉體提高密度）</td></tr>
+<tr><td>與明膠界面張力 γ</td><td class="pro">高、幾乎不潤濕（惰性）</td><td>較低、可部分潤濕</td><td>複雜、粉體可遷移至界面</td></tr>
+<tr><td>均勻性</td><td class="pro">單相穩定</td><td>單相</td><td class="con">易沉降、分散不均、局部黏度梯度</td></tr>
+</tbody>
+</table>
+<p class="src">石蠟油之所以「正常」，正因其牛頓、低黏、高界面張力、單相穩定——每一項都落在注射動力學最寬容的一端。</p>
+<h4>是什麼在影響「內料黏度」？</h4>
+<p>既然黏度（η）是梨形的關鍵，就要知道哪些因素會把它推高。下表由影響力大到小排列：</p>
+<table>
+<thead><tr><th>影響因子</th><th>如何影響黏度</th><th>實務可調性</th></tr></thead>
+<tbody>
+<tr><td><b>溫度（最大槓桿）</b></td><td>黏度隨溫度指數下降（Arrhenius）；升溫即降黏</td><td class="pro">高：填充保溫溫度最易調</td></tr>
+<tr><td><b>脂肪酸鏈長／飽和度</b></td><td>鏈越長、越飽和（如含蠟、氫化油）黏度越高；黑種草油等植物油本身較魚油稠</td><td>中：受原料本質限制</td></tr>
+<tr><td><b>固體脂／蠟含量</b></td><td>蜂蠟、硬脂等在低溫析出微晶，形成網絡使黏度與降伏應力大增</td><td>中：與助懸配方連動</td></tr>
+<tr><td><b>粉體含量與粒徑（混懸）</b></td><td>粉體比例越高、粒徑越細、團聚越多 → 表觀黏度與降伏應力急升（非牛頓）</td><td class="pro">高：靠研磨/均質/配比</td></tr>
+<tr><td><b>助懸劑／膠體</b></td><td>卵磷脂、膠體建立弱凝膠網以防沉降，但也提高黏度</td><td class="pro">高：配方設計</td></tr>
+<tr><td><b>氧化聚合</b></td><td>不飽和油氧化生成聚合物使油「變稠」（見 3.1），久放黏度上升</td><td>中：靠抗氧化/控溫</td></tr>
+<tr><td><b>含水／乳化</b></td><td>吸水或形成乳化（如磷蝦油）改變黏度與流變</td><td>中</td></tr>
+</tbody>
+</table>
+<div class="plain">
+  <span class="t"></span>
+  一句話：<b>要降內料黏度，最快的一招永遠是「適度升溫」</b>；其次才是靠研磨均質把粉體弄細弄勻、調助懸配方、以及做好抗氧化避免油越放越稠。黑種草油比石蠟油稠，主因是它是「較長鏈、多不飽和」的天然植物油，加上易氧化聚合。
+</div>
+
+<h3>2.3.2　先看懂「三個關鍵詞」：界面張力與三個無因次數</h3>
+<p>下面三個名詞（Bo、Ca、We）是理解梨形的鑰匙。它們聽起來很學術，其實都是同一個概念的變形：<b>「一股想把液滴弄變形的力」除以「一股想把液滴拉回圓形的力」</b>。先把那股「拉回圓形的力」講清楚。</p>
+<div class="plain">
+  <span class="t"></span>
+  <b>界面張力 γ（interfacial tension）＝液滴「想變成圓球」的力。</b>你看過荷葉上的水珠、或太空人手中的漂浮水球嗎？它們都是圓的。因為液體表面的分子互相拉扯，會自動把液滴收成「表面積最小」的形狀——也就是圓球。這股「想變圓」的力就是界面張力。內料（油）和明膠之間也有界面張力：<b>γ 越大，油滴越「頑固地想保持圓形」；γ 越小（例如加了表面活性劑），油滴就越「軟弱、任人擺佈」而容易變形。</b>
+</div>
+<p>接著，有三種不同的「搗亂的力」會想把液滴弄變形。它們各自和界面張力比較，就得到三個「無因次數」（沒有單位的純數字，數字越大代表搗亂的力越佔上風）：</p>
+
+<h4>① Bond 數（Bo，中文「邦德數」）＝重力 ÷ 界面張力</h4>
+<div class="plain">
+  <span class="t"></span>
+  <b>比的是「重力」和「想變圓的力」誰贏。</b>把一小滴水滴在桌上，它是圓的（界面張力贏）；但倒一大灘水，它就攤平了（重力贏）。<b>Bo 大＝重力贏＝液滴會往下墜、下垂端被拉尖。</b>內料<b>密度越大</b>（混懸料含粉體最重）、或界面張力 γ 越小，Bo 就越大，液滴越容易被重力拉出一個尖端。石蠟油又輕、γ 又大，Bo 很小，所以永遠圓圓的。
+</div>
+
+<h4>② 毛細數（Ca，Capillary number）＝流動的黏滯力 ÷ 界面張力</h4>
+<div class="plain">
+  <span class="t"></span>
+  <b>比的是「流動時被拉扯的力」和「想變圓的力」誰贏。</b>想像你在濃稠蜂蜜裡快速攪一根筷子——蜂蜜會被拉成長條，很久才彈回來；但在水裡攪，水馬上恢復平靜。<b>Ca 大＝液滴在注射的流動中被拉長、而且來不及在封合前彈回圓形。</b>內料<b>黏度越高</b>（黑種草油、混懸料）、<b>注射速度越快</b>、或 γ 越小，Ca 就越大。這是梨形最主要的「兇手」。
+</div>
+
+<h4>③ Weber 數（We，中文「韋伯數」）＝衝力（慣性） ÷ 界面張力</h4>
+<div class="plain">
+  <span class="t"></span>
+  <b>比的是「衝過來的慣性」和「想變圓的力」誰贏。</b>把水球輕輕放在桌上，它是圓的；但用力砸出去，它會「啪」地攤開變形。<b>We 大＝高速、重的液滴，靠慣性硬把自己撞變形。</b>機速越快、內料密度越大，We 越大。混懸料在高速產線上尤其明顯。
+</div>
+
+<table>
+<thead><tr><th class="c">無因次數</th><th>搗亂的力</th><th class="c">什麼讓它變大</th><th>白話一句話</th></tr></thead>
+<tbody>
+<tr><td class="c"><b>Bo</b></td><td>重力</td><td class="c">密度↑、γ↓</td><td>太重 → 下垂拉尖</td></tr>
+<tr><td class="c"><b>Ca</b></td><td>流動黏滯力</td><td class="c">黏度↑、速度↑、γ↓</td><td>太稠太快 → 被拉長來不及回正</td></tr>
+<tr><td class="c"><b>We</b></td><td>慣性（衝力）</td><td class="c">速度↑、密度↑</td><td>又快又重 → 撞到變形</td></tr>
+</tbody>
+</table>
+<p>三者的共同結論是：<b>只要「搗亂的力」贏過「界面張力這股想變圓的力」，而且液滴在被封合凝固前來不及彈回對稱，變形就會被「凍結」進最終膠囊形狀</b>——這就是梨形。石蠟油三個數都小、又回彈得快，所以恆正常；黑種草油與混懸料三個數都大、回彈又慢，所以恆易梨形。下圖把三個數並列對照。</p>
+
+<h3>2.3.3　三個無因次群的並列對照</h3>
+<figure>
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="720" height="250" fill="#fff"/>
+  <g>
+    <rect x="20" y="30" width="215" height="190" rx="8" fill="#f7f9fc" stroke="#1F4E79"/>
+    <text x="127" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#1F4E79">Bond 數 Bo</text>
+    <text x="127" y="80" text-anchor="middle" font-size="14" font-style="italic" font-family="Cambria Math,serif">Bo = Δρ·g·L² / γ</text>
+    <text x="127" y="104" text-anchor="middle" font-size="11.5" fill="#33475b">重力形變 ÷ 界面張力</text>
+    <text x="127" y="135" text-anchor="middle" font-size="11.5" fill="#c0392b">密度↑、γ↓ → Bo↑</text>
+    <text x="127" y="156" text-anchor="middle" font-size="11.5" fill="#c0392b">→ 液滴被重力拉長、下墜端變尖</text>
+    <text x="127" y="188" text-anchor="middle" font-size="11" fill="#248a3d">石蠟油：Bo 小 → 對稱橢球</text>
+  </g>
+  <g>
+    <rect x="252" y="30" width="215" height="190" rx="8" fill="#f7f9fc" stroke="#1F4E79"/>
+    <text x="359" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#1F4E79">毛細數 Ca</text>
+    <text x="359" y="80" text-anchor="middle" font-size="14" font-style="italic" font-family="Cambria Math,serif">Ca = η·U / γ</text>
+    <text x="359" y="104" text-anchor="middle" font-size="11.5" fill="#33475b">流動應力 ÷ 界面張力</text>
+    <text x="359" y="135" text-anchor="middle" font-size="11.5" fill="#c0392b">黏度↑、速度↑、γ↓ → Ca↑</text>
+    <text x="359" y="156" text-anchor="middle" font-size="11.5" fill="#c0392b">→ 被流場拉伸、來不及鬆弛回正</text>
+    <text x="359" y="188" text-anchor="middle" font-size="11" fill="#248a3d">高黏植物油／混懸料：Ca 大</text>
+  </g>
+  <g>
+    <rect x="484" y="30" width="215" height="190" rx="8" fill="#f7f9fc" stroke="#1F4E79"/>
+    <text x="591" y="54" text-anchor="middle" font-size="12" font-weight="700" fill="#1F4E79">Weber 數 We（韋伯數）</text>
+    <text x="591" y="80" text-anchor="middle" font-size="14" font-style="italic" font-family="Cambria Math,serif">We = ρ·U²·L / γ</text>
+    <text x="591" y="104" text-anchor="middle" font-size="11.5" fill="#33475b">慣性 ÷ 界面張力</text>
+    <text x="591" y="135" text-anchor="middle" font-size="11.5" fill="#c0392b">高機速、高密度 → We↑</text>
+    <text x="591" y="156" text-anchor="middle" font-size="11.5" fill="#c0392b">→ 慣性加劇不對稱形變</text>
+    <text x="591" y="188" text-anchor="middle" font-size="11" fill="#248a3d">混懸料尤甚</text>
+  </g>
+</svg>
+<figcaption>圖 2-3　三個無因次群都是「讓液滴變形的力」÷「讓液滴回正的界面張力」。三者越大，液滴越易在封合前被凍結成不對稱形狀。</figcaption>
+</figure>
+<div class="plain">
+  <span class="t"></span>
+  界面張力 γ 是液滴「想維持圓球」的力（像水珠總想變圓）。Bo、Ca、We 分別是重力、流動、慣性「想把液滴弄變形」的力。石蠟油這三個「搗亂的力」都很小、又回正得快，所以永遠是漂亮橢圓；黑種草油與混懸料這三個力都大、回正又慢，變形就被「定住」在最終形狀裡。
+</div>
+
+<h3>2.3.4　梨形（一端尖一端圓）的成形機制</h3>
+<figure>
+<svg viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="720" height="210" fill="#fff"/>
+  <text x="180" y="34" text-anchor="middle" font-size="14" font-weight="700" fill="#248a3d">石蠟油：對稱橢球（正常）</text>
+  <ellipse cx="180" cy="115" rx="95" ry="60" fill="#eefaf0" stroke="#248a3d" stroke-width="2.5"/>
+  <line x1="85" y1="115" x2="275" y2="115" stroke="#248a3d" stroke-dasharray="4,3"/>
+  <text x="180" y="195" text-anchor="middle" font-size="11" fill="#5b6b7b">低黏、低密、回正快 → 兩端對稱</text>
+  <text x="540" y="34" text-anchor="middle" font-size="14" font-weight="700" fill="#c0392b">黑種草油／混懸：梨形（缺陷）</text>
+  <path d="M470,115 Q470,55 545,58 Q640,62 640,115 Q640,168 545,172 Q495,170 470,140 Q455,128 470,115 Z" fill="#fdeaea" stroke="#c0392b" stroke-width="2.5"/>
+  <text x="600" y="112" text-anchor="middle" font-size="11" fill="#c0392b">圓端（先充填）</text>
+  <text x="452" y="150" text-anchor="middle" font-size="11" fill="#c0392b">尖端</text>
+  <line x1="455" y1="128" x2="435" y2="140" stroke="#c0392b" stroke-width="2" marker-end="url(#a6)"/>
+  <defs><marker id="a6" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#c0392b"/></marker></defs>
+  <text x="540" y="195" text-anchor="middle" font-size="11" fill="#5b6b7b">末段流動受限＋不對稱剪切 → 一端被「捏尖」</text>
+</svg>
+<figcaption>圖 2-4　梨形成形：注射前段對稱充填出「圓端」；末段因高黏度／降伏應力使內料流動受限、來不及對稱到位，而模具仍持續旋轉封合，把該端膠帶「捏尖」。</figcaption>
+</figure>
+<ol>
+  <li><b>圓端形成</b>：注射前段流量充分，把膠帶對稱撐開、貼合凹穴圓弧，形成規則圓端。</li>
+  <li><b>尖端形成</b>：末段對高黏度／具降伏應力的混懸料，流動性受限（剪切率降低使表觀黏度回升、降伏應力使殘料「拉絲」不俐落），內料無法及時對稱充滿另一端；此時模具已開始封合，<b>膠帶在內料尚未到位前被拉伸收攏、捏成尖端</b>。</li>
+  <li><b>不對稱剪切</b>：若注射點對位不良或相位滯後，射流對兩端膠帶施加不對稱拉伸；高 Ca 下此拉伸無法鬆弛，直接固化成尖端。密度高（高 Bo）時重力使內料偏向一端，更強化不對稱。</li>
+</ol>
+<p><b>混懸料的加成惡化</b>：粉體沉降造成局部密度／黏度梯度、降伏應力使流動起停不俐落、粉體遷移至界面改變 γ 與潤濕——三者共同放大不對稱，使梨形在混懸產品上尤為顯著。</p>
+
+<h3>2.3.5　逆向工程：什麼條件會「保證」做出梨形？（診斷表）</h3>
+<p>要根治梨形，反過來想最清楚：<b>如果我「故意」要做出梨形，要怎麼做？</b>凡是會加大 Bo／Ca／We、或製造不對稱注射的操作，都會助長梨形。下表把這些條件列出，並標註它對生產的壞處（缺點）與它在「理解／診斷」上的價值（優點）。</p>
+<table>
+<thead><tr><th>「製造梨形」的操作</th><th>為何造成梨形（機制）</th><th>對正常生產的缺點</th><th>診斷上的優點</th></tr></thead>
+<tbody>
+<tr><td>用<b>高黏度</b>內料（黑種草油、高粉混懸）</td><td>Ca 大，液滴被拉長來不及回正</td><td class="con">高漏油、梨形、丸重不穩</td><td class="pro">證明「先降黏」是首要對策</td></tr>
+<tr><td>內料<b>不加熱、低溫填充</b></td><td>黏度更高 → Ca 更大</td><td class="con">形狀更差、末段拉絲</td><td class="pro">反證「升溫降黏」有效</td></tr>
+<tr><td><b>提高機速</b></td><td>凹穴通過時間變短、U↑ 使 Ca、We↑，容錯窗口收窄</td><td class="con">梨形＋弱縫同時惡化</td><td class="pro">找出產能與品質的平衡點</td></tr>
+<tr><td><b>注射時機滯後／點位偏移</b></td><td>末段不對稱剪切，一端過度拉伸捏尖</td><td class="con">單邊尖端、批間不穩</td><td class="pro">指向「timing/點位校正」</td></tr>
+<tr><td>混懸料<b>不研磨、不均質、放到沉降</b></td><td>降伏應力＋密度/黏度梯度＋界面粉體</td><td class="con">梨形在混懸品最嚴重</td><td class="pro">凸顯研磨/均質/助懸的必要</td></tr>
+<tr><td>用<b>低界面張力</b>內料（含磷脂/界面活性劑）</td><td>γ↓ 使三個無因次數同時放大</td><td class="con">梨形＋毛細滲入漏油（見 3.2）</td><td class="pro">連結磷蝦油案例</td></tr>
+<tr><td><b>膠帶太軟／過熱</b>（高溫高濕）</td><td>G′ 不足，膠帶被內料輕易拉變形</td><td class="con">配合高濕季更易梨形</td><td class="pro">連結第一章季節性</td></tr>
+</tbody>
+</table>
+<div class="callout">
+  <span class="t">診斷邏輯</span>
+  把上表<b>反過來做</b>，就是修正策略：降黏（升溫）、均質防沉降、降機速或校正 timing／點位、補膠帶 G′、必要時處理界面張力。這也解釋了客戶的觀察——<b>調模具壓力無法解決梨形</b>，因為壓力不在上表任何一列：梨形是「液滴在封合前就被弄歪」，不是「封合壓力不夠」。
+</div>
+
+<h3>2.3.6　修正策略</h3>
+<div class="prio">
+  <span class="t"></span>
+  依「由快到慢、先製程配方、後特殊明膠」排查：
+  <ol>
+    <li><b>內料流變（最直接）</b>：於安定性容許內<b>適度提高內料填充溫度</b>降低黏度（降 Ca）；加強<b>研磨與均質</b>、最佳化助懸劑（蜂蠟、大豆卵磷脂）抑制沉降與降伏應力；填充槽<b>恆溫＋適度攪拌</b>避免密度／黏度梯度。</li>
+    <li><b>注射動力學</b>：針對黏彈性延遲把<b>注射時機適度提前</b>；調整<b>流量／活塞衝程曲線</b>使末段仍對稱充填；校正<b>注射點對位與楔溫均勻</b>。</li>
+    <li><b>膠皮端（製程＋配方）</b>：適度<b>增厚膠帶或微調冷卻鼓溫度</b>提高膠帶到楔時的 G′；並以<b>明膠：甘油：水比例</b>調整膠皮柔韌與凝膠強度。</li>
+    <li><b>進階選項（最後手段）</b>：以 GELITA EASYSEAL® 拓寬封合寬容度、降低對時序完美對位的敏感；對含醛／多酚植物萃取內料，另以 Rousselot StabiCaps® 抑制交聯（見第三章）。</li>
+  </ol>
+</div>
+
+<h3>2.3.7　混懸內料的「研磨、均質、助懸劑」詳解</h3>
+<p>「加強研磨與均質、最佳化助懸劑」講起來簡單，實務上是三件不同的事，各有明確目的：</p>
+<h4>① 研磨（milling）：把粉體「變細變勻」</h4>
+<p>常用<b>三輥研磨機（three-roll mill）</b>或膠體磨，靠輥間微米級間隙的剪切把粉體團聚打散、降低粒徑（常做到數微米～數十微米）。粒徑越小越均勻：<b>沉降變慢（Stokes：沉降速度 ∝ 粒徑平方）</b>、表面更易被油潤濕、外觀更細緻。過度研磨則發熱、耗時、黏度可能上升，需取平衡。</p>
+<h4>② 均質／分散（homogenization）：把粉體「均勻懸浮、不結塊」</h4>
+<p>以高剪切均質機把粉體均勻分散於油相、破壞團聚與夾氣，得到均一的懸浮體。均質決定<b>批內填充量與外觀的一致性</b>；分散不良會留下局部高黏度團塊，正是梨形與丸重不穩的來源。</p>
+<h4>③ 助懸劑（suspending agents）：建立「防沉降的弱網絡」</h4>
+<p>助懸劑的任務是<b>對抗重力沉降</b>，機制有二：</p>
+<ul>
+  <li><b>蜂蠟（beeswax）／氫化油</b>：在油相中形成<b>細微晶體網絡（弱凝膠、具降伏應力）</b>，像在油裡搭一張看不見的網把粉體「架住」不讓它沉下去。文獻中僅以約 6% 蜂蠟即可穩定混懸內料、消除分層與漏油。缺點是提高黏度與降伏應力（要與降 Ca 平衡）。</li>
+  <li><b>大豆卵磷脂（lecithin）</b>：<b>潤濕與分散劑</b>，包覆粉體表面、降低團聚與界面能，讓粉體更容易被油「吃進去」並穩定懸浮；也改善流動與脫模。</li>
+</ul>
+<p>三者搭配<b>填充槽恆溫＋持續適度攪拌</b>，才能在整個壓丸過程維持均一——溫度掉太多會讓蠟晶過度析出、黏度失控；攪拌不足則沉降；攪拌過猛又捲入空氣。這是一組需要一起調的參數。</p>
+
+<h2 id="s24">2.4　封裝缺陷綜合對策</h2>
+<table>
+<thead><tr><th>缺陷</th><th>第一性主因</th><th>第一線對策（製程＋配方）</th><th>進階選項</th></tr></thead>
+<tbody>
+<tr><td><b>漏油</b></td><td>接縫癒合不足（τ 未縮短、接縫過薄）、膠帶強度不足</td><td>楔溫／機速／膠帶厚度；明膠：甘油：水比例；適度降水</td><td class="src">EASYSEAL®</td></tr>
+<tr><td><b>梨形</b></td><td>高 Bo／Ca／We 下液滴不對稱形變被凍結、注射時序不對稱</td><td>降內料黏度＋均質化＋注射 timing／點位校正＋膠帶 G′ 補償</td><td class="src">EASYSEAL®</td></tr>
+<tr><td><b>交聯／溶離下降</b></td><td>醛類／多酚與 Lysine ε-胺基形成 Schiff 鹼交聯</td><td>抗氧化、控溫控時、降低內料醛負荷（見 3.1）</td><td class="src">RXL®（GELITA）<br>StabiCaps®（Rousselot）</td></tr>
+<tr><td><b>混懸沉降／外觀異常</b></td><td>粉體沉降造成密度／黏度梯度、降伏應力</td><td>助悬劑最佳化＋研磨均質＋恆溫攪拌</td><td>—</td></tr>
+</tbody>
+</table>
+<p><b>兩大原廠都有對應的特殊型明膠</b>——當一般製程與配方對策窮盡後，可依需求對應選型（下表）。再次強調：這些是<u>拓寬容錯窗口的進階選項，不能取代對製程與配方的基本掌控</u>。</p>
+<table class="brandmap">
+<thead><tr><th>需求</th><th>GELITA（原廠）</th><th>Rousselot（原廠）</th></tr></thead>
+<tbody>
+<tr><td>接縫強化 · 抗漏油</td><td><b>EASYSEAL®</b>（接縫增厚、抗漏油）</td><td>可洽原廠對應等級</td></tr>
+<tr><td>抗交聯 · 貨架穩定</td><td><b>RXL®</b> 系列（BB／BH／PS，含 RXL／Pro／Adv／Ultra，抗交聯強度可調）</td><td><b>StabiCaps®</b>／StabiCaps® Plus</td></tr>
+<tr><td>快速崩解釋放</td><td><b>RAPISOL®</b>（貨架期內仍快速釋放）</td><td>可洽原廠對應等級</td></tr>
+<tr><td>腸溶（延遲釋放）</td><td><b>DELASOL®</b>（一步法真腸溶，保護 omega-3）</td><td>—</td></tr>
+</tbody>
+</table>
+<div class="callout">
+  <span class="t">本章結論</span>
+  接縫是<b>界面爬行擴散與纏結的癒合</b>（σ∝(t/τ)<sup>1/4</sup>，τ∝M³）；注射三要素是<b>流量與相位的雙重匹配</b>，容錯窗口隨機速收窄、隨內料黏度偏移；梨形則是<b>液滴形變（Bo、Ca、We）在封合前來不及被界面張力鬆弛</b>的必然結果。故石蠟油恆正常、高黏高密的黑種草油與混懸料恆易梨形。<u>所有對策一律先窮盡製程與配方，特殊型明膠僅作為拓寬容錯窗口的加分項。</u>
+</div>
+
+<div class="chap-band" id="c3">
+  <div class="n">CHAPTER 03</div>
+  <div class="ti">第三章　內容物化學交互作用、膠殼物理化學穩定性與跨國物流熱力學風險評估</div>
+</div>
+
+<p class="lead">前兩章的變項多在「膠液與設備」；本章的變項則是<b>內容物本身的化學</b>，以及成品離開產線後、在<b>貨櫃裡歷經數週高溫的物流環境</b>。內料的脂肪酸不飽和度、磷脂質的界面活性、以及運輸的溫濕度，會分別從<b>化學交聯、界面破壞、熱力學降解</b>三條路徑，決定膠囊的崩解時限、接縫強度與到貨良率。</p>
+
+<h2 id="s31">3.1　植物萃取油（飽和 vs 不飽和）的交聯干擾</h2>
+
+<h3>3.1.1　第一性差異：為何「不飽和」就容易氧化？</h3>
+<p>脂肪酸的差別在碳鏈上的<b>雙鍵（C=C）</b>數目。飽和脂肪酸沒有雙鍵，化學上穩定；不飽和脂肪酸每多一個雙鍵，就多一個脆弱點。關鍵在<b>「雙烯丙基位」的 C–H 鍵</b>（夾在兩個雙鍵之間的碳氫鍵）鍵能特別低，氫原子極易被自由基奪走，開啟連鎖的<b>脂質過氧化（autoxidation）</b>。</p>
+<div class="note">
+  <span class="t"></span>
+  <b>雙烯丙基位（bis-allylic）</b>：多元不飽和脂肪酸中，被夾在兩個 C=C 雙鍵中間的那個 –CH₂–。它的 C–H 鍵最弱，是氧化的「起火點」。雙鍵越多，這種弱點越多，氧化越快。
+</div>
+<figure>
+<svg viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="720" height="230" fill="#fff"/>
+  <text x="360" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="#1F4E79">相對氧化速率（以油酸＝1 為基準）</text>
+  <!-- axis -->
+  <line x1="120" y1="185" x2="680" y2="185" stroke="#999"/>
+  <!-- bars -->
+  <g>
+    <rect x="150" y="176" width="90" height="9" fill="#63a0cc"/><text x="195" y="205" text-anchor="middle" font-size="12">油酸 (18:1)</text><text x="195" y="168" text-anchor="middle" font-size="12" fill="#1F4E79">1</text>
+    <rect x="330" y="80" width="90" height="105" fill="#3f7cae"/><text x="375" y="205" text-anchor="middle" font-size="12">亞油酸 (18:2)</text><text x="375" y="72" text-anchor="middle" font-size="12" fill="#1F4E79">≈12</text>
+    <rect x="510" y="45" width="90" height="140" fill="#c0392b"/><text x="555" y="205" text-anchor="middle" font-size="12">次亞麻油酸 (18:3)</text><text x="555" y="37" text-anchor="middle" font-size="12" fill="#c0392b">≈25</text>
+  </g>
+  <text x="120" y="60" font-size="11" fill="#5b6b7b">雙鍵越多 → 氧化越快</text>
+</svg>
+<figcaption>圖 3-1　脂肪酸不飽和度與氧化速率（經典相對值）。每增加一個雙鍵，氧化速率倍增。印加果油富含 α-次亞麻油酸（18:3，ω-3）、黑種草油與沙棘果油富含亞油酸與多元不飽和脂肪酸，氧化傾向遠高於飽和油與石蠟油。</figcaption>
+</figure>
+
+<h4>市售植物油／油脂軟膠囊的「雙烯丙基位」與氧化風險比較</h4>
+<p>「雙烯丙基位」的數目，可用一條簡單規則估計：<b>對甲烯間隔的多元不飽和脂肪酸，每分子雙烯丙基位數 ≈（雙鍵數 − 1）</b>。雙鍵越多、這種「起火點」越多、氧化與後續醛類生成越快。下表比較常見產品的代表脂肪酸與其相對氧化／交聯風險。</p>
+<table>
+<thead><tr><th>油品</th><th>代表主要脂肪酸</th><th class="c">代表脂肪酸<br>每分子雙烯丙基位</th><th>多元不飽和(PUFA)傾向</th><th>天然抗氧化物</th><th class="c">相對氧化／<br>交聯風險</th></tr></thead>
+<tbody>
+<tr><td><b>橄欖油</b></td><td>油酸 18:1（單元不飽和，~70–75%）</td><td class="c pro">0</td><td>低（PUFA 少）</td><td>多酚、生育酚（強）</td><td class="c pro">最低</td></tr>
+<tr><td><b>黑種草油</b></td><td>亞油酸 18:2（~50–60%）、油酸</td><td class="c">1</td><td>中高</td><td>百里醌 thymoquinone</td><td class="c">中</td></tr>
+<tr><td><b>沙棘果油</b></td><td>亞油酸 18:2＋α-次亞麻油酸 18:3（種油）</td><td class="c">1–2</td><td>中高</td><td>類胡蘿蔔素、生育酚／三烯酚（強）</td><td class="c">中（抗氧化強而部分抵銷）</td></tr>
+<tr><td><b>印加果油</b></td><td>α-次亞麻油酸 18:3（ω-3，~45–50%）＋亞油酸</td><td class="c con">2</td><td>很高（PUFA ~80%+）</td><td>生育酚（中）</td><td class="c con">高</td></tr>
+<tr><td><b>LIFE&#39;S OMEGA 55% 藻油</b></td><td>DHA 22:6＋EPA 20:5（合計 ~55%）</td><td class="c con">4–5</td><td>極高</td><td>需外加抗氧化（維 E 等）</td><td class="c con">最高</td></tr>
+</tbody>
+</table>
+<figcaption class="src" style="text-align:left">脂肪酸組成為典型代表值（實際依產地／批次而異）。DHA（22:6）每分子多達 5 個雙烯丙基位、EPA（20:5）4 個，是所有常見油脂中最易氧化者——這也是高濃度藻油／魚油產品最需要抗氧化與腸溶保護（DELASOL®）的原因。</figcaption>
+<div class="plain">
+  <span class="t"></span>
+  把「雙烯丙基位」想成油分子上的<b>易燃引信</b>。橄欖油幾乎沒有引信（油酸 0 個），所以最耐放；黑種草油、沙棘果油各 1–2 個；印加果油（ω-3 植物油）有 2 個且比例高；藻油的 DHA 一根分子上就有 <b>5 根引信</b>，最容易被氧點燃、生成醛去攻擊膠殼。油越「養生（ω-3 越多）」，對膠囊的化學攻擊性通常也越強。
+</div>
+
+<figure>
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="720" height="250" fill="#fff"/>
+  <text x="360" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#1F4E79">動畫：脂質氧化 → 生成醛 → 攻擊明膠 → 交聯</text>
+  <!-- three stage boxes -->
+  <g>
+    <rect x="20" y="70" width="200" height="70" rx="8" fill="#eefaf0" stroke="#38a169"/>
+    <rect x="20" y="70" width="200" height="70" rx="8" fill="#38a169" opacity="0"><animate attributeName="opacity" values="0;0.18;0" dur="6s" begin="0s" repeatCount="indefinite"/></rect>
+    <text x="120" y="98" text-anchor="middle" font-size="12.5" font-weight="700">① 奪氫</text>
+    <text x="120" y="120" text-anchor="middle" font-size="11" fill="#33475b">雙烯丙基 –CH₂– 被奪氫→R•</text>
+  </g>
+  <g>
+    <rect x="260" y="70" width="200" height="70" rx="8" fill="#fff8e6" stroke="#d69e2e"/>
+    <rect x="260" y="70" width="200" height="70" rx="8" fill="#d69e2e" opacity="0"><animate attributeName="opacity" values="0;0.20;0" dur="6s" begin="2s" repeatCount="indefinite"/></rect>
+    <text x="360" y="98" text-anchor="middle" font-size="12.5" font-weight="700">② O₂ 加成→醛</text>
+    <text x="360" y="120" text-anchor="middle" font-size="11" fill="#33475b">R•→ROO•→ROOH→醛(CHO)</text>
+  </g>
+  <g>
+    <rect x="500" y="70" width="200" height="70" rx="8" fill="#f3ecfb" stroke="#7b4bb7"/>
+    <rect x="500" y="70" width="200" height="70" rx="8" fill="#7b4bb7" opacity="0"><animate attributeName="opacity" values="0;0.20;0" dur="6s" begin="4s" repeatCount="indefinite"/></rect>
+    <text x="600" y="98" text-anchor="middle" font-size="12.5" font-weight="700" fill="#5a34a0">③ 交聯</text>
+    <text x="600" y="120" text-anchor="middle" font-size="11" fill="#33475b">醛+明膠Lys-NH₂→釘死</text>
+  </g>
+  <!-- arrows -->
+  <g stroke="#888" stroke-width="2" marker-end="url(#oa)">
+    <line x1="222" y1="105" x2="258" y2="105"/><line x1="462" y1="105" x2="498" y2="105"/>
+  </g>
+  <defs><marker id="oa" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#888"/></marker></defs>
+  <!-- travelling O2 token -->
+  <g>
+    <circle r="6" fill="#c0392b"/><circle r="6" fill="#c0392b" cx="10"/>
+    <animateMotion dur="6s" repeatCount="indefinite" path="M60,190 L120,140 L360,140 L600,140"/>
+    <animate attributeName="opacity" values="0;1;1;1;0" dur="6s" repeatCount="indefinite"/>
+  </g>
+  <text x="60" y="215" font-size="11" fill="#c0392b">紅點＝氧攻擊，一路把油變成醛、再把明膠釘死（交聯）</text>
+  <!-- staple appearing at stage3 -->
+  <g stroke="#7b4bb7" stroke-width="3" fill="none" opacity="0">
+    <path d="M560,170 L560,185 L640,185 L640,170"/>
+    <animate attributeName="opacity" values="0;0;0;1;1;0" dur="6s" begin="4s" repeatCount="indefinite"/>
+  </g>
+  <text x="600" y="205" text-anchor="middle" font-size="10.5" fill="#5a34a0" opacity="0">交聯「釘書針」<animate attributeName="opacity" values="0;0;0;1;1;0" dur="6s" begin="4s" repeatCount="indefinite"/></text>
+</svg>
+<figcaption>圖 3-1b（動畫）　紅點代表氧的攻擊：先在油的「雙烯丙基位」奪氫生成自由基，經 O₂ 加成生成醛，醛再與明膠 Lysine 的 –NH₂ 反應，把兩條明膠鏈「釘」在一起（交聯）。動畫在瀏覽器開啟時循環播放。</figcaption>
+</figure>
+
+<h3>3.1.2　從脂質過氧化到膠殼交聯：轉醯胺基與 Schiff 鹼</h3>
+<p>脂質過氧化是一條<b>自由基連鎖反應</b>：起始（生成脂質自由基 R•）→ 傳遞（R•＋O₂→ROO•；ROO•＋RH→ROOH＋R•）→ 氫過氧化物 ROOH 分解 → 產生<b>次級降解產物：醛類（如丙二醛 MDA、4-HNE、己醛）與羰基化合物</b>。這些醛正是攻擊膠殼的元兇。</p>
+<figure>
+<svg viewBox="0 0 740 250" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="740" height="250" fill="#fff"/>
+  <g font-size="12" text-anchor="middle">
+    <rect x="15" y="30" width="120" height="52" rx="8" fill="#eefaf0" stroke="#38a169"/><text x="75" y="52">不飽和脂肪酸</text><text x="75" y="70" font-size="10.5" fill="#5b6b7b">RH（雙鍵）</text>
+    <rect x="165" y="30" width="120" height="52" rx="8" fill="#fff8e6" stroke="#d69e2e"/><text x="225" y="52">脂質過氧化</text><text x="225" y="70" font-size="10.5" fill="#5b6b7b">R•→ROO•→ROOH</text>
+    <rect x="315" y="30" width="120" height="52" rx="8" fill="#fdeaea" stroke="#c0392b"/><text x="375" y="52" fill="#c0392b">醛類</text><text x="375" y="70" font-size="10.5" fill="#5b6b7b">MDA · 4-HNE · 己醛</text>
+    <rect x="465" y="30" width="130" height="52" rx="8" fill="#eaf1f9" stroke="#1F4E79"/><text x="530" y="48">醛 ＋ 明膠</text><text x="530" y="66" font-size="10.5" fill="#5b6b7b">Lysine ε-NH₂</text>
+    <rect x="620" y="30" width="105" height="52" rx="8" fill="#e8dff5" stroke="#7b4bb7"/><text x="672" y="48" fill="#5a34a0">Schiff 鹼</text><text x="672" y="66" font-size="10.5" fill="#5b6b7b">亞胺 C=N</text>
+  </g>
+  <g stroke="#666" stroke-width="2" marker-end="url(#a7)">
+    <line x1="137" y1="56" x2="163" y2="56"/><line x1="287" y1="56" x2="313" y2="56"/><line x1="437" y1="56" x2="463" y2="56"/><line x1="597" y1="56" x2="618" y2="56"/>
+  </g>
+  <defs><marker id="a7" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#666"/></marker></defs>
+  <!-- crosslink outcome -->
+  <rect x="250" y="130" width="240" height="90" rx="10" fill="#f3ecfb" stroke="#7b4bb7"/>
+  <text x="370" y="156" text-anchor="middle" font-size="13" font-weight="700" fill="#5a34a0">共價交聯（Cross-linking）</text>
+  <text x="370" y="178" text-anchor="middle" font-size="11.5" fill="#33475b">亞胺再與另一條明膠胺基反應</text>
+  <text x="370" y="197" text-anchor="middle" font-size="11.5" fill="#33475b">→ 兩條明膠鏈被「焊」在一起</text>
+  <text x="370" y="214" text-anchor="middle" font-size="11.5" font-weight="700" fill="#c0392b">膠殼硬化、崩解時限延長、API 釋放變慢</text>
+  <line x1="672" y1="82" x2="490" y2="150" stroke="#7b4bb7" stroke-width="2" marker-end="url(#a7)"/>
+</svg>
+<figcaption>圖 3-2　交聯路徑：不飽和脂肪酸氧化生成醛 → 醛與明膠 Lysine 側鏈的 ε-胺基（–NH₂）發生轉醯胺基／縮合，形成 Schiff 鹼（亞胺 C=N）→ 亞胺再與另一條明膠胺基反應，把兩條鏈共價「焊」在一起（Digenis et al., 1994）。</figcaption>
+</figure>
+<div class="plain">
+  <span class="t"></span>
+  明膠鏈上的 Lysine（離胺酸）側鏈末端有個「–NH₂」（胺基），很愛跟醛類反應。油氧化產生的醛，就像把一根根明膠鏈用「化學釘書針」釘在一起（交聯）。原本能在胃裡快速鬆開溶解的膠殼，被釘死後就變硬、變得溶不開——臨床上就是<b>崩解變慢、有效成分釋放延遲</b>，甚至形成不溶的薄膜（pellicle）。
+</div>
+<p>此交聯也解釋了為何<b>植物油產品的漏油與外觀問題會隨放置時間惡化</b>：氧化與交聯是時間累積的，愈到製程後期與貨架期愈嚴重。</p>
+
+<h3>3.1.3　修正對策：先製程配方，後 RXL® / StabiCaps®</h3>
+<div class="prio">
+  <span class="t"></span>
+  <p style="margin:2px 0 8px"><b>【第一線對策｜先從這裡做起】</b></p>
+  <p><b>一、降低內料的「醛負荷」</b><br>
+  &nbsp;&nbsp;<b>A：</b>添加抗氧化劑（天然維生素 E／迷迭香萃取）<br>
+  &nbsp;&nbsp;<b>B：</b>氮氣充填／減少頂空氧氣<br>
+  &nbsp;&nbsp;<b>C：</b>控制原料過氧化價（PV）與茴香胺價（AV）進料規格<br>
+  &nbsp;&nbsp;<b>D：</b>降低內料加工溫度與滯留時間</p>
+  <p><b>二、膠液配方與製程</b><br>
+  &nbsp;&nbsp;<b>A：</b>控制膠液水分與 pH（酸性影響交聯速率）<br>
+  &nbsp;&nbsp;<b>B：</b>縮短膠液高溫滯留（呼應第一章）<br>
+  &nbsp;&nbsp;<b>C：</b>避免殘氧（保溫維持真空）</p>
+  <p style="margin:10px 0 8px"><b>【進階對策｜第一線不足時再上】</b></p>
+  <p><b>三、抗交聯明膠</b>：GELITA <b>RXL®</b> 或 Rousselot <b>StabiCaps®</b>（兩大原廠對應產品，見下）<br>
+  <b>四、腸溶保護（omega-3）</b>：GELITA <b>DELASOL®</b> 一步法「真腸溶」膠囊，避免胃酸觸發氧化、維持生體可用率</p>
+</div>
+<p><b>GELITA RXL® 技術原理</b>：RXL® 是 GELITA 專為<b>降低軟膠囊交聯</b>設計的明膠系列，透過<b>特殊分子量分佈（MW profile）設計</b>降低與醛類、酮類、萜類、過氧化物中間體等反應性成分的交聯傾向，並提供<b>可依內料反應性調整的抗交聯強度</b>（依原料與等級由弱到強：BB／BH／PS 之 RXL、RXL Pro、RXL Adv、RXL Ultra）。在加速儲存條件（<b>40℃／75% RH</b>）下，含 RXL® Prime 的膠囊在 12 個月內仍維持優異且穩定的內料釋放，而標準骨明膠膠囊數月後即出現嚴重釋放延遲；牛皮明膠更易交聯。RXL® 亦符合 USP／EP 並經 EDQM 認證（牛源）。（資料來源：GELITA RXL® 技術型錄，2024）</p>
+<p><b>Rousselot StabiCaps® 技術原理</b>：Rousselot 以「加入交聯劑後、明膠溶液黏度上升至最大值所需的<b>反應時間</b>」與其<b>斜率（每小時黏度上升％）</b>來量化交聯敏感度——<b>反應時間越長、斜率越低，代表越不易交聯</b>。StabiCaps® 透過調整明膠的分子結構與分子量分佈（MWD）、降低可與醛反應的活性位可及性，使其在有醛類存在下仍維持較低交聯速率，從而<b>維持製程後期與貨架期的 API 釋放率</b>。其型錄亦指出交聯的觸發因子包括：高溫（&gt;30℃）高濕（&gt;60%）儲存、內料含醛類或抗氧化多酚（常見於植物萃取）、以及多維生素／金屬離子複方。</p>
+<figcaption class="src" style="text-align:left">資料來源：GELITA RXL® 技術型錄（2024）；Rousselot StabiCaps® 技術型錄（v2.0, 2021）；交聯機制圖引自 Digenis et al., 1994。</figcaption>
+<div class="callout">
+  <span class="t">RXL® 與 StabiCaps® 如何選？</span>
+  兩者都是「低交聯明膠」，原理相近（皆以調整分子結構／MWD、降低與醛反應的可及性）。<b>GELITA RXL®</b> 以「抗交聯強度可依內料反應性分級（RXL→Ultra）」與多原料型態見長；<b>Rousselot StabiCaps®</b> 以「交聯敏感度預測試驗（反應時間／斜率）」與 StabiCaps® Plus（含鹽強化）為特色。實務可依既有供應鏈、原料型態（牛骨／牛皮／豬皮）與內料反應性強度擇一導入，並以加速試驗驗證。</div>
+
+<h2 id="s32">3.2　磷蝦油與磷脂質的界面與物理干擾</h2>
+
+<h3>3.2.1　第一性解構：磷蝦油與一般不飽和魚油的本質差異</h3>
+<p>一般魚油的 ω-3（EPA／DHA）多以<b>三酸甘油酯或乙酯</b>形式存在，是相對「單純的油」。<b>磷蝦油（Krill Oil）</b>則本質不同：其 ω-3 大量鍵結在<b>磷脂質（Phospholipids，以磷脂醯膽鹼 phosphatidylcholine, PC 為主）</b>上，並天然富含<b>蝦紅素（astaxanthin）</b>。關鍵在於：<b>磷脂質是一種兩親分子（一端親水、一端親油），本身就是強效的表面活性劑（Surfactant／乳化劑）。</b></p>
+<div class="note">
+  <span class="t"></span>
+  <b>表面活性劑（Surfactant）</b>：分子一端愛水、一端愛油，會自動跑到「油水交界面」排列，大幅<b>降低界面張力 γ</b>。肥皂、蛋黃卵磷脂都是。磷蝦油的磷脂醯膽鹼（PC）就是天然的強效表面活性劑——這既是它的營養賣點，也是它對軟膠囊封裝的麻煩來源。
+</div>
+
+<h3>3.2.2　物理化學破壞機制：磷脂質在界面萃取膠皮的甘油</h3>
+<p>把前一段的化學特性放進封裝瞬間，破壞鏈如下：</p>
+
+<figure>
+<svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="720" height="260" fill="#fff"/>
+  <text x="360" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="#1F4E79">動畫：磷脂質在界面「洗走」膠殼的甘油 → 接縫脆化</text>
+  <!-- shell -->
+  <rect x="40" y="40" width="640" height="55" fill="#dbe7f5" stroke="#2E5A8C"/>
+  <text x="360" y="34" text-anchor="middle" font-size="11.5" fill="#2E5A8C">明膠膠殼（內含親水增塑劑：甘油●）</text>
+  <line x1="40" y1="95" x2="680" y2="95" stroke="#c0392b" stroke-width="2.5"/>
+  <text x="120" y="112" font-size="11" fill="#c0392b">油–明膠界面</text>
+  <!-- fill -->
+  <rect x="40" y="130" width="640" height="110" fill="#fff7e6" stroke="#d69e2e"/>
+  <text x="360" y="232" text-anchor="middle" font-size="11.5" fill="#b7791f">磷蝦油內料（富含磷脂質 PC）</text>
+  <!-- PC tokens rising to interface -->
+  <g>
+    <g><circle r="6" fill="#7b4bb7"/><line x1="0" y1="6" x2="0" y2="20" stroke="#7b4bb7" stroke-width="2"/>
+      <animateMotion dur="4s" repeatCount="indefinite" path="M220,170 L220,102"/></g>
+    <g><circle r="6" fill="#7b4bb7"/><line x1="0" y1="6" x2="0" y2="20" stroke="#7b4bb7" stroke-width="2"/>
+      <animateMotion dur="4s" begin="1.3s" repeatCount="indefinite" path="M360,180 L360,102"/></g>
+    <g><circle r="6" fill="#7b4bb7"/><line x1="0" y1="6" x2="0" y2="20" stroke="#7b4bb7" stroke-width="2"/>
+      <animateMotion dur="4s" begin="2.6s" repeatCount="indefinite" path="M500,175 L500,102"/></g>
+  </g>
+  <!-- glycerin pulled down from shell into oil -->
+  <g fill="#38a169">
+    <circle r="5"><animateMotion dur="4s" begin="0.6s" repeatCount="indefinite" path="M250,70 L250,160"/><animate attributeName="opacity" values="1;1;0" dur="4s" begin="0.6s" repeatCount="indefinite"/></circle>
+    <circle r="5"><animateMotion dur="4s" begin="1.9s" repeatCount="indefinite" path="M390,68 L390,155"/><animate attributeName="opacity" values="1;1;0" dur="4s" begin="1.9s" repeatCount="indefinite"/></circle>
+    <circle r="5"><animateMotion dur="4s" begin="3.2s" repeatCount="indefinite" path="M520,72 L520,150"/><animate attributeName="opacity" values="1;1;0" dur="4s" begin="3.2s" repeatCount="indefinite"/></circle>
+  </g>
+  <text x="610" y="80" text-anchor="middle" font-size="10.5" fill="#38a169">甘油●被拉出膠殼</text>
+  <!-- seam weakening highlight -->
+  <rect x="300" y="88" width="120" height="14" fill="#c0392b" opacity="0"><animate attributeName="opacity" values="0;0;0.5;0" dur="4s" repeatCount="indefinite"/></rect>
+  <text x="360" y="128" text-anchor="middle" font-size="11" fill="#c0392b" opacity="0">接縫局部缺甘油→脆化<animate attributeName="opacity" values="0;0;1;0" dur="4s" repeatCount="indefinite"/></text>
+</svg>
+<figcaption>圖 3-3a（動畫）　磷脂質（紫）不斷聚集到界面，把膠殼裡的甘油（綠●）一顆顆「洗」進油相；接縫處一旦缺甘油就會脆化。動畫在瀏覽器中循環播放。</figcaption>
+</figure>
+<figure>
+<svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="720" height="280" fill="#fff"/>
+  <!-- shell layers -->
+  <rect x="40" y="40" width="640" height="55" fill="#dbe7f5" stroke="#2E5A8C"/>
+  <text x="360" y="30" text-anchor="middle" font-size="12.5" fill="#2E5A8C">明膠膠殼（內含親水增塑劑：甘油）</text>
+  <!-- interface -->
+  <line x1="40" y1="95" x2="680" y2="95" stroke="#c0392b" stroke-width="2.5"/>
+  <text x="120" y="112" font-size="11.5" fill="#c0392b">油–明膠界面</text>
+  <!-- fill -->
+  <rect x="40" y="130" width="640" height="120" fill="#fff7e6" stroke="#d69e2e"/>
+  <text x="360" y="245" text-anchor="middle" font-size="12.5" fill="#b7791f">磷蝦油內料（富含磷脂質 PC）</text>
+  <!-- PC molecules migrating to interface -->
+  <g>
+    <g transform="translate(250,150)"><circle r="7" fill="#7b4bb7"/><line x1="0" y1="7" x2="-4" y2="24" stroke="#7b4bb7" stroke-width="2"/><line x1="0" y1="7" x2="4" y2="24" stroke="#7b4bb7" stroke-width="2"/></g>
+    <g transform="translate(320,165)"><circle r="7" fill="#7b4bb7"/><line x1="0" y1="7" x2="-4" y2="24" stroke="#7b4bb7" stroke-width="2"/><line x1="0" y1="7" x2="4" y2="24" stroke="#7b4bb7" stroke-width="2"/></g>
+    <g transform="translate(430,158)"><circle r="7" fill="#7b4bb7"/><line x1="0" y1="7" x2="-4" y2="24" stroke="#7b4bb7" stroke-width="2"/><line x1="0" y1="7" x2="4" y2="24" stroke="#7b4bb7" stroke-width="2"/></g>
+  </g>
+  <!-- PC accumulated AT interface (head up to water/glycerin) -->
+  <g>
+    <g transform="translate(200,95)"><circle r="7" fill="#7b4bb7"/><line x1="0" y1="7" x2="0" y2="26" stroke="#7b4bb7" stroke-width="2"/></g>
+    <g transform="translate(300,95)"><circle r="7" fill="#7b4bb7"/><line x1="0" y1="7" x2="0" y2="26" stroke="#7b4bb7" stroke-width="2"/></g>
+    <g transform="translate(400,95)"><circle r="7" fill="#7b4bb7"/><line x1="0" y1="7" x2="0" y2="26" stroke="#7b4bb7" stroke-width="2"/></g>
+    <g transform="translate(500,95)"><circle r="7" fill="#7b4bb7"/><line x1="0" y1="7" x2="0" y2="26" stroke="#7b4bb7" stroke-width="2"/></g>
+  </g>
+  <!-- glycerin being pulled down -->
+  <g fill="#38a169" font-size="10">
+    <circle cx="230" cy="70" r="5"/><circle cx="360" cy="60" r="5"/><circle cx="480" cy="72" r="5"/>
+    <line x1="230" y1="75" x2="235" y2="92" stroke="#38a169" stroke-width="1.5" marker-end="url(#a8)"/>
+    <line x1="360" y1="65" x2="360" y2="92" stroke="#38a169" stroke-width="1.5" marker-end="url(#a8)"/>
+    <line x1="480" y1="77" x2="475" y2="92" stroke="#38a169" stroke-width="1.5" marker-end="url(#a8)"/>
+  </g>
+  <defs><marker id="a8" markerWidth="9" markerHeight="9" refX="4" refY="6" orient="auto"><path d="M0,0 L8,0 L4,6 Z" fill="#38a169"/></marker></defs>
+  <text x="600" y="72" text-anchor="middle" font-size="11" fill="#38a169">甘油被拉出膠殼</text>
+</svg>
+<figcaption>圖 3-3　磷蝦油的界面破壞：磷脂質（紫，兩親分子）大量聚集到油–明膠界面，強力乳化並把膠殼內側的親水性增塑劑「甘油」（綠）萃取進油相，使接縫處的膠皮局部缺甘油。</figcaption>
+</figure>
+<ol>
+  <li><b>劇烈降低界面張力</b>：注射封裝瞬間，磷脂質作為強效表面活性劑，把油–水（油–明膠）界面張力 γ 大幅拉低。低 γ 使內料容易<b>潤濕、爬進接縫</b>，污染本該乾淨的熔合面。</li>
+  <li><b>萃取甘油（核心機制）</b>：磷脂質聚集在內料與膠殼界面，乳化並<b>萃取出膠皮內側的親水性增塑劑甘油</b>，造成接縫處明膠局部<b>缺乏塑化</b>。</li>
+  <li><b>接縫癒合失效</b>：甘油是讓明膠鏈段柔軟、可移動的塑化劑。局部缺甘油 → 鏈段遷移率驟降 → <b>接縫癒合時間 τ 拉長、界面相互擴散與纏結無法完成</b> → 接縫融合強度極限下降、封口脆化 → <b>高漏油風險</b>。</li>
+</ol>
+<div class="callout">
+  <span class="t">與第二章的連結</span>
+  第二章指出接縫強度 σ∝(t/τ)<sup>1/4</sup>、且需要鏈段有足夠遷移率才能癒合。磷蝦油<b>從界面把甘油抽走</b>，等於在接縫最關鍵的位置「抽掉塑化劑、拉長 τ」——這是一種<b>物理化學層次的接縫破壞</b>，與單純膠皮太薄的漏油機制不同，需針對性對策。
+</div>
+
+<h4>3.2.2b　除了「萃取甘油」，還有其他可能性嗎？</h4>
+<p>甘油萃取是最核心的機制，但磷蝦油（及高磷脂內料）對接縫的破壞往往是<b>多重機制疊加</b>。其他同時可能發生的路徑包括：</p>
+<ul>
+  <li><b>低界面張力導致「毛細滲入接縫」</b>：磷脂把 γ 拉得極低，內料更容易沿兩片膠帶尚未癒合的縫隙<b>毛細爬入（capillary wicking）</b>，直接把油污染到熔合面——被油隔開的兩片膠皮，分子鏈根本無法相互擴散。</li>
+  <li><b>界面乳化與微水滴夾帶</b>：強乳化力可能在界面形成油包水（W/O）微乳，把微小水滴／甘油滴<b>包覆滯留在膠殼內側</b>，乾燥後成為針孔或局部弱點。</li>
+  <li><b>磷脂–明膠的靜電／複合膜作用</b>：磷脂醯膽鹼帶兩性離子頭基，可能與明膠（帶電胺基／羧基）在界面形成<b>複合膜或靜電吸附層</b>，改變界面流變、阻礙鏈段跨界癒合。</li>
+  <li><b>游離脂肪酸與微量氧化醛的化學作用</b>：磷蝦油常含游離脂肪酸與易氧化的高不飽和鏈，其微量氧化醛可能在接縫處引發<b>局部交聯</b>（見 3.1），使接縫既「缺塑化又被交聯」而更脆。</li>
+  <li><b>蝦紅素等極性成分的界面聚集</b>：這些天然極性／兩親成分也會競爭界面、進一步壓低 γ 並改變潤濕行為。</li>
+</ul>
+<div class="plain">
+  <span class="t"></span>
+  <b>「毛細滲入接縫（capillary wicking）」用最白話講：</b>你把衛生紙的一角碰到水，水會自己「爬」上衛生紙，對不對？那股讓液體自己鑽進細縫的力，就是<b>毛細作用</b>。液體的界面張力越低、縫隙越細，它爬得越快。<br>
+  磷蝦油因為含磷脂（強效界面活性劑），界面張力被拉得<b>超低</b>，於是它特別會<b>自己「爬」進兩片膠帶還沒黏合的細縫裡</b>。一旦油爬進接縫，就等於在兩片膠皮中間<b>抹了一層油</b>——被油隔開的兩片膠皮，分子鏈根本碰不到彼此、無法互相鑽入纏結（癒合），接縫自然黏不牢、會漏油。
+</div>
+<div class="callout">
+  <span class="t">所以，磷脂萃取甘油會讓軟膠囊「怎麼樣」？</span>
+  綜合上述機制，最終後果集中在<b>接縫</b>：<br>
+  ①&nbsp;<b>接縫處局部缺甘油、缺塑化</b> → 明膠鏈段變硬、遷移率下降 → <b>接縫癒合時間 τ 拉長、界面相互擴散與纏結無法完成</b>；<br>
+  ②&nbsp;<b>接縫融合強度極限下降、封口脆化</b> → 壓丸當下或乾燥時接縫開裂；<br>
+  ③&nbsp;<b>高漏油率（Leakers）</b>，且因低 γ 的毛細滲入而污染鄰囊；<br>
+  ④&nbsp;乾燥後接縫偏脆、易在運輸／翻滾時破裂；長期還可能因局部交聯而<b>崩解／溶離異常</b>。<br>
+  換言之：<u>磷蝦油不是「膠皮太薄」型的漏油，而是「接縫被抽走塑化劑＋被油污染＋部分被交聯」的複合型接縫失效</u>，因此對策也必須針對「接縫的塑化與潔淨」下手。
+</div>
+
+<h3>3.2.3　對策：膠液水分與甘油比的優化</h3>
+<div class="prio">
+  <span class="t"></span>
+  <ol>
+    <li><b>甘油「緩衝儲備」（第一線）</b>：<b>適度提高膠液甘油比例</b>，預留被磷脂質萃取的損耗量，維持接縫處仍有足夠塑化——但須以整體膠皮不過軟為上限（與降水搭配平衡）。實務可在標準 明膠:甘油:水 ≈ 1:0.4–0.5:0.9–1 的基礎上，往甘油上緣（~0.5）微調。</li>
+    <li><b>同步微降水分（第一線）</b>：<b>適度降低水分</b>使接縫本體更快定形、抵銷低 γ 帶來的內料潤濕爬縫；水分下修需與甘油上調配合，避免膠皮過硬過脆（參考客戶對植物油以降水控漏油的既有經驗）。</li>
+    <li><b>界面與製程控制</b>：控制內料溫度與磷脂含量、避免過度乳化；縮短內料與膠殼在楔區的高溫接觸時間，降低甘油被萃取的動力學速率。</li>
+    <li><b>塑化系統選擇（進階）</b>：評估以<b>山梨醇／甘油複配</b>調整塑化劑的被萃取傾向與保濕平衡，或導入抗漏油明膠等級（EASYSEAL®）強化接縫本體。</li>
+  </ol>
+</div>
+<div class="plain">
+  <span class="t"></span>
+  甘油是讓膠皮「軟Q、鏈條滑得動」的潤滑劑，接縫要靠它才黏得牢。磷蝦油像洗碗精，會把界面的甘油「洗」進油裡，接縫處就變乾、變脆、黏不住 → 漏油。對策是「多給一點甘油當本錢」讓它耗得起，同時「少一點水」讓接縫定形快一點，兩者要一起調、取得平衡。
+</div>
+
+<h2 id="s33">3.3　外銷油脂產品的物流抉擇：海運 vs 空運熱力學評估</h2>
+<p>成品的品質風險不止於產線。外銷油脂類軟膠囊在運輸途中，會歷經數週的貨櫃微氣候。跨赤道航線的普通乾貨櫃，是軟膠囊的<b>熱力學煉獄</b>。</p>
+
+<h3>3.3.1　跨赤道海運貨櫃的微氣候熱力學</h3>
+<p>普通海運乾貨櫃無溫控，夏季日照下<b>櫃內日間溫度可飆升至 50–60℃</b>，相對濕度隨日夜劇烈波動（日間乾熱、夜間凝露）。此環境對軟膠囊有兩條同時發作、方向相反卻都致命的破壞路徑：</p>
+
+<figure>
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+  <rect x="0" y="0" width="720" height="300" fill="#fff"/>
+  <text x="360" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#1F4E79">貨櫃內溫度 vs 膠殼軟化風險（示意）</text>
+  <!-- axes -->
+  <line x1="70" y1="250" x2="680" y2="250" stroke="#999"/>
+  <line x1="70" y1="60" x2="70" y2="250" stroke="#999"/>
+  <text x="40" y="70" font-size="10" fill="#666">60℃</text>
+  <text x="40" y="130" font-size="10" fill="#666">40℃</text>
+  <text x="40" y="190" font-size="10" fill="#666">20℃</text>
+  <text x="40" y="250" font-size="10" fill="#666">0℃</text>
+  <!-- softening band -->
+  <rect x="70" y="90" width="610" height="45" fill="#fdeaea" opacity=".6"/>
+  <text x="600" y="112" font-size="10.5" fill="#c0392b">膠殼軟化／重熔危險帶（約 &gt;40℃）</text>
+  <!-- sea line (oscillating high) -->
+  <polyline points="70,200 130,110 190,180 250,90 310,170 370,85 430,175 490,95 550,165 610,100 680,160" fill="none" stroke="#c0392b" stroke-width="2.5"/>
+  <text x="150" y="98" font-size="11" fill="#c0392b" font-weight="700">普通海運（40–60℃ 劇烈震盪）</text>
+  <!-- reefer line -->
+  <polyline points="70,182 680,180" fill="none" stroke="#248a3d" stroke-width="2.5"/>
+  <text x="470" y="174" font-size="11" fill="#248a3d" font-weight="700">冷藏貨櫃 15–20℃（安全）</text>
+  <!-- air line -->
+  <polyline points="70,215 680,220" fill="none" stroke="#2E5A8C" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <text x="120" y="235" font-size="11" fill="#2E5A8C" font-weight="700">空運貨艙（低溫，短時）</text>
+</svg>
+<figcaption>圖 3-4　三種運輸方式的溫度剖面示意。普通海運在赤道航線反覆衝入 40–60℃ 的軟化危險帶；冷藏貨櫃穩定壓在 15–20℃；空運雖短但處於低溫。</figcaption>
+</figure>
+
+<h4>路徑一（物理）：Tg 下降 → 膠殼重熔、黏連、漏油</h4>
+<p>明膠膠殼富含甘油增塑劑，其<b>玻璃化轉變溫度 Tg</b> 因甘油與吸附水分（兩者都是增塑劑）而<b>大幅下降</b>（可由 Gordon–Taylor／Fox 關係描述：增塑劑越多、Tg 越低）。乾明膠 Tg 很高，但塑化後的軟膠囊殼有效軟化點會落到偏低的區間。當櫃溫衝到 50–60℃、遠高於塑化膠殼的軟化點時，<b>膠殼從玻璃態轉為橡膠態甚至局部重熔</b> → 膠囊互相<b>黏連（Clumping）</b>、變形、接縫重新軟化而<b>漏油</b>。夜間凝露使表面吸濕，進一步壓低 Tg，惡性循環。</p>
+
+<h4>路徑二（化學）：高溫加速氧化與交聯、破壞蛋白結構</h4>
+<p>高溫依 Arrhenius 加速不飽和脂肪酸與磷蝦油的氧化（§3.1、§3.2）：以常見 Q₁₀≈2–3 估計，溫度由 20℃ 升到 50℃（＋30℃），氧化速率約<b>放大 8–27 倍</b>。氧化產生的醛加速膠殼交聯（硬化、崩解延長）。同時高溫也<b>破壞明膠蛋白的結構</b>：以非共價鍵（氫鍵、疏水作用）為主的三股螺旋殘餘結構被打散；<b>明膠本身雙硫鍵含量極低（幾乎不含半胱胺酸），故降解以非共價鍵破壞為主，但任何微量雙硫鍵的排列在高溫下亦可能受擾動</b>，共同降低膠殼的結構剛性。</p>
+<div class="callout">
+  <span class="t">熱力學的雙重弔詭</span>
+  海運高溫同時讓膠殼<b>物理上變軟（Tg 下降、重熔）</b>、又在<b>化學上逐漸變硬（氧化交聯）</b>——短期黏連漏油、長期崩解延遲，兩種缺陷一次收齊。這是為何油脂類外銷產品不能只靠「加厚膠皮」或「降水」硬扛，而必須從<b>物流溫控</b>根本阻斷。
+</div>
+
+<h3>3.3.2　空運的物理環境：為何能規避熱力學降解</h3>
+<p>空運貨艙處於<b>低溫</b>環境（貨艙溫度通常遠低於海運櫃內高溫），且運輸時間短（數日 vs 數週）。低溫使膠殼<b>穩守玻璃態（低於軟化點）</b>、氧化速率依 Arrhenius 大幅趨緩，從根本規避了 Tg 下降與氧化交聯兩條路徑。其代價是<b>低壓</b>：高空低氣壓使膠囊內外產生壓差、對膠殼施加物理應力，可能導致輕微脹裂風險；但相較海運的熱力學降解，此風險小且可控（且客艙／貨艙多有一定增壓）。<b>結論：空運以「低溫＋短時」換取最低的熱力學降解風險，是高價值、高氧化敏感度產品的優選。</b></p>
+
+<h3>3.3.3　跨國海運必須使用冷藏（控溫）貨櫃（Reefer）的科學論證</h3>
+<div class="note">
+  <span class="t"></span>
+  <b>是的，15–20℃ 屬「冷藏／控溫」，不是「冷凍」。</b>「冷凍」一般指低於 0℃、使內容物結凍；15–20℃ 屬<b>冷藏（chilled）／控溫</b>範圍。所謂 <b>Reefer（冷藏貨櫃／冷凍櫃的統稱）</b>其實是「可設定溫度的溫控貨櫃」，能依貨物需求設在冷凍（&lt;0℃）或冷藏（如 15–20℃）。軟膠囊<b>不可結凍</b>（結凍會使膠殼含水結晶、破壞結構），因此正確設定是<b>控溫於 15–20℃ 的冷藏模式</b>，並非冷凍。本白皮書所指皆為此冷藏（控溫）設定。
+</div>
+<p>若基於成本必須海運，則<b>普通乾貨櫃在科學上不可接受</b>，必須使用<b>冷藏貨櫃（Reefer Container），控制在 15–20℃、35–45% RH</b>。先看兩種貨櫃的優缺點對照：</p>
+<table>
+<thead><tr><th>比較項目</th><th>普通乾貨櫃（無溫控）</th><th>冷藏（控溫）貨櫃 Reefer（15–20℃／35–45% RH）</th></tr></thead>
+<tbody>
+<tr><td><b>成本</b></td><td class="pro">✔ 運費最低</td><td class="con">✘ 運費較高（需供電控溫）</td></tr>
+<tr><td><b>膠殼物理穩定</b></td><td class="con">✘ 夏季 50–60℃ 遠超軟化點→重熔、黏連、漏油</td><td class="pro">✔ 穩守玻璃態、不重熔不黏連</td></tr>
+<tr><td><b>化學(氧化/交聯)</b></td><td class="con">✘ 高溫加速氧化(相對 20℃ ×8–27)、交聯、崩解延遲</td><td class="pro">✔ 低溫大幅減緩氧化與交聯</td></tr>
+<tr><td><b>濕度</b></td><td class="con">✘ 日夜劇烈波動、夜間凝露吸濕</td><td class="pro">✔ 濕度穩定、水分活度可控</td></tr>
+<tr><td><b>到港良率</b></td><td class="con">✘ 黏連／漏油／不崩解風險高</td><td class="pro">✔ 品質一致、可追溯</td></tr>
+<tr><td><b>綜合結論</b></td><td>省小錢、賠整批——<b>科學上不可接受</b></td><td><b>油脂類外銷的正確選擇</b>（高不飽和品另可優先空運）</td></tr>
+</tbody>
+</table>
+<p>其必要性再由下列三組數據支撐：</p>
+<table>
+<thead><tr><th>控制項</th><th>普通乾櫃（夏季赤道）</th><th>冷藏貨櫃 15–20℃／35–45% RH</th><th>科學依據</th></tr></thead>
+<tbody>
+<tr><td><b>溫度 vs Tg</b></td><td class="con">50–60℃，遠高於塑化膠殼軟化點 → 重熔、黏連</td><td class="pro">15–20℃，穩守玻璃態</td><td>Tg（Gordon–Taylor）；避免橡膠態／重熔</td></tr>
+<tr><td><b>氧化速率</b></td><td class="con">相對 20℃ 放大約 8–27 倍</td><td class="pro">維持低速氧化</td><td>Arrhenius／Q₁₀≈2–3</td></tr>
+<tr><td><b>濕度／水分活度</b></td><td class="con">劇烈波動、夜間凝露 → 吸濕壓低 Tg、促交聯</td><td class="pro">35–45% RH，水分活度穩定</td><td>水為增塑劑；濕度觸發交聯（&gt;60% RH）</td></tr>
+<tr><td><b>交聯觸發</b></td><td class="con">高溫&gt;30℃＋高濕&gt;60% 同時滿足觸發條件</td><td class="pro">同時避開溫、濕觸發閾值</td><td>StabiCaps® 型錄之交聯觸發因子</td></tr>
+</tbody>
+</table>
+<div class="plain">
+  <span class="t"></span>
+  普通貨櫃在赤道大熱天像個「烤箱兼蒸籠」，白天 50–60℃、晚上又反潮。軟膠囊在裡面會「熱到黏成一坨、又慢慢被氧化醛釘硬」。冷藏貨櫃把溫度壓在 15–20℃、濕度壓在 35–45%，等於同時關掉「軟化」和「氧化交聯」兩個開關——對不飽和植物油、尤其磷蝦油這類高氧化敏感度產品，是必要而非選配。
+</div>
+<div class="prio">
+  <span class="t"></span>
+  <ol>
+    <li><b>高氧化敏感度／高價值產品</b>（磷蝦油、印加果油等高不飽和）：<b>空運</b>優先；或海運<b>冷藏貨櫃（15–20℃、35–45% RH）</b>。</li>
+    <li><b>一般油脂海運</b>：至少冷藏貨櫃控溫；配合內料抗氧化與氮氣充填、真空鋁箔外包降低氧與濕。</li>
+    <li><b>絕不建議</b>：高不飽和／磷蝦油產品以普通乾櫃走赤道長航線。</li>
+  </ol>
+</div>
+
+<h2>第三章結論</h2>
+<p>本章證明：內容物不是「被膠殼包起來的旁觀者」，而是<b>主動攻擊膠殼的化學與界面反應物</b>。不飽和脂肪酸經脂質過氧化生成醛、與 Lysine 的 ε-胺基交聯，使膠殼硬化、崩解延長；磷蝦油的磷脂質作為強效表面活性劑，在界面萃取甘油、拉長接縫癒合時間 τ 而引發脆化漏油；跨赤道海運的 50–60℃ 高溫則同時觸發 Tg 下降的物理重熔與 Arrhenius 加速的氧化交聯。<strong>因應之道一律遵循「先製程配方、後特殊材料」：以抗氧化、氮氣充填、甘油／水比優化、溫控物流為第一線，StabiCaps®／EASYSEAL® 為拓寬容錯的進階選項。</strong></p>
+
+<hr>
+<div class="chap-band" id="appx">
+  <div class="n">APPENDIX A</div>
+  <div class="ti">附錄 A　軟膠囊製程技術 Q&amp;A 與極限故障排除指南</div>
+</div>
+<p class="lead">本附錄以前三章推導的底層機制為據，針對客戶四個高頻痛點做一問一答的深度解析。每題皆循「現象 → 第一性機制 → 三位一體對策 → 原廠產品對應（進階選項）」的結構。</p>
+
+<div class="qa" id="q1">
+  <div class="q"><span class="tag">Q1</span>為什麼台灣夏天（高溫高濕）生產時，接縫強度明顯下降、且烘乾時間大幅延長？</div>
+  <div class="a">
+    <h5>機制一：溶膠–凝膠轉變的「過冷度」被高溫吃掉 → 接縫先天不良</h5>
+    <p>接縫強度來自兩片膠帶在楔區的<b>界面癒合</b>（σ ∝ (t/τ)<sup>1/4</sup>，見 2.1）。而膠帶要能癒合，必須先在冷卻鼓上把三股螺旋重建到足夠的凝膠強度 G′。凝膠化的驅動力正比於<b>過冷度 ΔT = Tₘ − 當地溫度</b>。夏天環境 &gt;26℃ 時，冷卻鼓熱負荷升高、膠帶實際最低溫上升，<b>ΔT 變小 → 凝膠變慢 → 膠帶到楔時 G′ 不足</b>，接縫在「還沒夠硬」的狀態下被壓合，強度自然下降。</p>
+    <h5>機制二：高濕使水成為增塑劑 → 接縫軟黏、熔合不牢</h5>
+    <p>水是明膠最強的增塑劑。高相對濕度下膠帶表面吸濕、含水上升，使膠皮 Tg 與模數下降、表面發黏（tacky），接縫壓合時兩側皆偏軟 → 熔合過度或密封不牢、易被內料污染。</p>
+    <h5>機制三：烘乾為何大幅延長？—— 水分蒸發的熱力學／傳質驅動力被壓縮</h5>
+    <p>軟膠囊乾燥的本質是<b>把膠皮中的水，經由對流傳質移到空氣中</b>。其驅動力正比於<b>膠皮表面水蒸氣分壓與環境水蒸氣分壓之差 (P<sub>surface</sub> − P<sub>air</sub>)</b>。高濕環境下空氣的 P<sub>air</sub> 很高，這個「差」被大幅壓縮，蒸發驅動力驟降；同時高溫高濕使膠皮的<b>平衡含水量（EMC）升高</b>，等於「終點含水目標更難達成、要移除的水更多」。兩者相乘，烘乾時間大幅拉長。（可類比：濕度越高，晾衣服越乾不了，因為空氣已經「吃不下更多水」。）</p>
+    <h5>三位一體對策（先製程配方，後原廠明膠）</h5>
+    <ol>
+      <li><b>環境（第一線）</b>：HVAC 將化膠／成型／乾燥區控制於 <b>22–24℃、RH 30–40%</b>，同時恢復 ΔT、抑制吸濕、並拉大乾燥驅動力 (P<sub>surface</sub> − P<sub>air</sub>)。</li>
+      <li><b>設備</b>：依環境升溫適度<b>下調冷卻鼓／冷媒溫度</b>恢復過冷度（避免低於露點結露）；乾燥區以除濕維持低 P<sub>air</sub>。</li>
+      <li><b>配方</b>：高濕季<b>適度下調甘油／山梨醇</b>減少增塑、提高凝膠強度基線。</li>
+      <li><b>進階選項</b>：以 <b>GELITA EASYSEAL®</b> 增厚接縫（牛皮逾 50%、豬皮逾 40%）並提供<b>對楔溫的非依賴性</b>——即使膠帶流變因高溫高濕而漂移，接縫仍保有寬容度、降低漏油。</li>
+    </ol>
+  </div>
+</div>
+
+<div class="qa" id="q2">
+  <div class="q"><span class="tag">Q2</span>填充黑種草油或高粉末比例混懸物時反覆出現「梨形」，調整模具壓力也無法解決，底層原因為何？如何三位一體調校？</div>
+  <div class="a">
+    <h5>為什麼「調模具壓力」治不好？</h5>
+    <p>模具壓力管的是「封合與切斷」，但梨形的根因不在封合力，而在<b>內料液滴在封合前就被弄成不對稱、且來不及回正</b>（見 2.3）。決定液滴變形的是三個無因次數：<b>毛細數 Ca = ηU/γ（黏度×速度÷界面張力）</b>、<b>Bond 數 Bo（密度×重力÷界面張力）</b>、以及混懸料的<b>降伏應力</b>。黑種草油黏度高（Ca 大）、混懸料密度高又具降伏應力（Bo 大、末段流動起停不俐落），液滴在注射末段被拉伸、捏尖——這是<b>流變／界面問題，不是壓力問題</b>，所以加壓無效。</p>
+    <h5>三位一體調校（把 Ca 與不對稱降到界面張力能在封合前回正的範圍）</h5>
+    <ol>
+      <li><b>內料黏度控制</b>：加強<b>研磨與均質</b>降低粒徑與團聚、消除降伏應力；最佳化助懸劑（蜂蠟、大豆卵磷脂）抑制沉降造成的局部黏度梯度；填充槽<b>恆溫＋適度攪拌</b>。</li>
+      <li><b>注射溫度</b>：於安定性容許內<b>適度提高內料填充溫度</b> → 直接降低黏度 η → 降低 Ca，使末段內料流動性改善、對稱充填、鬆弛加速。</li>
+      <li><b>填充速度／時機</b>：對高黏度內料的<b>黏彈性延遲</b>，將<b>注射時機適度提前</b>並調整活塞流量曲線，使凹穴末段仍對稱充滿；必要時<b>降低機速</b>（降 U → 降 Ca、We）換取形狀。</li>
+    </ol>
+    <p><b>膠皮端補償</b>：適度增厚膠帶或微調冷卻鼓溫度提高膠帶 G′，使其在不對稱應力下不易被捏尖；<b>進階</b>以 EASYSEAL® 拓寬封合寬容度、降低對時序完美對位的敏感。</p>
+  </div>
+</div>
+
+<div class="qa" id="q3">
+  <div class="q"><span class="tag">Q3</span>為什麼有些不飽和植物油軟膠囊儲存半年後，在溫水中完全不崩解（外殼形成不溶薄膜）？與蛋白質交聯有何關係？如何以 RXL® 優化？</div>
+  <div class="a">
+    <h5>機制：脂質過氧化 → 醛 → 明膠共價交聯 → 不溶薄膜（pellicle）</h5>
+    <p>不飽和植物油的雙烯丙基位極易氧化（見 3.1），經<b>脂質過氧化</b>連鎖反應（R•→ROO•→ROOH）分解生成<b>醛類（MDA、4-HNE、己醛等）</b>。這些醛與明膠 <b>Lysine 側鏈的 ε-胺基（–NH₂）</b>反應形成 Schiff 鹼（亞胺 C=N），亞胺再與另一條明膠胺基反應，把<b>兩條明膠鏈共價「焊」在一起（交聯）</b>。交聯是時間累積的：放置半年、加上高溫高濕儲存，交聯網絡逐漸緻密，膠殼表面形成<b>不溶於水的薄膜（pellicle）</b> → 溫水中不再溶解、崩解時限無限延長、API 釋放停滯。</p>
+    <h5>優化（先製程配方，後低交聯明膠）</h5>
+    <ol>
+      <li><b>降低醛負荷（第一線）</b>：內料添加抗氧化劑（天然維生素 E／迷迭香）、<b>氮氣充填、減少頂空氧</b>、嚴管進料過氧化價 PV／茴香胺價 AV、降低內料加工溫度與滯留。</li>
+      <li><b>膠液與儲存</b>：控制膠液 pH 與水分、避免殘氧（保溫維持真空）、成品<b>控溫控濕儲存</b>（避開 &gt;30℃、&gt;60% RH 的交聯觸發區）。</li>
+      <li><b>低交聯明膠（進階，優先 RXL®）</b>：以 <b>GELITA RXL®</b> 降低對醛的敏感度——RXL® 透過特殊分子量分佈（MW profile）設計、降低與醛反應的活性位可及性，並提供<b>可依內料反應性分級的抗交聯強度（RXL→Pro→Adv→Ultra）</b>；在 <b>40℃／75% RH</b> 加速下 12 個月仍維持穩定內料釋放，而標準骨膠數月即嚴重延遲、牛皮膠更甚。<b>Rousselot StabiCaps®</b> 為同類對應產品（以反應時間／斜率量化交聯敏感度）。可依供應鏈與原料型態擇一，並以加速試驗驗證。</li>
+      <li><b>腸溶保護（omega-3）</b>：必要時以 <b>GELITA DELASOL®</b> 一步法腸溶，讓膠囊在腸道而非胃中打開，避免胃酸再觸發氧化。</li>
+    </ol>
+    <p class="src">驗證建議：以加速儲存（40℃／75% RH）配合溶離度／崩散度追蹤，比較標準明膠與 RXL®／StabiCaps® 的釋放曲線衰減。</p>
+  </div>
+</div>
+
+<div class="qa" id="q4">
+  <div class="q"><span class="tag">Q4</span>油脂類軟膠囊以一般海運外銷歐美，到港後嚴重黏連與漏油，物理化學變化為何？不改包裝下，海運倉儲控溫標準應如何嚴設？</div>
+  <div class="a">
+    <h5>物理變化：Tg 下降 → 膠殼重熔 → 黏連與漏油</h5>
+    <p>膠殼富含甘油增塑劑，其<b>玻璃化轉變溫度 Tg 因甘油與吸附水而大幅下降</b>（Gordon–Taylor／Fox 關係：增塑劑越多、Tg 越低）。跨赤道普通乾櫃夏季日間可達 <b>50–60℃</b>，遠高於塑化膠殼的軟化點 → 膠殼由玻璃態轉為橡膠態甚至局部<b>重熔</b> → 膠囊互相<b>黏連（clumping）</b>、接縫重新軟化而<b>漏油</b>；夜間凝露吸濕再壓低 Tg，惡性循環。</p>
+    <h5>化學變化：Arrhenius 加速氧化與交聯</h5>
+    <p>高溫依 Arrhenius 加速不飽和脂肪酸氧化（以 Q₁₀≈2–3 估，20℃→50℃ 速率約放大 8–27 倍），生成醛加速膠殼交聯 → 長期崩解延遲。<b>短期黏連漏油、長期崩解變慢，兩種缺陷一次收齊</b>——這是為何不能只靠加厚膠皮或降水硬扛，必須從物流溫控根本阻斷。</p>
+    <h5>不改包裝前提下的倉儲／運輸控溫標準（嚴格設定）</h5>
+    <table>
+      <thead><tr><th>控制項</th><th class="c">標準設定</th><th>科學依據</th></tr></thead>
+      <tbody>
+        <tr><td>櫃內／倉儲溫度</td><td class="c pro">15–20℃（冷藏控溫，不可結凍）</td><td>穩守塑化膠殼玻璃態、避免重熔；結凍會破壞膠殼含水結構</td></tr>
+        <tr><td>相對濕度</td><td class="c pro">35–45% RH</td><td>穩定水分活度、避免吸濕壓低 Tg 與觸發交聯</td></tr>
+        <tr><td>避開觸發區</td><td class="c">溫度 &lt; 30℃ 且 RH &lt; 60%</td><td>同時避開交聯觸發雙閾值（StabiCaps®／RXL® 型錄）</td></tr>
+        <tr><td>運輸方式</td><td class="c">冷藏（控溫）貨櫃 Reefer；高價值高不飽和品優先空運</td><td>Reefer 可設控溫 15–20℃；空運低溫短時最小化降解</td></tr>
+        <tr><td>監控</td><td class="c">全程溫濕度資料記錄器（data logger）</td><td>留存溫濕曲線佐證與異常追溯</td></tr>
+      </tbody>
+    </table>
+    <div class="plain">
+      <span class="t"></span>
+      普通貨櫃在赤道像「烤箱兼蒸籠」，白天 50–60℃、晚上反潮。軟膠囊會「熱到黏成一坨、又慢慢被氧化醛釘硬」。把 Reefer 設在 <b>15–20℃、35–45% RH</b>，等於同時關掉「軟化」與「氧化交聯」兩個開關——對高不飽和油、尤其藻油／磷蝦油，這是必要而非選配。注意 15–20℃ 是<b>冷藏（控溫）</b>，不是冷凍，膠囊不可結凍。
+    </div>
+  </div>
+</div>
+
+<hr>
+<h2 id="refs">參考文獻與知識庫來源</h2>
+<ol class="src">
+  <li>客戶《軟膠囊製程技術交流議題》，2026。（環境 &gt;26℃／&lt;15℃ 之膠液性狀差異、48℃ 保溫隔夜、60℃ 黏度 15,000–18,000 cps、清油／黑種草／混懸水比 0.95／0.90／0.88、梨形與漏油、磷蝦油／混懸案例）</li>
+  <li>R. Schrieber &amp; H. Gareis, <i>Gelatine Handbook: Theory and Industrial Practice</i>, Wiley-VCH.（三股螺旋、螺旋–捲曲熔解、溶膠–凝膠轉變與流變基礎）</li>
+  <li>GELITA, <i>EASYSEAL® – Reliable Softgel Seams</i>（技術型錄，2025）。（接縫增厚 40–50%、爆破強度、溫度非依賴性、漏油率實測）</li>
+  <li>Rousselot, <i>StabiCaps™ – The Proven Solution for More Stable Soft Gels</i>（技術型錄，v2.0, 2021）。（醛類 Schiff 鹼交聯、交聯敏感度預測法、低交聯明膠、交聯觸發因子）</li>
+  <li>黃儀友，〈巴西綠蜂膠軟膠囊的配方工藝研究〉，《食品安全質量檢測學報》6(11)，2015。（明膠:甘油:純水＝1:0.4–0.5:0.9–1、Bloom／黏度與漏油、蜂蠟助懸、混懸沉降體積比）</li>
+  <li>Digenis G.A. et al., Cross-linking of gelatin capsules and its relevance to in-vitro–in-vivo performance, <i>J. Pharm. Sci.</i>, 1994.（醛–明膠交聯機制）</li>
+  <li>GELITA, <i>RXL® Portfolio – Reduced Crosslinking Gelatins</i>（技術型錄，2024）。（抗交聯明膠、MW profile 設計、40℃／75% RH 加速試驗、RXL／Pro／Adv／Ultra 分級）</li>
+  <li>GELITA, <i>DELASOL® – Enteric Capsule Release</i>（技術型錄，2024）。（一步法真腸溶、保護 omega-3、USP／Ph.Eur. 崩散參數）</li>
+  <li>GELITA, <i>Softgel Specialties（RAPISOL®／EASYSEAL®／RXL®／DELASOL®）</i> 綜合資料，2024–2025。</li>
+  <li>脂肪酸組成與甲烯間隔多元不飽和結構（雙烯丙基位）之一般脂質化學資料：油酸(18:1)／亞油酸(18:2)／α-次亞麻油酸(18:3)／EPA(20:5)／DHA(22:6)。</li>
+</ol>
+
+<hr>
+<p class="src" style="text-align:center">軟膠囊製程技術白皮書　｜　第一性原理系列　｜　版本 2.0（HTML 圖解版）　｜　2026 年 7 月</p>
+
+</div>
+<script>
+(function(){
+  var vac=document.getElementById('vac'),temp=document.getElementById('temp'),time=document.getElementById('time'),lane=document.getElementById('lane');
+  if(!vac||!temp||!time||!lane) return;
+  var $=function(id){return document.getElementById(id);};
+  function upd(){
+    var P=+vac.value, T=+temp.value, t=+time.value;
+    var rRel=Math.cbrt(1013/P);
+    var Tk=T+273.15, T0=333.15, EaR=6000;
+    var etaRel=Math.exp(EaR*(1/Tk-1/T0));
+    var vRel=(rRel*rRel)/etaRel;
+    var psat=6.1078*Math.pow(10,7.5*T/(T+237.3)); // mbar
+    // thermal degradation: hydrolysis rate (Ea/R~9000), baseline 48C; loss% ~ 0.7%/h * rate * t
+    var rateD=Math.exp(9000*(1/321.15 - 1/Tk));
+    var bloomLoss=0.7*rateD*t; if(bloomLoss>60)bloomLoss=60;
+    // bubble clearance improves with time (more time to rise)
+    var clear=vRel*(0.45+0.55*Math.min(1.6,t/4));
+    var residual=Math.max(1,Math.round(24/(0.35+clear)));
+    $('vacv').textContent=P+' mbar'; $('tempv').textContent=T+' ℃'; $('timev').textContent=t.toFixed(1)+' h';
+    $('rr').textContent='×'+rRel.toFixed(1); $('er').textContent='×'+etaRel.toFixed(1);
+    $('vr').textContent='×'+vRel.toFixed(1); $('psat').textContent=Math.round(psat)+' mbar';
+    var reslbl=residual<=4?'很少 ✔':(residual<=10?'中等':'偏多 ✘');
+    $('res').textContent=residual+' 顆（'+reslbl+'）';
+    $('bloom').textContent='−'+bloomLoss.toFixed(0)+'%'+(bloomLoss<8?'（輕微 ✔）':bloomLoss<18?'（中等 △）':'（嚴重 ✘）');
+    // verdict 1: degassing
+    var v1=$('verdict'); var col1=residual<=4?'#248a3d':(residual<=10?'#b7791f':'#c0392b');
+    v1.style.color=col1;
+    v1.textContent='脫氣：'+(residual<=4?'氣泡已排乾淨。':(residual<=10?'尚有殘泡，可加深真空/升溫/略延長時間。':'殘泡偏多：黏度太高或真空不足或時間太短。'));
+    // verdict 2: degradation / combined
+    var v2=$('verdict2'); var col2=bloomLoss<8?'#248a3d':(bloomLoss<18?'#b7791f':'#c0392b');
+    v2.style.color=col2;
+    var msg;
+    if(residual<=4 && bloomLoss<8) msg='✔ 甜蜜點：氣泡排乾淨、Bloom 幾乎不損。';
+    else if(residual<=6 && bloomLoss<12) msg='大致良好：接近最佳平衡。';
+    else if(bloomLoss>=18) msg='✘ 熱裂解過度：溫度太高或時間太久，Bloom 明顯下滑→膠皮偏軟。';
+    else if(residual>10) msg='✘ 脫氣不足：宜先改善真空/溫度，再談時間。';
+    else msg='可再微調：在「排乾淨」與「少裂解」之間找平衡。';
+    v2.textContent='熱裂解：Bloom 衰減 −'+bloomLoss.toFixed(0)+'%。'+msg;
+    // boiling warning
+    var w=$('warn');
+    if(P<psat){ w.textContent='⚠ 絕對壓 '+P+' mbar 已低於 '+T+'℃ 的水沸點（≈'+Math.round(psat)+' mbar）→ 膠液會沸騰暴沸、失水！'; }
+    else if(P<psat*1.2){ w.textContent='△ 接近 '+T+'℃ 沸點（≈'+Math.round(psat)+' mbar），微沸可助排氣但避免劇烈暴沸。'; }
+    else { w.textContent=''; }
+    // bubbles
+    lane.innerHTML='';
+    var dur=Math.max(1.2, 8/Math.max(0.3,vRel));
+    for(var i=0;i<residual;i++){
+      var b=document.createElement('div'); b.className='bub';
+      var sz=6+Math.random()*9*Math.min(2.2,rRel);
+      b.style.width=sz.toFixed(1)+'px'; b.style.height=sz.toFixed(1)+'px';
+      b.style.left=(4+Math.random()*92).toFixed(1)+'%';
+      b.style.animationDuration=(dur*(0.7+Math.random()*0.6)).toFixed(2)+'s';
+      b.style.animationDelay=(-Math.random()*dur).toFixed(2)+'s';
+      lane.appendChild(b);
+    }
+  }
+  vac.addEventListener('input',upd); temp.addEventListener('input',upd); time.addEventListener('input',upd); upd();
+})();
+</script>
+</body>
+</html>
