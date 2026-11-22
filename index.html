@@ -5,106 +5,154 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>軟膠囊製程技術白皮書｜第一性原理系列</title>
+<meta name="color-scheme" content="light only">
 <style>
-:root{--accent:#1F4E79;--accent2:#2E5A8C;--light:#eaf1f9;--line:#d5deea;--ink:#1c2733;--muted:#5b6b7b;}
+:root{color-scheme:light only;--accent:#0071e3;--ink:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--soft:#f5f5f7;--green:#248a3d;--red:#c0392b;--amber:#b25e09;}
 *{box-sizing:border-box;}
-body{font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",system-ui,sans-serif;color:var(--ink);line-height:1.85;margin:0;background:#f5f7fa;}
-.wrap{max-width:960px;margin:0 auto;background:#fff;padding:0 54px 80px;box-shadow:0 0 24px rgba(0,0,0,.06);}
-.cover{text-align:center;padding:90px 0 60px;border-bottom:3px solid var(--accent);margin-bottom:10px;}
-.cover h1{font-size:2.5rem;color:var(--accent);margin:0 0 10px;letter-spacing:2px;}
-.cover .sub{color:var(--muted);font-size:1.15rem;}
-.cover .chap{margin-top:34px;font-weight:700;font-size:1.05rem;}
-.cover .meta{margin-top:34px;color:#444;font-size:.95rem;}
-.cover .ver{margin-top:40px;color:#999;font-size:.85rem;}
-h2{color:var(--accent);font-size:1.55rem;border-bottom:2px solid var(--accent);padding-bottom:8px;margin-top:54px;}
-h3{color:var(--accent2);font-size:1.2rem;margin-top:34px;border-left:5px solid var(--accent2);padding-left:12px;}
-h4{color:#33475b;font-size:1.05rem;margin:22px 0 8px;}
-p{margin:10px 0;text-align:justify;}
-.lead{font-size:1.02rem;}
-strong{color:#0f2d4a;}
+html,body{background:#ffffff !important;color:#1d1d1f !important;}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue","PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;line-height:1.8;margin:0;font-size:17px;-webkit-font-smoothing:antialiased;letter-spacing:.01em;}
+.wrap{max-width:980px;margin:0 auto;background:#ffffff !important;padding:0 40px 96px;}
+.topbar{display:flex;justify-content:flex-end;align-items:center;padding:18px 0 0;}
+.topbar svg{width:46px;height:46px;}
+.cover{text-align:center;padding:56px 0 64px;border-bottom:1px solid #d2d2d7;margin-bottom:10px;}
+.cover .eyebrow{color:#0071e3 !important;font-weight:600;font-size:.95rem;letter-spacing:.06em;margin-bottom:10px;}
+.cover h1{font-size:3.1rem;line-height:1.15;color:#1d1d1f !important;margin:0 0 14px;font-weight:700;letter-spacing:-.01em;}
+.cover .sub{color:#6e6e73 !important;font-size:1.3rem;font-weight:400;}
+.cover .chaps{display:grid;gap:10px;max-width:720px;margin:40px auto 0;text-align:left;}
+.cover .chap{background:#f5f5f7 !important;color:#1d1d1f !important;border-radius:14px;padding:12px 18px;font-weight:500;font-size:1rem;}
+.cover .chap b{color:#0071e3 !important;margin-right:8px;}
+.cover .meta{margin-top:30px;color:#6e6e73 !important;font-size:.92rem;}
+.cover .ver{margin-top:16px;color:#86868b !important;font-size:.85rem;}
+.cover .newtag{display:inline-block;background:#0071e3 !important;color:#ffffff !important;font-size:.72rem;border-radius:999px;padding:1px 9px;margin-left:8px;vertical-align:middle;}
+h2{color:#1d1d1f !important;font-size:2rem;line-height:1.25;font-weight:700;letter-spacing:-.005em;margin:72px 0 14px;}
+h3{color:#1d1d1f !important;font-size:1.35rem;font-weight:600;margin:44px 0 10px;}
+h4{color:#1d1d1f !important;font-size:1.08rem;font-weight:600;margin:26px 0 8px;}
+p{margin:12px 0;}
+.lead{font-size:1.12rem;color:#1d1d1f !important;}
+strong{color:#1d1d1f !important;font-weight:600;}
+b{font-weight:600;}
 ul,ol{padding-left:26px;}
 li{margin:6px 0;}
-a{color:var(--accent);}
-/* callouts */
-.callout{background:var(--light);border-left:6px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;margin:18px 0;}
-.callout .t{font-weight:700;color:var(--accent);display:block;margin-bottom:4px;}
-.plain{background:#eefaf0;border-left:6px solid #38a169;padding:12px 18px;border-radius:0 8px 8px 0;margin:14px 0;}
-.plain .t{font-weight:700;color:#2f855a;display:block;margin-bottom:2px;}
+a{color:#0071e3 !important;text-decoration:none;}
+a:hover{text-decoration:underline;}
+/* callouts — borderless soft cards */
+.callout,.plain,.note,.prio{border-radius:18px;padding:18px 22px;margin:20px 0;border:none;}
+.callout{background:#f5f5f7 !important;color:#1d1d1f !important;}
+.callout .t{font-weight:600;color:#0071e3 !important;display:block;margin-bottom:6px;}
+.plain{background:#f2f8f3 !important;color:#1d1d1f !important;}
+.plain .t{font-weight:600;color:#248a3d !important;display:block;margin-bottom:4px;}
 .plain .t::before{content:"🎓 白話解釋　";}
-.note{background:#fff8e6;border-left:6px solid #d69e2e;padding:12px 18px;border-radius:0 8px 8px 0;margin:14px 0;font-size:.96rem;}
-.note .t{font-weight:700;color:#b7791f;display:block;margin-bottom:2px;}
+.note{background:#fbfbfd !important;color:#1d1d1f !important;border:1px solid #e8e8ed;font-size:.96rem;}
+.note .t{font-weight:600;color:#b25e09 !important;display:block;margin-bottom:4px;}
 .note .t::before{content:"📝 名詞備註　";}
-.prio{background:#fdf2f8;border:1px solid #e9b8d4;border-radius:8px;padding:12px 18px;margin:16px 0;}
-.prio .t{font-weight:700;color:#a83a70;display:block;margin-bottom:4px;}
+.prio{background:#f5f9ff !important;color:#1d1d1f !important;}
+.prio .t{font-weight:600;color:#0071e3 !important;display:block;margin-bottom:6px;}
 .prio .t::before{content:"⚙️ 修正優先順序　";}
-/* equations */
-.eq{text-align:center;font-family:"Cambria Math","Times New Roman",serif;font-style:italic;font-size:1.12rem;background:#f7f9fc;border:1px dashed var(--line);border-radius:6px;padding:10px;margin:14px auto;}
-/* tables */
-table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.94rem;}
-th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;}
-th{background:var(--accent);color:#fff;font-weight:600;}
-tbody tr:nth-child(even){background:#f4f8fc;}
+.eq{text-align:center;font-family:"Cambria Math","Times New Roman",serif;font-style:italic;font-size:1.15rem;background:#f5f5f7 !important;color:#1d1d1f !important;border-radius:12px;padding:12px;margin:16px auto;}
+/* tables — fine dividers */
+table{border-collapse:collapse;width:100%;margin:18px 0;font-size:.93rem;}
+th,td{border:none;border-bottom:1px solid #d2d2d7;padding:11px 12px;text-align:left;vertical-align:top;color:#1d1d1f !important;}
+th{background:#f5f5f7 !important;color:#1d1d1f !important;font-weight:600;border-bottom:1px solid #c7c7cc;}
+tbody tr:nth-child(even){background:#ffffff !important;}
 td.c,th.c{text-align:center;}
-.pro{color:#248a3d;font-weight:600;}
-.con{color:#c0392b;font-weight:600;}
-/* figure */
-figure{margin:22px 0;text-align:center;}
-figure svg{max-width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px;}
-figcaption{color:var(--muted);font-size:.9rem;margin-top:8px;font-style:italic;}
+.pro{color:#248a3d !important;font-weight:600;}
+.con{color:#c0392b !important;font-weight:600;}
+.tablewrap{overflow-x:auto;}
+figure{margin:28px 0;text-align:center;}
+figure svg{max-width:100%;height:auto;background:#ffffff !important;border:1px solid #e8e8ed;border-radius:18px;}
+figcaption{color:#6e6e73 !important;font-size:.88rem;margin-top:10px;}
 /* TOC */
-.toc{background:#fafcff;border:1px solid var(--line);border-radius:10px;padding:20px 28px;margin:30px 0;}
-.toc h2{border:none;margin:0 0 10px;font-size:1.3rem;}
-.toc ol{list-style:none;padding-left:0;counter-reset:c1;}
-.toc>ol>li{counter-increment:c1;font-weight:700;color:var(--accent);margin-top:10px;}
-.toc>ol>li>a{text-decoration:none;}
-.toc ul{list-style:none;padding-left:18px;}
-.toc ul li{font-weight:400;color:#33475b;}
-.toc ul li a{text-decoration:none;color:#33475b;}
-.toc a:hover{text-decoration:underline;}
-.chap-band{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;padding:18px 24px;border-radius:10px;margin:56px 0 8px;}
-.chap-band .n{font-size:.8rem;letter-spacing:3px;opacity:.85;}
-.chap-band .ti{font-size:1.35rem;font-weight:700;margin-top:2px;}
-.src{font-size:.85rem;color:var(--muted);}
-hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
-.qa{margin:26px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
-.qa .q{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;padding:14px 20px;font-weight:700;font-size:1.05rem;}
-.qa .q .tag{background:#fff;color:var(--accent);border-radius:6px;padding:1px 9px;margin-right:10px;font-size:.9rem;}
-.qa .a{padding:16px 22px;}
-.qa .a h5{color:var(--accent);margin:16px 0 6px;font-size:1rem;border-left:4px solid var(--accent2);padding-left:10px;}
+.toc{background:#f5f5f7 !important;border-radius:18px;padding:26px 32px;margin:36px 0;}
+.toc h2{margin:0 0 8px;font-size:1.5rem;}
+.toc ol{list-style:none;padding-left:0;}
+.toc>ol>li{font-weight:600;margin-top:14px;}
+.toc>ol>li>a{color:#1d1d1f !important;}
+.toc ul{list-style:none;padding-left:16px;margin-top:4px;}
+.toc ul li{font-weight:400;margin:3px 0;}
+.toc ul li a{color:#424245 !important;}
+.toc a:hover{color:#0071e3 !important;}
+.chap-band{background:#ffffff !important;color:#1d1d1f !important;padding:70px 0 6px;margin:40px 0 0;border-top:1px solid #d2d2d7;}
+.chap-band .n{font-size:.85rem;letter-spacing:.14em;color:#0071e3 !important;font-weight:600;}
+.chap-band .ti{font-size:2.3rem;line-height:1.2;font-weight:700;margin-top:6px;color:#1d1d1f !important;letter-spacing:-.01em;}
+.src{font-size:.86rem;color:#6e6e73 !important;}
+hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
+.qa{margin:28px 0;border:1px solid #d2d2d7;border-radius:18px;overflow:hidden;}
+.qa .q{background:#f5f5f7 !important;color:#1d1d1f !important;padding:16px 22px;font-weight:600;font-size:1.05rem;}
+.qa .q .tag{background:#0071e3 !important;color:#ffffff !important;border-radius:999px;padding:1px 10px;margin-right:10px;font-size:.85rem;}
+.qa .a{padding:18px 24px;}
+.qa .a h5{color:#1d1d1f !important;margin:18px 0 6px;font-size:1rem;font-weight:600;}
 .brandmap td:first-child{font-weight:600;}
-.sim{background:#f7f9fc;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:20px 0;}
-.sim h4{margin:0 0 6px;color:var(--accent);}
+.sim{background:#f5f5f7 !important;border-radius:18px;padding:20px 24px;margin:24px 0;}
+.sim h4{margin:0 0 6px;color:#1d1d1f !important;}
 .sim .ctrl{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:10px 0;}
-.sim label{font-weight:600;min-width:120px;}
-.sim input[type=range]{flex:1;min-width:170px;accent-color:var(--accent);}
-.sim .val{font-family:Cambria Math,serif;color:#c0392b;min-width:88px;text-align:right;font-weight:700;}
-.sim .read{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0;}
-.sim .read div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:.9rem;}
-.sim .read b{color:var(--accent);}
-.sim .lane{position:relative;height:150px;background:linear-gradient(#eaf1f9,#cfe0f2);border:1px solid #2E5A8C;border-radius:8px;overflow:hidden;margin-top:10px;}
-.sim .bub{position:absolute;bottom:-24px;border-radius:50%;background:rgba(255,255,255,.85);border:1px solid #2E5A8C;animation:rise linear infinite;}
+.sim label{font-weight:600;min-width:120px;color:#1d1d1f !important;}
+.sim input[type=range]{flex:1;min-width:170px;accent-color:#0071e3;}
+.sim .val{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue","PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;color:#0071e3 !important;min-width:88px;text-align:right;font-weight:600;}
+.sim .read{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0;}
+.sim .read div{background:#ffffff !important;color:#1d1d1f !important;border-radius:12px;padding:7px 13px;font-size:.9rem;}
+.sim .read b{color:#0071e3 !important;}
+.sim .lane{position:relative;height:150px;background:linear-gradient(#ffffff,#e8f1fd) !important;border:1px solid #d2d2d7;border-radius:12px;overflow:hidden;margin-top:10px;}
+.sim .bub{position:absolute;bottom:-24px;border-radius:50%;background:rgba(255,255,255,.9) !important;border:1px solid #0071e3;animation:rise linear infinite;}
 @keyframes rise{from{transform:translateY(0);opacity:.9;}to{transform:translateY(-176px);opacity:.5;}}
-.sim .verdict{margin-top:10px;font-weight:700;}
-.sim .warn{color:#c0392b;font-weight:700;margin-top:6px;min-height:1.2em;}
-@media print{.wrap{box-shadow:none;max-width:100%;}}
+.sim .verdict{margin-top:10px;font-weight:600;}
+.sim .warn{color:#c0392b !important;font-weight:600;margin-top:6px;min-height:1.2em;}
+/* new chapter 4 */
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:24px 0;}
+.kpi{background:#f5f5f7 !important;border-radius:18px;padding:18px 20px;}
+.kpi .k{font-size:1.9rem;font-weight:700;color:#1d1d1f !important;line-height:1.15;}
+.kpi .k small{font-size:.95rem;font-weight:600;color:#6e6e73 !important;margin-left:4px;}
+.kpi .l{font-size:.92rem;color:#1d1d1f !important;margin-top:6px;}
+.kpi .d{font-size:.8rem;color:#6e6e73 !important;margin-top:6px;}
+.up{color:#248a3d !important;font-weight:600;}
+.down{color:#c0392b !important;font-weight:600;}
+.flat{color:#6e6e73 !important;font-weight:600;}
+.chg{display:inline-block;background:#f5f9ff !important;color:#0071e3 !important;border-radius:999px;font-size:.75rem;padding:0 9px;margin-left:6px;font-weight:600;vertical-align:middle;}
+@media (max-width:760px){.tablewrap table{min-width:820px;}.wrap{padding:0 18px 70px;}.cover h1{font-size:2.2rem;}.kpis{grid-template-columns:1fr;}h2{font-size:1.6rem;}.chap-band .ti{font-size:1.7rem;}}
+@media print{.wrap{max-width:100%;}.chap-band{page-break-before:always;}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<div class="cover">
-  <h1>軟膠囊製程技術白皮書</h1>
-  <div class="sub">第一性原理（First Principles）系列</div>
-  <div class="chap">第一章　明膠溶膠化、真空脫氣之流變學控制與環境熱力學干擾</div>
-  <div class="chap">第二章　模具封裝動力學、界面融合與幾何形狀異常之流變學解析</div>
-  <div class="chap">第三章　內容物化學交互作用、膠殼物理化學穩定性與跨國物流熱力學風險評估</div>
-  <div class="meta">參考 GELITA（EASYSEAL®、RXL®、RAPISOL®、DELASOL® 等）與 Rousselot（StabiCaps® 等）原廠技術文獻</div>
-  <div class="ver">版本 2.0（HTML 圖解版）　｜　2026 年 7 月</div>
+<div class="topbar" aria-label="Kiwi">
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img"><title>Kiwi</title>
+  <ellipse cx="30" cy="36" rx="19" ry="14" fill="#8a6a43"/>
+  <ellipse cx="26" cy="38" rx="11" ry="7" fill="#a5845a" opacity=".55"/>
+  <circle cx="45" cy="27" r="8" fill="#8a6a43"/>
+  <circle cx="47.5" cy="25.5" r="1.4" fill="#1d1d1f"/>
+  <path d="M52 27 Q60 30 62 37" stroke="#c9a46a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <path d="M24 49 L22 57 M22 57 L18 58 M22 57 L25 59" stroke="#c9a46a" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M34 49 L35 57 M35 57 L31 58 M35 57 L38 59" stroke="#c9a46a" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>
 </div>
+<div class="cover">
+  <div class="eyebrow">第一性原理（First Principles）系列</div>
+  <h1>軟膠囊製程技術白皮書</h1>
+  <div class="sub">從一個氫鍵，推導到一整櫃貨的到港良率</div>
+  <div class="chaps">
+    <div class="chap"><b>01</b>明膠溶膠化、真空脫氣之流變學控制與環境熱力學干擾</div>
+    <div class="chap"><b>02</b>模具封裝動力學、界面融合與幾何形狀異常之流變學解析</div>
+    <div class="chap"><b>03</b>內容物化學交互作用、膠殼物理化學穩定性與跨國物流熱力學風險評估</div>
+    <div class="chap"><b>04</b>競爭指標廠：明膠產能版圖與軟膠囊新技術對照<span class="newtag">NEW</span></div>
+  </div>
+  <div class="meta">參考 GELITA（EASYSEAL®、RXL®、RAPISOL®、DELASOL®）、Rousselot（StabiCaps™）、PB Leiner（gelwoRx™）等原廠技術文獻與公開財報</div>
+  <div class="ver">版本 3.0　｜　2026 年 11 月更新</div>
+</div>
+
 
 <div class="callout">
   <span class="t">本白皮書的閱讀方式</span>
   全文以「第一性原理」拆解每個製程現象到最底層的分子與物理機制，但每個艱澀概念都附上 <b>🎓 白話解釋</b>（大學程度即可理解）與 <b>📝 名詞備註</b>。凡涉及製程異常，皆提供 <b>⚙️ 修正優先順序</b>：<u>一律先從一般加工製程與配方（明膠添加量、甘油／山梨醇、水比例、溫度時間）著手，特殊型明膠僅列為最後的進階選項</u>。
+</div>
+
+<div class="callout">
+  <span class="t">v3.0 更新了什麼（2026 年 11 月）</span>
+  <ol style="margin:4px 0 0;padding-left:22px">
+    <li><b>原廠資料重新查證</b>：RXL® 更正為現行四等級 Prime／Advanced／Pro／Ultra，並補上 Ultra 的法規限制；EASYSEAL® 依 2025 型錄補上乾燥時間（32 h → 18 h）、可選等級與漏油試驗的內料條件。</li>
+    <li><b>新增第四章</b>：競爭指標廠的明膠產能（含 2025–2026 年擴產、整併、關廠動態）與各家軟膠囊對應技術。</li>
+    <li><b>校對修錯</b>：統一明膠熔點 Tₘ 的寫法、修正真空度換算、節次編號、沙棘果肉油與籽油的脂肪酸區分；冷藏貨櫃濕度設定改為櫃體實際做得到的 50–60% RH；空運段補上地面等待的風險。</li>
+    <li><b>版面</b>：改為簡潔白底版型，手機閱讀更清楚。</li>
+  </ol>
 </div>
 
 <div class="toc">
@@ -134,6 +182,15 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
         <li><a href="#s31">3.1　植物萃取油（飽和 vs 不飽和）的交聯干擾</a></li>
         <li><a href="#s32">3.2　磷蝦油與磷脂質的界面與物理干擾</a></li>
         <li><a href="#s33">3.3　外銷油脂產品的物流抉擇：海運 vs 空運</a></li>
+      </ul>
+    </li>
+    <li><a href="#c4">第四章　競爭指標廠：明膠產能版圖與軟膠囊新技術對照</a>
+      <ul>
+        <li><a href="#s41">4.1　2024–2026 供應端的三個結構變化</a></li>
+        <li><a href="#s42">4.2　指標廠產能一覽</a></li>
+        <li><a href="#s43">4.3　軟膠囊痛點 × 各廠對應新技術</a></li>
+        <li><a href="#s44">4.4　植物性膠殼：替代還是補位？</a></li>
+        <li><a href="#s45">4.5　對軟膠囊廠的採購與技術意涵</a></li>
       </ul>
     </li>
     <li><a href="#appx">附錄 A　軟膠囊製程技術 Q&amp;A 與極限故障排除指南</a>
@@ -194,15 +251,15 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <p>充分水和後升溫，三股螺旋會解開成「無規捲曲」。這是軟膠囊全製程最核心的熱力學事件，本質是<b>由「亂度（熵）」驅動的熔解</b>。</p>
 
 <figure>
-<svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="760" height="320" fill="#ffffff"/>
   <!-- left: triple helix ordered -->
-  <text x="150" y="34" text-anchor="middle" font-size="15" font-weight="700" fill="#1F4E79">低溫：三股螺旋（有序 · 低熵）</text>
+  <text x="150" y="34" text-anchor="middle" font-size="15" font-weight="700" fill="#1d1d1f">低溫：三股螺旋（有序 · 低熵）</text>
   <g stroke-width="4" fill="none">
-    <path d="M70,80 Q110,60 150,80 T230,80" stroke="#2E5A8C"/>
+    <path d="M70,80 Q110,60 150,80 T230,80" stroke="#0071e3"/>
     <path d="M70,110 Q110,90 150,110 T230,110" stroke="#3f7cae"/>
     <path d="M70,140 Q110,120 150,140 T230,140" stroke="#63a0cc"/>
-    <path d="M70,95 Q110,75 150,95 T230,95" stroke="#2E5A8C" opacity=".5"/>
+    <path d="M70,95 Q110,75 150,95 T230,95" stroke="#0071e3" opacity=".5"/>
     <path d="M70,125 Q110,105 150,125 T230,125" stroke="#3f7cae" opacity=".5"/>
   </g>
   <!-- hydrogen bond ticks -->
@@ -220,7 +277,7 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
   <!-- right: random coils -->
   <text x="600" y="34" text-anchor="middle" font-size="15" font-weight="700" fill="#c0392b">高溫：無規捲曲（無序 · 高熵）</text>
   <g stroke-width="4" fill="none" stroke-linecap="round">
-    <path d="M420,70 q20,-15 35,5 t30,-8 t35,12 t30,-15 t40,10" stroke="#2E5A8C"/>
+    <path d="M420,70 q20,-15 35,5 t30,-8 t35,12 t30,-15 t40,10" stroke="#0071e3"/>
     <path d="M415,110 q25,18 45,-5 t35,15 t40,-12 t35,10 t30,-6" stroke="#3f7cae"/>
     <path d="M425,155 q18,-16 40,4 t35,-10 t38,14 t34,-12 t28,8" stroke="#63a0cc"/>
   </g>
@@ -229,14 +286,14 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
   <rect x="60" y="220" width="640" height="82" rx="8" fill="#f7f9fc" stroke="#d5deea"/>
   <text x="380" y="248" text-anchor="middle" font-size="17" font-style="italic" font-family="Cambria Math,serif" fill="#1c2733">ΔG = ΔH − T·ΔS</text>
   <text x="380" y="272" text-anchor="middle" font-size="12.5" fill="#33475b">ΔH &gt; 0（拆氫鍵要吸熱）　ΔS &gt; 0（散開後亂度大增）</text>
-  <text x="380" y="292" text-anchor="middle" font-size="12.5" fill="#1F4E79">當溫度升到 Tₘ ≈ 35–40℃：ΔG=0，各半；升到約 40–45℃ 幾乎全捲曲</text>
+  <text x="380" y="292" text-anchor="middle" font-size="12.5" fill="#1d1d1f">當溫度升到 Tₘ（約 30–35℃）：ΔG=0，各半；升到約 40–45℃ 幾乎全捲曲</text>
 </svg>
 <figcaption>圖 1-1　煮膠的本質：加熱把「鎖住三股螺旋的氫鍵」拆開，鏈段從有序的低熵螺旋，變成自由亂動的高熵捲曲。溫度越高越有利捲曲，因為 −T·ΔS 這一項會壓過吸熱的 ΔH。</figcaption>
 </figure>
 
 <div class="plain">
   <span class="t"></span>
-  為什麼「加熱就會化」？大自然總是往「亂度更高、能量更低」的方向走。三股螺旋很「整齊」（低亂度），捲曲很「散亂」（高亂度）。溫度就像「亂度的放大器」：溫度越高，散亂狀態的吸引力（−T·ΔS）越大。當溫度到達 <b>Tₘ（約 35–40℃）</b>，散亂的好處剛好抵過拆氫鍵要花的能量，明膠就開始化開。這也是為什麼化膠對溫度非常敏感——差幾度，就決定膠液是「濃稠」還是「稀水」。
+  為什麼「加熱就會化」？大自然總是往「亂度更高、能量更低」的方向走。三股螺旋很「整齊」（低亂度），捲曲很「散亂」（高亂度）。溫度就像「亂度的放大器」：溫度越高，散亂狀態的吸引力（−T·ΔS）越大。當溫度到達 <b>Tₘ（軟膠囊膠液約 30–35℃）</b>，散亂的好處剛好抵過拆氫鍵要花的能量，明膠就開始化開。這也是為什麼化膠對溫度非常敏感——差幾度，就決定膠液是「濃稠」還是「稀水」。
 </div>
 
 <div class="note">
@@ -251,13 +308,13 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
   <span class="t">要多少熱？——把數字算給你看</span>
   <b>單一氫鍵</b>約 8–25 kJ/mol，聽起來很小：室溫熱擾動能量 RT ≈ 2.5 kJ/mol，所以單一氫鍵約等於「室溫熱擾動的 3–10 倍」——一個一個很容易被熱打斷。<br>
   <b>一段三股螺旋連結區（junction zone）</b>由數十個氫鍵協同組成，要一起打斷需累積<b>數百 kJ/mol</b>等級的能量，這就是「協同性」讓熔解變陡的原因。<br>
-  但實務上，把整鍋膠液加熱要供應的能量，<b>絕大部分不是用來拆氫鍵，而是「升溫的顯熱」</b>：明膠溶液比熱約 3–4 J/(g·K)，把膠液由 25℃ 升到 60℃（升 35 度）約需 <b>110–140 J/g</b>；相較之下，打斷三股螺旋本身的熔解焓（DSC 量測）僅約 <b>5–20 J/g</b>。<u>換句話說：拆掉維繫螺旋的氫鍵其實不太耗能，真正花掉的熱幾乎都在「把整鍋料加熱」這件事上。</u>
+  但實務上，把整鍋膠液加熱要供應的能量，<b>絕大部分不是用來拆氫鍵，而是「升溫的顯熱」</b>：明膠溶液比熱約 3–4 J/(g·K)，把膠液由 25℃ 升到 60℃（升 35 度）約需 <b>110–140 J/g</b>；相較之下，打斷三股螺旋本身的熔解焓（DSC 量測）只占其中<b>一小部分</b>（量級上遠小於顯熱）。<u>換句話說：拆掉維繫螺旋的氫鍵其實不太耗能，真正花掉的熱幾乎都在「把整鍋料加熱」這件事上。</u>
 </div>
 <div class="note">
   <span class="t"></span>
-  <b>「再升高」是升到多少？</b>　Tₘ（約 35–40℃）只是「螺旋與捲曲各半」的中點。再往上約 <b>40–45℃</b>，殘餘螺旋幾乎全部解開、變成完全的無規捲曲；<b>實務化膠設在 60–70℃</b>，就是為了確保「完全解旋、消除殘留螺旋核」，得到分子級均勻的溶膠——但如前述，溫度越高、時間越久，熱裂解也越多，所以化膠不會設更高。
+  <b>「再升高」是升到多少？</b>　Tₘ（軟膠囊膠液約 30–35℃；文獻量測 6.67% 稀凝膠的哺乳類明膠熔點為 22–34℃，膠液濃度越高熔點越往上）只是「螺旋與捲曲各半」的中點。再往上約 <b>40–45℃</b>，殘餘螺旋幾乎全部解開、變成完全的無規捲曲；<b>實務化膠設在 60–70℃</b>，就是為了確保「完全解旋、消除殘留螺旋核」，得到分子級均勻的溶膠——但如前述，溫度越高、時間越久，熱裂解也越多，所以化膠不會設更高。
 </div>
-<p><b>協同性（一起崩）</b>：螺旋不是一根根氫鍵慢慢斷，而是「一旦局部斷夠多，旁邊的就跟著連鎖崩解」，所以熔解很陡峭。<b>實務化膠</b>常先把甘油與水加熱、於約 80℃ 投入明膠使其快速溶解，再於負壓下降溫至約 60–75℃ 進行溶膠與脫氣。客戶以旋轉黏度計於 60℃ 監控，隔夜膠液黏度約 15,000–18,000 cps，即對應此溶膠窗口。<strong>但溫度不可過高或久放——每高於 Tₘ 一度、每多一分鐘，都在下一節的「熱裂解時鐘」上累積不可逆的斷鏈。</strong></p>
+<p><b>協同性（一起崩）</b>：螺旋不是一根根氫鍵慢慢斷，而是「一旦局部斷夠多，旁邊的就跟著連鎖崩解」，所以熔解很陡峭。<b>實務化膠</b>常先把甘油與水加熱、於約 80℃ 投入明膠使其快速溶解，再於負壓下降溫至約 60–70℃ 進行溶膠與脫氣。客戶以旋轉黏度計於 60℃ 監控，隔夜膠液黏度約 15,000–18,000 cps，即對應此溶膠窗口。<strong>但溫度不可過高或久放——每高於 Tₘ 一度、每多一分鐘，都在下一節的「熱裂解時鐘」上累積不可逆的斷鏈。</strong></p>
 
 <h2 id="s12">1.2　真空脫氣動力學與參數耦合</h2>
 
@@ -266,11 +323,11 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <div class="eq">v = (2/9) · (ρ<sub>液</sub> − ρ<sub>氣</sub>) · g · r² / η</div>
 
 <figure>
-<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
-  <rect x="40" y="20" width="240" height="210" rx="8" fill="#eaf1f9" stroke="#1F4E79"/>
-  <text x="160" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#1F4E79">氣泡受力平衡</text>
-  <circle cx="160" cy="150" r="34" fill="#ffffff" stroke="#2E5A8C" stroke-width="3"/>
-  <text x="160" y="155" text-anchor="middle" font-size="13" fill="#2E5A8C">氣泡 r</text>
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
+  <rect x="40" y="20" width="240" height="210" rx="8" fill="#eaf1f9" stroke="#1d1d1f"/>
+  <text x="160" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#1d1d1f">氣泡受力平衡</text>
+  <circle cx="160" cy="150" r="34" fill="#ffffff" stroke="#0071e3" stroke-width="3"/>
+  <text x="160" y="155" text-anchor="middle" font-size="13" fill="#0071e3">氣泡 r</text>
   <line x1="160" y1="150" x2="160" y2="80" stroke="#248a3d" stroke-width="4" marker-end="url(#up)"/>
   <text x="200" y="95" font-size="12" fill="#248a3d">浮力 ↑</text>
   <line x1="160" y1="150" x2="160" y2="210" stroke="#c0392b" stroke-width="3" marker-end="url(#dn)"/>
@@ -303,7 +360,7 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 
 <div class="sim">
   <h4>🔧 互動模擬：真空度 × 溫度 × 保溫時間 → 氣泡 vs 熱裂解</h4>
-  <p style="margin:2px 0 8px;font-size:.9rem;color:#5b6b7b">拖曳三支拉桿。前兩支決定「氣泡好不好排」，第三支「保溫時間」則帶出<b>雙面刃</b>：時間越久氣泡排得越乾淨，但 Bloom 熱裂解也越多。目標是找<b>剛好把氣泡排乾淨、又不過度裂解</b>的甜蜜點。（基準：1013 mbar、60℃）</p>
+  <p style="margin:2px 0 8px;font-size:.9rem;color:#6e6e73 !important">拖曳三支拉桿。前兩支決定「氣泡好不好排」，第三支「保溫時間」則帶出<b>雙面刃</b>：時間越久氣泡排得越乾淨，但 Bloom 熱裂解也越多。目標是找<b>剛好把氣泡排乾淨、又不過度裂解</b>的甜蜜點。（基準：1013 mbar、60℃）</p>
   <div class="ctrl"><label>真空度（絕對壓）</label><input id="vac" type="range" min="20" max="1013" step="1" value="200"><span class="val" id="vacv">200 mbar</span></div>
   <div class="ctrl"><label>膠液溫度</label><input id="temp" type="range" min="30" max="70" step="1" value="55"><span class="val" id="tempv">55 ℃</span></div>
   <div class="ctrl"><label>保溫時間</label><input id="time" type="range" min="0.5" max="16" step="0.5" value="6"><span class="val" id="timev">6.0 h</span></div>
@@ -323,12 +380,12 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 
 <h3>1.2.2　真空度（減壓）的雙重作用機制</h3>
 <figure>
-<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <!-- Panel A Boyle -->
-  <rect x="20" y="20" width="330" height="260" rx="10" fill="#f7f9fc" stroke="#1F4E79"/>
-  <text x="185" y="46" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1F4E79">(A) 氣泡膨脹（Boyle 定律 P·V=常數）</text>
+  <rect x="20" y="20" width="330" height="260" rx="10" fill="#f7f9fc" stroke="#1d1d1f"/>
+  <text x="185" y="46" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1d1d1f">(A) 氣泡膨脹（Boyle 定律 P·V=常數）</text>
   <text x="105" y="80" text-anchor="middle" font-size="12" fill="#5b6b7b">常壓 1013 mbar</text>
-  <circle cx="105" cy="130" r="14" fill="#dbe7f5" stroke="#2E5A8C" stroke-width="2"/>
+  <circle cx="105" cy="130" r="14" fill="#dbe7f5" stroke="#0071e3" stroke-width="2"/>
   <text x="265" y="80" text-anchor="middle" font-size="12" fill="#c0392b">真空 50 mbar</text>
   <circle cx="265" cy="140" r="38" fill="#ffffff" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="4,3"/>
   <line x1="130" y1="130" x2="215" y2="140" stroke="#333" stroke-width="2" marker-end="url(#a2)"/>
@@ -336,9 +393,9 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
   <text x="185" y="235" text-anchor="middle" font-size="12" fill="#33475b">體積脹 ≈20 倍、半徑 ≈2.7 倍</text>
   <text x="185" y="256" text-anchor="middle" font-size="12.5" font-weight="700" fill="#248a3d">→ 上浮速度提升 ≈7 倍</text>
   <!-- Panel B Henry -->
-  <rect x="370" y="20" width="330" height="260" rx="10" fill="#f7f9fc" stroke="#1F4E79"/>
-  <text x="535" y="46" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1F4E79">(B) 溶解氣體逸出（Henry 定律 C=k·P）</text>
-  <rect x="400" y="70" width="270" height="150" rx="6" fill="#eaf1f9" stroke="#2E5A8C"/>
+  <rect x="370" y="20" width="330" height="260" rx="10" fill="#f7f9fc" stroke="#1d1d1f"/>
+  <text x="535" y="46" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1d1d1f">(B) 溶解氣體逸出（Henry 定律 C=k·P）</text>
+  <rect x="400" y="70" width="270" height="150" rx="6" fill="#eaf1f9" stroke="#0071e3"/>
   <g fill="#c0392b">
     <circle cx="430" cy="110" r="3.5"/><circle cx="470" cy="140" r="3.5"/><circle cx="510" cy="105" r="3.5"/><circle cx="560" cy="150" r="3.5"/><circle cx="610" cy="120" r="3.5"/><circle cx="460" cy="185" r="3.5"/><circle cx="540" cy="195" r="3.5"/><circle cx="600" cy="180" r="3.5"/>
   </g>
@@ -384,8 +441,8 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <tbody>
 <tr>
   <td><b>真空度</b><br>(絕對壓)</td>
-  <td class="c">−0.85～−0.92 bar<br>(約 80–150 mbar)</td>
-  <td><span class="pro">優</span>：氣泡膨脹大、溶解氣逸出多、脫氣快。<br><span class="con">缺</span>：逼近 48–60℃ 水蒸氣壓（110–200 mbar）→ 暴沸、失水、局部濃化、丸重不穩。</td>
+  <td class="c">真空表 −0.80～−0.90 bar<br>(絕對壓約 110–210 mbar)</td>
+  <td><span class="pro">優</span>：氣泡膨脹大、溶解氣逸出多、脫氣快。<br><span class="con">缺</span>：逼近 48–60℃ 水蒸氣壓（約 110–200 mbar；含甘油膠液實際沸騰壓略低）→ 暴沸、失水、局部濃化、丸重不穩。</td>
   <td><span class="pro">優</span>：溫和、不暴沸、失水少。<br><span class="con">缺</span>：氣泡膨脹小、脫氣慢、殘泡多。</td>
 </tr>
 <tr>
@@ -407,7 +464,7 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
   三參數的共同矛盾是「<b>把氣泡排乾淨</b>」與「<b>把分子量與 Bloom 保住</b>」的拔河。對 180 Bloom 牛骨膠，建議<b>以『足夠但不過度』為原則</b>：真空貼近但不越過水蒸氣壓、溫度用能完全解旋的最低值（60–65℃化膠）、時間以達成脫氣的最短為佳、把「隔夜」當上限而非常態，並以 60℃ 旋轉黏度與 Bloom 衰減率設放行判準。
 </div>
 
-<h3 id="rest">1.2.6　保溫罐維持真空並以 48℃ 保溫隔夜：差異分析</h3>
+<h3 id="rest">1.2.4　保溫罐維持真空並以 48℃ 保溫隔夜：差異分析</h3>
 <p>膠液輸出至保溫罐後，維持真空並控溫於 48℃（低於化膠溫度、高於凝膠溫度，讓膠液維持溶膠態且黏度適中）。以下用兩張表拆解關鍵決策的優缺點。</p>
 
 <h4>差異分析 ①：靜置隔夜 vs 不靜置（配好即用）</h4>
@@ -449,12 +506,12 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <p>斷鏈近似一級動力學，速率 k = A·e^(−Ea/RT)；分子量倒數隨時間線性上升，即<b>熱裂解量 ∝ 時間 × e^(−Ea/RT)</b>。48℃ 的 k 雖小，但乘上「隔夜」這個大時間就不可忽略；若溫度失控上飄，k 指數放大、劣化急遽。</p>
 
 <figure>
-<svg viewBox="0 0 760 150" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 760 150" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="760" height="150" fill="#fff"/>
   <g font-size="12.5" text-anchor="middle">
-    <rect x="10" y="45" width="120" height="60" rx="8" fill="#eaf1f9" stroke="#1F4E79"/><text x="70" y="70">48℃ × 隔夜</text><text x="70" y="90" font-size="11" fill="#5b6b7b">長時熱處理</text>
-    <rect x="160" y="45" width="120" height="60" rx="8" fill="#f7f9fc" stroke="#2E5A8C"/><text x="220" y="72">醯胺鍵</text><text x="220" y="90" font-size="11">水解斷鏈</text>
-    <rect x="310" y="45" width="130" height="60" rx="8" fill="#f7f9fc" stroke="#2E5A8C"/><text x="375" y="72">分子量↓</text><text x="375" y="90" font-size="11">MWD 變寬</text>
+    <rect x="10" y="45" width="120" height="60" rx="8" fill="#eaf1f9" stroke="#1d1d1f"/><text x="70" y="70">48℃ × 隔夜</text><text x="70" y="90" font-size="11" fill="#5b6b7b">長時熱處理</text>
+    <rect x="160" y="45" width="120" height="60" rx="8" fill="#f7f9fc" stroke="#0071e3"/><text x="220" y="72">醯胺鍵</text><text x="220" y="90" font-size="11">水解斷鏈</text>
+    <rect x="310" y="45" width="130" height="60" rx="8" fill="#f7f9fc" stroke="#0071e3"/><text x="375" y="72">分子量↓</text><text x="375" y="90" font-size="11">MWD 變寬</text>
     <rect x="470" y="45" width="130" height="60" rx="8" fill="#fff8e6" stroke="#d69e2e"/><text x="535" y="72">Bloom↓ · G′↓</text><text x="535" y="90" font-size="11">黏度↓</text>
     <rect x="630" y="45" width="120" height="60" rx="8" fill="#fdeaea" stroke="#c0392b"/><text x="690" y="72" fill="#c0392b">膠皮偏軟</text><text x="690" y="90" font-size="11" fill="#c0392b">接縫易漏</text>
   </g>
@@ -473,19 +530,19 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <p>並行的次要反應還有：<b>氧化交聯</b>（有殘氧時側鏈被氧「焊」在一起，使黏度異常上升——維持真空可抑制）與<b>醛類誘發交聯</b>（植物萃取物中的醛／多酚與明膠反應，第三章詳述）。</p>
 
 <figure>
-<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="720" height="250" fill="#fff"/>
-  <text x="360" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#1F4E79">圖：保溫殘氧下的「氧化交聯」與真空抑制</text>
+  <text x="360" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#1d1d1f">圖：保溫殘氧下的「氧化交聯」與真空抑制</text>
   <!-- left: with residual O2 -> crosslink -->
   <rect x="25" y="45" width="320" height="180" rx="10" fill="#fdeaea" stroke="#c0392b"/>
   <text x="185" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#c0392b">有殘氧（不抽真空）</text>
   <!-- two chains -->
-  <path d="M55,110 q40,-14 80,0 t80,0 t80,0" fill="none" stroke="#2E5A8C" stroke-width="4"/>
+  <path d="M55,110 q40,-14 80,0 t80,0 t80,0" fill="none" stroke="#0071e3" stroke-width="4"/>
   <path d="M55,175 q40,14 80,0 t80,0 t80,0" fill="none" stroke="#3f7cae" stroke-width="4"/>
   <!-- side chains -->
-  <line x1="135" y1="110" x2="135" y2="140" stroke="#2E5A8C" stroke-width="2"/>
+  <line x1="135" y1="110" x2="135" y2="140" stroke="#0071e3" stroke-width="2"/>
   <line x1="135" y1="175" x2="135" y2="145" stroke="#3f7cae" stroke-width="2"/>
-  <line x1="215" y1="110" x2="215" y2="140" stroke="#2E5A8C" stroke-width="2"/>
+  <line x1="215" y1="110" x2="215" y2="140" stroke="#0071e3" stroke-width="2"/>
   <line x1="215" y1="175" x2="215" y2="145" stroke="#3f7cae" stroke-width="2"/>
   <!-- O2 welds -->
   <circle cx="135" cy="142" r="6" fill="#c0392b"/><text x="135" y="146" text-anchor="middle" font-size="8" fill="#fff">O</text>
@@ -496,9 +553,9 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
   <!-- right: vacuum removes O2 -->
   <rect x="375" y="45" width="320" height="180" rx="10" fill="#eefaf0" stroke="#248a3d"/>
   <text x="535" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#248a3d">維持真空（抽走氧）</text>
-  <path d="M405,110 q40,-14 80,0 t80,0 t80,0" fill="none" stroke="#2E5A8C" stroke-width="4"/>
+  <path d="M405,110 q40,-14 80,0 t80,0 t80,0" fill="none" stroke="#0071e3" stroke-width="4"/>
   <path d="M405,175 q40,14 80,0 t80,0 t80,0" fill="none" stroke="#3f7cae" stroke-width="4"/>
-  <line x1="485" y1="110" x2="485" y2="140" stroke="#2E5A8C" stroke-width="2"/>
+  <line x1="485" y1="110" x2="485" y2="140" stroke="#0071e3" stroke-width="2"/>
   <line x1="565" y1="175" x2="565" y2="145" stroke="#3f7cae" stroke-width="2"/>
   <!-- O2 leaving up -->
   <g stroke="#248a3d" stroke-width="1.6">
@@ -544,7 +601,7 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <tr><td><b>明膠添加量／濃度</b></td><td>↑ 提高</td><td>凝膠強度↑</td><td class="pro">接縫強、抗軟黏、丸型挺</td><td class="con">黏度高、脫氣困難、成本上升</td></tr>
 <tr><td><b>明膠 Bloom 等級</b></td><td>選較高 Bloom</td><td>凝膠強度基線↑</td><td class="pro">高溫季維持膠帶 G′、接縫穩</td><td class="con">黏度較高、展膠與脫氣較費力</td></tr>
 <tr><td><b>山梨醇部分取代甘油</b></td><td>複配</td><td>保濕性較低、抗遷移</td><td class="pro">降低回潮與被磷脂萃取（見 3.2）、季節穩定性佳</td><td class="con">比例過高有結晶風險、口感與柔韌需再平衡</td></tr>
-<tr><td><b>抗交聯明膠</b><br>(RXL®／StabiCaps®)</td><td>導入</td><td>不直接改軟硬，改善貨架穩定</td><td class="pro">植物油/反應性內料長期溶離穩定</td><td class="con">屬進階選項、成本與導入驗證（見 3.1）</td></tr>
+<tr><td><b>抗交聯明膠</b><br>(RXL®／StabiCaps™)</td><td>導入</td><td>不直接改軟硬，改善貨架穩定</td><td class="pro">植物油/反應性內料長期溶離穩定</td><td class="con">屬進階選項、成本與導入驗證（見 3.1）</td></tr>
 </tbody>
 </table>
 
@@ -616,7 +673,7 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 
 <p><b>為什麼「調製程」優先於「加減料」？</b>因為罐中膠液已是均勻混合體，<b>要「減」水或甘油幾乎做不到</b>（只能靠延長真空/加熱把水蒸掉，屬製程手段）；而「加」乾料（明膠粉）會<b>夾生結塊</b>、加純甘油/純水會<b>局部不勻與分層</b>。所以動料的正確作法是加「<b>預混/母膠</b>」。以下給現場<b>排行與相對權重</b>。</p>
 
-<h5 style="color:#c0392b;margin:14px 0 4px">🔴 膠皮太軟（凝膠強度不足）— 現場急救排行</h5>
+<h5 style="color:#c0392b !important;margin:14px 0 4px">🔴 膠皮太軟（凝膠強度不足）— 現場急救排行</h5>
 <table>
 <thead><tr><th class="c">優先序</th><th>動作</th><th class="c">類型</th><th class="c">相對權重</th><th>原因／風險</th></tr></thead>
 <tbody>
@@ -628,7 +685,7 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 </tbody>
 </table>
 
-<h5 style="color:#1F4E79;margin:14px 0 4px">🔵 膠皮太硬（增塑不足／失水／凝膠過度）— 現場急救排行</h5>
+<h5 style="color:#1d1d1f !important;margin:14px 0 4px">🔵 膠皮太硬（增塑不足／失水／凝膠過度）— 現場急救排行</h5>
 <table>
 <thead><tr><th class="c">優先序</th><th>動作</th><th class="c">類型</th><th class="c">相對權重</th><th>原因／風險</th></tr></thead>
 <tbody>
@@ -664,23 +721,23 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 </div>
 
 <figure>
-<svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="760" height="260" fill="#fff"/>
-  <text x="130" y="28" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1F4E79">剛接觸：兩片各自為界</text>
-  <text x="380" y="28" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2E5A8C">加熱＋加壓：鏈段跨界擴散</text>
+  <text x="130" y="28" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1d1d1f">剛接觸：兩片各自為界</text>
+  <text x="380" y="28" text-anchor="middle" font-size="13.5" font-weight="700" fill="#0071e3">加熱＋加壓：鏈段跨界擴散</text>
   <text x="630" y="28" text-anchor="middle" font-size="13.5" font-weight="700" fill="#248a3d">完成癒合：界面消失</text>
   <!-- stage1 -->
-  <rect x="40" y="50" width="180" height="70" fill="#eaf1f9" stroke="#2E5A8C"/>
-  <rect x="40" y="122" width="180" height="70" fill="#dbe7f5" stroke="#2E5A8C"/>
+  <rect x="40" y="50" width="180" height="70" fill="#eaf1f9" stroke="#0071e3"/>
+  <rect x="40" y="122" width="180" height="70" fill="#dbe7f5" stroke="#0071e3"/>
   <line x1="40" y1="121" x2="220" y2="121" stroke="#c0392b" stroke-width="3"/>
   <text x="130" y="215" text-anchor="middle" font-size="11" fill="#c0392b">紅線＝清楚的界面（弱）</text>
   <!-- stage2 -->
-  <rect x="290" y="50" width="180" height="70" fill="#eaf1f9" stroke="#2E5A8C"/>
-  <rect x="290" y="122" width="180" height="70" fill="#dbe7f5" stroke="#2E5A8C"/>
-  <g stroke="#1F4E79" stroke-width="2" fill="none">
+  <rect x="290" y="50" width="180" height="70" fill="#eaf1f9" stroke="#0071e3"/>
+  <rect x="290" y="122" width="180" height="70" fill="#dbe7f5" stroke="#0071e3"/>
+  <g stroke="#1d1d1f" stroke-width="2" fill="none">
     <path d="M330,121 q6,-20 14,0 t14,0"/><path d="M370,121 q6,20 14,0 t14,0"/><path d="M410,121 q6,-18 14,0 t14,0"/>
   </g>
-  <text x="380" y="215" text-anchor="middle" font-size="11" fill="#1F4E79">鏈像蛇一樣鑽過界面互相纏繞</text>
+  <text x="380" y="215" text-anchor="middle" font-size="11" fill="#1d1d1f">鏈像蛇一樣鑽過界面互相纏繞</text>
   <!-- stage3 -->
   <rect x="540" y="50" width="180" height="142" fill="#eefaf0" stroke="#248a3d"/>
   <g stroke="#248a3d" stroke-width="2" fill="none" opacity=".7">
@@ -718,7 +775,9 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <ul>
   <li><b>接縫增厚</b>：預設參數下，牛皮明膠接縫厚度較標準增加逾 <b>50%</b>、豬皮版逾 <b>40%</b>，接縫均質、厚度接近膠囊壁。</li>
   <li><b>爆破強度提升</b>：更厚更均質的接縫更耐乾燥、翻滾、運輸應力。</li>
-  <li><b>溫度非依賴性</b>：接縫形成對楔溫的依賴大幅降低 → 化膠／保溫時間的變異對封裝衝擊變小、製程更穩健（正好對接第一章「隔夜保溫造成流變漂移」的問題）。</li>
+  <li><b>溫度非依賴性</b>：接縫形成對楔溫的依賴大幅降低（型錄測試楔溫 35–43℃）→ 化膠／保溫時間的變異對封裝衝擊變小、製程更穩健（正好對接第一章「隔夜保溫造成流變漂移」的問題）。</li>
+  <li><b>乾燥時間縮短</b>：型錄案例由標準明膠的 <b>32 小時降到 18 小時</b>（約快 44%，原廠稱「約減半」）。注意該案例的膠液配方也不同（標準：明膠 44／甘油 22／水 34；EASYSEAL®：明膠 52／甘油 20／水 28，單位 %），較低的含水本身就會縮短乾燥，導入時應以自家配方重測。</li>
+  <li><b>可選等級</b>：牛骨 220 Bloom、牛骨 200 Bloom、豬皮 200 Bloom（2025 型錄；專利申請中）。</li>
 </ul>
 <table>
 <thead><tr><th>情境（參考：標準 160 Bloom，2.7 rpm，820 µm 膠帶）</th><th class="c">拖尾接縫厚度</th><th class="c">機速</th></tr></thead>
@@ -726,10 +785,10 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <tr><td>標準明膠（基準）</td><td class="c">100%</td><td class="c">基準</td></tr>
 <tr><td>EASYSEAL®，設定不變</td><td class="c pro">142%</td><td class="c">不變</td></tr>
 <tr><td>EASYSEAL®，提速 +20%、調整膠帶</td><td class="c pro">152%</td><td class="c">+20%</td></tr>
-<tr><td>EASYSEAL®，提速 +30%、減薄膠帶 −15%</td><td class="c">100%</td><td class="c">+30%</td></tr>
+<tr><td>EASYSEAL®，提速 +30%、減薄膠帶 −15%</td><td class="c">約維持基準*</td><td class="c">+30%</td></tr>
 </tbody>
 </table>
-<figcaption class="src" style="text-align:left">資料來源：GELITA EASYSEAL® 技術型錄（2025）。即便提速 30% 並減薄膠帶，接縫厚度仍守住標準基準值。實測漏油：參考批（標準 175 Bloom）全數翻滾筒漏油報廢；改用 EASYSEAL® 後試驗一 9 筒中 8 筒無漏油、試驗二 10 筒中 7 筒無漏油。</figcaption>
+<figcaption class="src" style="text-align:left">資料來源：GELITA EASYSEAL® 技術型錄（2025）。*提速 30% 情境的數值在型錄中以圖示呈現、文字未標明百分比，此處僅寫「約維持基準」。實測漏油：參考批（標準 175 Bloom，<b>內料為大豆卵磷脂</b>）全數翻滾筒出現漏油、整批判定失敗；改用 EASYSEAL® 後試驗一 9 筒中 8 筒無漏油（89%）、試驗二 10 筒中 7 筒無漏油（70%）。卵磷脂正是第三章所說「高磷脂、低界面張力」的難封內料。</figcaption>
 <div class="callout">
   <span class="t">對客戶的應用意涵</span>
   植物油產品（印加果油、黑種草油、沙棘果油）漏油風險高於一般魚油，目前對策為降低膠液含水量（清油水比 0.95、黑種草 0.90、混懸 0.88）。降水固然提高膠皮初始強度，但也抬高黏度、加劇偏硬與脆化。<b>第一線仍應以「明膠：甘油：水」比例與製程微調取得密封與韌性的平衡</b>；EASYSEAL® 則作為「以明膠等級直接強化接縫本體、減少對極端降水依賴」的進階備案。
@@ -743,16 +802,16 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 </div>
 
 <figure>
-<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="720" height="300" fill="#fff"/>
   <!-- two die rolls -->
-  <circle cx="230" cy="150" r="90" fill="#f4f8fc" stroke="#2E5A8C" stroke-width="2"/>
-  <circle cx="470" cy="150" r="90" fill="#f4f8fc" stroke="#2E5A8C" stroke-width="2"/>
+  <circle cx="230" cy="150" r="90" fill="#f4f8fc" stroke="#0071e3" stroke-width="2"/>
+  <circle cx="470" cy="150" r="90" fill="#f4f8fc" stroke="#0071e3" stroke-width="2"/>
   <text x="230" y="150" text-anchor="middle" font-size="12" fill="#5b6b7b">模具輥</text>
   <text x="470" y="150" text-anchor="middle" font-size="12" fill="#5b6b7b">模具輥</text>
   <!-- pockets -->
-  <g fill="#dbe7f5" stroke="#2E5A8C"><circle cx="318" cy="120" r="10"/><circle cx="322" cy="150" r="10"/><circle cx="318" cy="180" r="10"/></g>
-  <g fill="#dbe7f5" stroke="#2E5A8C"><circle cx="382" cy="120" r="10"/><circle cx="378" cy="150" r="10"/><circle cx="382" cy="180" r="10"/></g>
+  <g fill="#dbe7f5" stroke="#0071e3"><circle cx="318" cy="120" r="10"/><circle cx="322" cy="150" r="10"/><circle cx="318" cy="180" r="10"/></g>
+  <g fill="#dbe7f5" stroke="#0071e3"><circle cx="382" cy="120" r="10"/><circle cx="378" cy="150" r="10"/><circle cx="382" cy="180" r="10"/></g>
   <!-- ribbons -->
   <path d="M120,70 Q300,70 350,120" fill="none" stroke="#63a0cc" stroke-width="5"/>
   <path d="M580,70 Q400,70 350,120" fill="none" stroke="#63a0cc" stroke-width="5"/>
@@ -767,7 +826,7 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
   <defs><marker id="a5" markerWidth="10" markerHeight="10" refX="4" refY="6" orient="auto"><path d="M0,0 L8,0 L4,6 Z" fill="#c0392b"/></marker></defs>
   <!-- three elements labels -->
   <g font-size="12">
-    <rect x="30" y="235" width="200" height="52" rx="6" fill="#eaf1f9" stroke="#1F4E79"/><text x="130" y="256" text-anchor="middle" font-weight="700" fill="#1F4E79">① 注射點（位置）</text><text x="130" y="276" text-anchor="middle" font-size="10.5" fill="#33475b">決定膠帶受熱與拉伸的位置</text>
+    <rect x="30" y="235" width="200" height="52" rx="6" fill="#eaf1f9" stroke="#1d1d1f"/><text x="130" y="256" text-anchor="middle" font-weight="700" fill="#1d1d1f">① 注射點（位置）</text><text x="130" y="276" text-anchor="middle" font-size="10.5" fill="#33475b">決定膠帶受熱與拉伸的位置</text>
     <rect x="255" y="235" width="205" height="52" rx="6" fill="#eefaf0" stroke="#38a169"/><text x="357" y="256" text-anchor="middle" font-weight="700" fill="#2f855a">② 注射流量</text><text x="357" y="276" text-anchor="middle" font-size="10.5" fill="#33475b">V=Q·Δt 必須＝目標丸重體積</text>
     <rect x="485" y="235" width="205" height="52" rx="6" fill="#fff8e6" stroke="#d69e2e"/><text x="587" y="256" text-anchor="middle" font-weight="700" fill="#b7791f">③ 注射時機（相位）</text><text x="587" y="276" text-anchor="middle" font-size="10.5" fill="#33475b">推料相位須對齊凹穴到位</text>
   </g>
@@ -857,11 +916,11 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 
 <h3>2.3.3　三個無因次群的並列對照</h3>
 <figure>
-<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="720" height="250" fill="#fff"/>
   <g>
-    <rect x="20" y="30" width="215" height="190" rx="8" fill="#f7f9fc" stroke="#1F4E79"/>
-    <text x="127" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#1F4E79">Bond 數 Bo</text>
+    <rect x="20" y="30" width="215" height="190" rx="8" fill="#f7f9fc" stroke="#1d1d1f"/>
+    <text x="127" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#1d1d1f">Bond 數 Bo</text>
     <text x="127" y="80" text-anchor="middle" font-size="14" font-style="italic" font-family="Cambria Math,serif">Bo = Δρ·g·L² / γ</text>
     <text x="127" y="104" text-anchor="middle" font-size="11.5" fill="#33475b">重力形變 ÷ 界面張力</text>
     <text x="127" y="135" text-anchor="middle" font-size="11.5" fill="#c0392b">密度↑、γ↓ → Bo↑</text>
@@ -869,8 +928,8 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
     <text x="127" y="188" text-anchor="middle" font-size="11" fill="#248a3d">石蠟油：Bo 小 → 對稱橢球</text>
   </g>
   <g>
-    <rect x="252" y="30" width="215" height="190" rx="8" fill="#f7f9fc" stroke="#1F4E79"/>
-    <text x="359" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#1F4E79">毛細數 Ca</text>
+    <rect x="252" y="30" width="215" height="190" rx="8" fill="#f7f9fc" stroke="#1d1d1f"/>
+    <text x="359" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#1d1d1f">毛細數 Ca</text>
     <text x="359" y="80" text-anchor="middle" font-size="14" font-style="italic" font-family="Cambria Math,serif">Ca = η·U / γ</text>
     <text x="359" y="104" text-anchor="middle" font-size="11.5" fill="#33475b">流動應力 ÷ 界面張力</text>
     <text x="359" y="135" text-anchor="middle" font-size="11.5" fill="#c0392b">黏度↑、速度↑、γ↓ → Ca↑</text>
@@ -878,8 +937,8 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
     <text x="359" y="188" text-anchor="middle" font-size="11" fill="#248a3d">高黏植物油／混懸料：Ca 大</text>
   </g>
   <g>
-    <rect x="484" y="30" width="215" height="190" rx="8" fill="#f7f9fc" stroke="#1F4E79"/>
-    <text x="591" y="54" text-anchor="middle" font-size="12" font-weight="700" fill="#1F4E79">Weber 數 We（韋伯數）</text>
+    <rect x="484" y="30" width="215" height="190" rx="8" fill="#f7f9fc" stroke="#1d1d1f"/>
+    <text x="591" y="54" text-anchor="middle" font-size="12" font-weight="700" fill="#1d1d1f">Weber 數 We（韋伯數）</text>
     <text x="591" y="80" text-anchor="middle" font-size="14" font-style="italic" font-family="Cambria Math,serif">We = ρ·U²·L / γ</text>
     <text x="591" y="104" text-anchor="middle" font-size="11.5" fill="#33475b">慣性 ÷ 界面張力</text>
     <text x="591" y="135" text-anchor="middle" font-size="11.5" fill="#c0392b">高機速、高密度 → We↑</text>
@@ -896,7 +955,7 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 
 <h3>2.3.4　梨形（一端尖一端圓）的成形機制</h3>
 <figure>
-<svg viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="720" height="210" fill="#fff"/>
   <text x="180" y="34" text-anchor="middle" font-size="14" font-weight="700" fill="#248a3d">石蠟油：對稱橢球（正常）</text>
   <ellipse cx="180" cy="115" rx="95" ry="60" fill="#eefaf0" stroke="#248a3d" stroke-width="2.5"/>
@@ -946,7 +1005,7 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
     <li><b>內料流變（最直接）</b>：於安定性容許內<b>適度提高內料填充溫度</b>降低黏度（降 Ca）；加強<b>研磨與均質</b>、最佳化助懸劑（蜂蠟、大豆卵磷脂）抑制沉降與降伏應力；填充槽<b>恆溫＋適度攪拌</b>避免密度／黏度梯度。</li>
     <li><b>注射動力學</b>：針對黏彈性延遲把<b>注射時機適度提前</b>；調整<b>流量／活塞衝程曲線</b>使末段仍對稱充填；校正<b>注射點對位與楔溫均勻</b>。</li>
     <li><b>膠皮端（製程＋配方）</b>：適度<b>增厚膠帶或微調冷卻鼓溫度</b>提高膠帶到楔時的 G′；並以<b>明膠：甘油：水比例</b>調整膠皮柔韌與凝膠強度。</li>
-    <li><b>進階選項（最後手段）</b>：以 GELITA EASYSEAL® 拓寬封合寬容度、降低對時序完美對位的敏感；對含醛／多酚植物萃取內料，另以 Rousselot StabiCaps® 抑制交聯（見第三章）。</li>
+    <li><b>進階選項（最後手段）</b>：以 GELITA EASYSEAL® 拓寬封合寬容度、降低對時序完美對位的敏感；對含醛／多酚植物萃取內料，另以 Rousselot StabiCaps™ 抑制交聯（見第三章）。</li>
   </ol>
 </div>
 
@@ -970,8 +1029,8 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <tbody>
 <tr><td><b>漏油</b></td><td>接縫癒合不足（τ 未縮短、接縫過薄）、膠帶強度不足</td><td>楔溫／機速／膠帶厚度；明膠：甘油：水比例；適度降水</td><td class="src">EASYSEAL®</td></tr>
 <tr><td><b>梨形</b></td><td>高 Bo／Ca／We 下液滴不對稱形變被凍結、注射時序不對稱</td><td>降內料黏度＋均質化＋注射 timing／點位校正＋膠帶 G′ 補償</td><td class="src">EASYSEAL®</td></tr>
-<tr><td><b>交聯／溶離下降</b></td><td>醛類／多酚與 Lysine ε-胺基形成 Schiff 鹼交聯</td><td>抗氧化、控溫控時、降低內料醛負荷（見 3.1）</td><td class="src">RXL®（GELITA）<br>StabiCaps®（Rousselot）</td></tr>
-<tr><td><b>混懸沉降／外觀異常</b></td><td>粉體沉降造成密度／黏度梯度、降伏應力</td><td>助悬劑最佳化＋研磨均質＋恆溫攪拌</td><td>—</td></tr>
+<tr><td><b>交聯／溶離下降</b></td><td>醛類／多酚與 Lysine ε-胺基形成 Schiff 鹼交聯</td><td>抗氧化、控溫控時、降低內料醛負荷（見 3.1）</td><td class="src">RXL®（GELITA）<br>StabiCaps™（Rousselot）</td></tr>
+<tr><td><b>混懸沉降／外觀異常</b></td><td>粉體沉降造成密度／黏度梯度、降伏應力</td><td>助懸劑最佳化＋研磨均質＋恆溫攪拌</td><td>—</td></tr>
 </tbody>
 </table>
 <p><b>兩大原廠都有對應的特殊型明膠</b>——當一般製程與配方對策窮盡後，可依需求對應選型（下表）。再次強調：這些是<u>拓寬容錯窗口的進階選項，不能取代對製程與配方的基本掌控</u>。</p>
@@ -979,7 +1038,7 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <thead><tr><th>需求</th><th>GELITA（原廠）</th><th>Rousselot（原廠）</th></tr></thead>
 <tbody>
 <tr><td>接縫強化 · 抗漏油</td><td><b>EASYSEAL®</b>（接縫增厚、抗漏油）</td><td>可洽原廠對應等級</td></tr>
-<tr><td>抗交聯 · 貨架穩定</td><td><b>RXL®</b> 系列（BB／BH／PS，含 RXL／Pro／Adv／Ultra，抗交聯強度可調）</td><td><b>StabiCaps®</b>／StabiCaps® Plus</td></tr>
+<tr><td>抗交聯 · 貨架穩定</td><td><b>RXL®</b> 系列（Prime／Advanced／Pro／Ultra，抗交聯強度可依內料分級）</td><td><b>StabiCaps™</b>／StabiCaps™ Plus</td></tr>
 <tr><td>快速崩解釋放</td><td><b>RAPISOL®</b>（貨架期內仍快速釋放）</td><td>可洽原廠對應等級</td></tr>
 <tr><td>腸溶（延遲釋放）</td><td><b>DELASOL®</b>（一步法真腸溶，保護 omega-3）</td><td>—</td></tr>
 </tbody>
@@ -1005,20 +1064,20 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
   <b>雙烯丙基位（bis-allylic）</b>：多元不飽和脂肪酸中，被夾在兩個 C=C 雙鍵中間的那個 –CH₂–。它的 C–H 鍵最弱，是氧化的「起火點」。雙鍵越多，這種弱點越多，氧化越快。
 </div>
 <figure>
-<svg viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="720" height="230" fill="#fff"/>
-  <text x="360" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="#1F4E79">相對氧化速率（以油酸＝1 為基準）</text>
+  <text x="360" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="#1d1d1f">相對氧化速率（以油酸＝1 為基準）</text>
   <!-- axis -->
   <line x1="120" y1="185" x2="680" y2="185" stroke="#999"/>
   <!-- bars -->
   <g>
-    <rect x="150" y="176" width="90" height="9" fill="#63a0cc"/><text x="195" y="205" text-anchor="middle" font-size="12">油酸 (18:1)</text><text x="195" y="168" text-anchor="middle" font-size="12" fill="#1F4E79">1</text>
-    <rect x="330" y="80" width="90" height="105" fill="#3f7cae"/><text x="375" y="205" text-anchor="middle" font-size="12">亞油酸 (18:2)</text><text x="375" y="72" text-anchor="middle" font-size="12" fill="#1F4E79">≈12</text>
+    <rect x="150" y="176" width="90" height="9" fill="#63a0cc"/><text x="195" y="205" text-anchor="middle" font-size="12">油酸 (18:1)</text><text x="195" y="168" text-anchor="middle" font-size="12" fill="#1d1d1f">1</text>
+    <rect x="330" y="80" width="90" height="105" fill="#3f7cae"/><text x="375" y="205" text-anchor="middle" font-size="12">亞油酸 (18:2)</text><text x="375" y="72" text-anchor="middle" font-size="12" fill="#1d1d1f">≈12</text>
     <rect x="510" y="45" width="90" height="140" fill="#c0392b"/><text x="555" y="205" text-anchor="middle" font-size="12">次亞麻油酸 (18:3)</text><text x="555" y="37" text-anchor="middle" font-size="12" fill="#c0392b">≈25</text>
   </g>
   <text x="120" y="60" font-size="11" fill="#5b6b7b">雙鍵越多 → 氧化越快</text>
 </svg>
-<figcaption>圖 3-1　脂肪酸不飽和度與氧化速率（經典相對值）。每增加一個雙鍵，氧化速率倍增。印加果油富含 α-次亞麻油酸（18:3，ω-3）、黑種草油與沙棘果油富含亞油酸與多元不飽和脂肪酸，氧化傾向遠高於飽和油與石蠟油。</figcaption>
+<figcaption>圖 3-1　脂肪酸不飽和度與氧化速率（經典相對值，Holman &amp; Elmer, 1947）。以油酸為 1，亞油酸（多一個雙鍵、出現第一個雙烯丙基位）跳到約 12 倍，次亞麻油酸再約翻倍到 25 倍。印加果油富含 α-次亞麻油酸（18:3，ω-3）、黑種草油富含亞油酸，氧化傾向遠高於橄欖油與石蠟油。</figcaption>
 </figure>
 
 <h4>市售植物油／油脂軟膠囊的「雙烯丙基位」與氧化風險比較</h4>
@@ -1028,21 +1087,22 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <tbody>
 <tr><td><b>橄欖油</b></td><td>油酸 18:1（單元不飽和，~70–75%）</td><td class="c pro">0</td><td>低（PUFA 少）</td><td>多酚、生育酚（強）</td><td class="c pro">最低</td></tr>
 <tr><td><b>黑種草油</b></td><td>亞油酸 18:2（~50–60%）、油酸</td><td class="c">1</td><td>中高</td><td>百里醌 thymoquinone</td><td class="c">中</td></tr>
-<tr><td><b>沙棘果油</b></td><td>亞油酸 18:2＋α-次亞麻油酸 18:3（種油）</td><td class="c">1–2</td><td>中高</td><td>類胡蘿蔔素、生育酚／三烯酚（強）</td><td class="c">中（抗氧化強而部分抵銷）</td></tr>
+<tr><td><b>沙棘果油（果肉油）</b></td><td>棕櫚油酸 16:1、棕櫚酸 16:0 為主（亞油酸較少）</td><td class="c">0（主成分）</td><td>低～中</td><td>類胡蘿蔔素、生育酚（強）</td><td class="c">低～中</td></tr>
+<tr><td><b>沙棘籽油</b></td><td>亞油酸 18:2＋α-次亞麻油酸 18:3</td><td class="c">1–2</td><td>中高</td><td>生育酚／三烯酚（強）</td><td class="c">中（抗氧化強而部分抵銷）</td></tr>
 <tr><td><b>印加果油</b></td><td>α-次亞麻油酸 18:3（ω-3，~45–50%）＋亞油酸</td><td class="c con">2</td><td>很高（PUFA ~80%+）</td><td>生育酚（中）</td><td class="c con">高</td></tr>
-<tr><td><b>LIFE&#39;S OMEGA 55% 藻油</b></td><td>DHA 22:6＋EPA 20:5（合計 ~55%）</td><td class="c con">4–5</td><td>極高</td><td>需外加抗氧化（維 E 等）</td><td class="c con">最高</td></tr>
+<tr><td><b>高濃度藻油（DHA＋EPA 約 55%）</b></td><td>DHA 22:6＋EPA 20:5（合計 ~55%）</td><td class="c con">4–5</td><td>極高</td><td>需外加抗氧化（維 E 等）</td><td class="c con">最高</td></tr>
 </tbody>
 </table>
-<figcaption class="src" style="text-align:left">脂肪酸組成為典型代表值（實際依產地／批次而異）。DHA（22:6）每分子多達 5 個雙烯丙基位、EPA（20:5）4 個，是所有常見油脂中最易氧化者——這也是高濃度藻油／魚油產品最需要抗氧化與腸溶保護（DELASOL®）的原因。</figcaption>
+<figcaption class="src" style="text-align:left">脂肪酸組成為典型代表值（實際依產地／批次而異）。沙棘「果肉油」與「籽油」脂肪酸組成差異很大，進料規格請確認是哪一種，或是兩者混合。DHA（22:6）每分子多達 5 個雙烯丙基位、EPA（20:5）4 個，是所有常見油脂中最易氧化者——這也是高濃度藻油／魚油產品最需要抗氧化與腸溶保護（DELASOL®）的原因。</figcaption>
 <div class="plain">
   <span class="t"></span>
-  把「雙烯丙基位」想成油分子上的<b>易燃引信</b>。橄欖油幾乎沒有引信（油酸 0 個），所以最耐放；黑種草油、沙棘果油各 1–2 個；印加果油（ω-3 植物油）有 2 個且比例高；藻油的 DHA 一根分子上就有 <b>5 根引信</b>，最容易被氧點燃、生成醛去攻擊膠殼。油越「養生（ω-3 越多）」，對膠囊的化學攻擊性通常也越強。
+  把「雙烯丙基位」想成油分子上的<b>易燃引信</b>。橄欖油幾乎沒有引信（油酸 0 個），所以最耐放；沙棘果肉油以棕櫚油酸為主，引信也少；黑種草油、沙棘籽油各 1–2 個；印加果油（ω-3 植物油）有 2 個且比例高；藻油的 DHA 一根分子上就有 <b>5 根引信</b>，最容易被氧點燃、生成醛去攻擊膠殼。油越「養生（ω-3 越多）」，對膠囊的化學攻擊性通常也越強。
 </div>
 
 <figure>
-<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="720" height="250" fill="#fff"/>
-  <text x="360" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#1F4E79">動畫：脂質氧化 → 生成醛 → 攻擊明膠 → 交聯</text>
+  <text x="360" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#1d1d1f">動畫：脂質氧化 → 生成醛 → 攻擊明膠 → 交聯</text>
   <!-- three stage boxes -->
   <g>
     <rect x="20" y="70" width="200" height="70" rx="8" fill="#eefaf0" stroke="#38a169"/>
@@ -1087,13 +1147,13 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <h3>3.1.2　從脂質過氧化到膠殼交聯：轉醯胺基與 Schiff 鹼</h3>
 <p>脂質過氧化是一條<b>自由基連鎖反應</b>：起始（生成脂質自由基 R•）→ 傳遞（R•＋O₂→ROO•；ROO•＋RH→ROOH＋R•）→ 氫過氧化物 ROOH 分解 → 產生<b>次級降解產物：醛類（如丙二醛 MDA、4-HNE、己醛）與羰基化合物</b>。這些醛正是攻擊膠殼的元兇。</p>
 <figure>
-<svg viewBox="0 0 740 250" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 740 250" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="740" height="250" fill="#fff"/>
   <g font-size="12" text-anchor="middle">
     <rect x="15" y="30" width="120" height="52" rx="8" fill="#eefaf0" stroke="#38a169"/><text x="75" y="52">不飽和脂肪酸</text><text x="75" y="70" font-size="10.5" fill="#5b6b7b">RH（雙鍵）</text>
     <rect x="165" y="30" width="120" height="52" rx="8" fill="#fff8e6" stroke="#d69e2e"/><text x="225" y="52">脂質過氧化</text><text x="225" y="70" font-size="10.5" fill="#5b6b7b">R•→ROO•→ROOH</text>
     <rect x="315" y="30" width="120" height="52" rx="8" fill="#fdeaea" stroke="#c0392b"/><text x="375" y="52" fill="#c0392b">醛類</text><text x="375" y="70" font-size="10.5" fill="#5b6b7b">MDA · 4-HNE · 己醛</text>
-    <rect x="465" y="30" width="130" height="52" rx="8" fill="#eaf1f9" stroke="#1F4E79"/><text x="530" y="48">醛 ＋ 明膠</text><text x="530" y="66" font-size="10.5" fill="#5b6b7b">Lysine ε-NH₂</text>
+    <rect x="465" y="30" width="130" height="52" rx="8" fill="#eaf1f9" stroke="#1d1d1f"/><text x="530" y="48">醛 ＋ 明膠</text><text x="530" y="66" font-size="10.5" fill="#5b6b7b">Lysine ε-NH₂</text>
     <rect x="620" y="30" width="105" height="52" rx="8" fill="#e8dff5" stroke="#7b4bb7"/><text x="672" y="48" fill="#5a34a0">Schiff 鹼</text><text x="672" y="66" font-size="10.5" fill="#5b6b7b">亞胺 C=N</text>
   </g>
   <g stroke="#666" stroke-width="2" marker-end="url(#a7)">
@@ -1116,7 +1176,7 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 </div>
 <p>此交聯也解釋了為何<b>植物油產品的漏油與外觀問題會隨放置時間惡化</b>：氧化與交聯是時間累積的，愈到製程後期與貨架期愈嚴重。</p>
 
-<h3>3.1.3　修正對策：先製程配方，後 RXL® / StabiCaps®</h3>
+<h3>3.1.3　修正對策：先製程配方，後 RXL® / StabiCaps™</h3>
 <div class="prio">
   <span class="t"></span>
   <p style="margin:2px 0 8px"><b>【第一線對策｜先從這裡做起】</b></p>
@@ -1130,15 +1190,15 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
   &nbsp;&nbsp;<b>B：</b>縮短膠液高溫滯留（呼應第一章）<br>
   &nbsp;&nbsp;<b>C：</b>避免殘氧（保溫維持真空）</p>
   <p style="margin:10px 0 8px"><b>【進階對策｜第一線不足時再上】</b></p>
-  <p><b>三、抗交聯明膠</b>：GELITA <b>RXL®</b> 或 Rousselot <b>StabiCaps®</b>（兩大原廠對應產品，見下）<br>
+  <p><b>三、抗交聯明膠</b>：GELITA <b>RXL®</b> 或 Rousselot <b>StabiCaps™</b>（兩大原廠對應產品，見下）<br>
   <b>四、腸溶保護（omega-3）</b>：GELITA <b>DELASOL®</b> 一步法「真腸溶」膠囊，避免胃酸觸發氧化、維持生體可用率</p>
 </div>
-<p><b>GELITA RXL® 技術原理</b>：RXL® 是 GELITA 專為<b>降低軟膠囊交聯</b>設計的明膠系列，透過<b>特殊分子量分佈（MW profile）設計</b>降低與醛類、酮類、萜類、過氧化物中間體等反應性成分的交聯傾向，並提供<b>可依內料反應性調整的抗交聯強度</b>（依原料與等級由弱到強：BB／BH／PS 之 RXL、RXL Pro、RXL Adv、RXL Ultra）。在加速儲存條件（<b>40℃／75% RH</b>）下，含 RXL® Prime 的膠囊在 12 個月內仍維持優異且穩定的內料釋放，而標準骨明膠膠囊數月後即出現嚴重釋放延遲；牛皮明膠更易交聯。RXL® 亦符合 USP／EP 並經 EDQM 認證（牛源）。（資料來源：GELITA RXL® 技術型錄，2024）</p>
-<p><b>Rousselot StabiCaps® 技術原理</b>：Rousselot 以「加入交聯劑後、明膠溶液黏度上升至最大值所需的<b>反應時間</b>」與其<b>斜率（每小時黏度上升％）</b>來量化交聯敏感度——<b>反應時間越長、斜率越低，代表越不易交聯</b>。StabiCaps® 透過調整明膠的分子結構與分子量分佈（MWD）、降低可與醛反應的活性位可及性，使其在有醛類存在下仍維持較低交聯速率，從而<b>維持製程後期與貨架期的 API 釋放率</b>。其型錄亦指出交聯的觸發因子包括：高溫（&gt;30℃）高濕（&gt;60%）儲存、內料含醛類或抗氧化多酚（常見於植物萃取）、以及多維生素／金屬離子複方。</p>
-<figcaption class="src" style="text-align:left">資料來源：GELITA RXL® 技術型錄（2024）；Rousselot StabiCaps® 技術型錄（v2.0, 2021）；交聯機制圖引自 Digenis et al., 1994。</figcaption>
+<p><b>GELITA RXL® 技術原理</b>：RXL® 是 GELITA 專為<b>降低軟膠囊交聯</b>設計的明膠系列，透過<b>特殊分子量分佈（MW profile）設計</b>降低與醛類、酮類、萜類、過氧化物中間體等反應性成分的交聯傾向，並提供<b>可依內料反應性調整的抗交聯強度</b>。目前共四個等級：<b>RXL® Prime、Advanced、Pro</b> 為純明膠，以分子量分佈設計提供由弱到強的保護（牛骨、牛皮、豬皮皆有，Pro 為 115 Bloom 低 Bloom 等級）；<b>RXL® Ultra</b> 則是<b>琥珀酸化豬皮明膠</b>——把琥珀酸共價接到 Lysine 的 –NH₂ 上，直接把醛的攻擊點封住。在加速儲存條件（<b>40℃／75% RH</b>）下，RXL® Prime 膠囊在新鮮、3、6、12 個月都維持穩定的內料釋放，而標準牛骨明膠膠囊數月後即出現嚴重釋放延遲，標準牛皮明膠更快出現；在含薄荷油（強交聯劑）的 MCT 內料、40℃ 放 8 週的極端測試中，標準 160 Bloom 骨膠強烈交聯、Pro 仍有明顯交聯、Ultra 幾乎零交聯。<b>法規注意</b>：Prime／Advanced／Pro 符合 USP／EP，牛源等級具 EDQM 證書；<b>Ultra 不在 USP／EP 符合範圍內，且目前僅於歐盟供應、限 OTC／Rx 產品</b>。（資料來源：GELITA RXL® 技術型錄，2024；GELITA 官網 RXL® 頁面）</p>
+<p><b>Rousselot StabiCaps™ 技術原理</b>：Rousselot 以「加入交聯劑後、明膠溶液黏度上升至最大值所需的<b>反應時間</b>」與其<b>斜率（每小時黏度上升％）</b>來量化交聯敏感度——<b>反應時間越長、斜率越低，代表越不易交聯</b>。StabiCaps™ 透過調整明膠的分子結構與分子量分佈（MWD）、降低可與醛反應的活性位可及性，使其在有醛類存在下仍維持較低交聯速率，從而<b>維持製程後期與貨架期的 API 釋放率</b>。其型錄亦指出交聯的觸發因子包括：高溫（&gt;30℃）高濕（&gt;60%）儲存、內料含醛類或抗氧化多酚（常見於植物萃取）、以及多維生素／金屬離子複方。</p>
+<figcaption class="src" style="text-align:left">資料來源：GELITA RXL® 技術型錄（2024）；Rousselot StabiCaps™ 技術型錄（v2.0, 2021）；交聯機制圖引自 Digenis et al., 1994。</figcaption>
 <div class="callout">
-  <span class="t">RXL® 與 StabiCaps® 如何選？</span>
-  兩者都是「低交聯明膠」，原理相近（皆以調整分子結構／MWD、降低與醛反應的可及性）。<b>GELITA RXL®</b> 以「抗交聯強度可依內料反應性分級（RXL→Ultra）」與多原料型態見長；<b>Rousselot StabiCaps®</b> 以「交聯敏感度預測試驗（反應時間／斜率）」與 StabiCaps® Plus（含鹽強化）為特色。實務可依既有供應鏈、原料型態（牛骨／牛皮／豬皮）與內料反應性強度擇一導入，並以加速試驗驗證。</div>
+  <span class="t">RXL® 與 StabiCaps™ 如何選？</span>
+  兩者都是「低交聯明膠」，原理相近（皆以調整分子結構／MWD、降低與醛反應的可及性）。<b>GELITA RXL®</b> 以「抗交聯強度可依內料反應性分級（Prime→Advanced→Pro→Ultra）」與多原料型態見長；<b>Rousselot StabiCaps™</b>（牛源）以「交聯敏感度預測試驗（反應時間／斜率）」與 StabiCaps™ Plus（含鹽配方）為特色，2022 年取得歐洲專利、2023 年取得美國專利。PB Leiner 另有 <b>gelwoRx™ Dsolve</b> 系列（見第四章）。實務可依既有供應鏈、原料型態（牛骨／牛皮／豬皮）與內料反應性強度擇一導入，並以加速試驗驗證。</div>
 
 <h2 id="s32">3.2　磷蝦油與磷脂質的界面與物理干擾</h2>
 
@@ -1153,12 +1213,12 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <p>把前一段的化學特性放進封裝瞬間，破壞鏈如下：</p>
 
 <figure>
-<svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="720" height="260" fill="#fff"/>
-  <text x="360" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="#1F4E79">動畫：磷脂質在界面「洗走」膠殼的甘油 → 接縫脆化</text>
+  <text x="360" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="#1d1d1f">動畫：磷脂質在界面「洗走」膠殼的甘油 → 接縫脆化</text>
   <!-- shell -->
-  <rect x="40" y="40" width="640" height="55" fill="#dbe7f5" stroke="#2E5A8C"/>
-  <text x="360" y="34" text-anchor="middle" font-size="11.5" fill="#2E5A8C">明膠膠殼（內含親水增塑劑：甘油●）</text>
+  <rect x="40" y="40" width="640" height="55" fill="#dbe7f5" stroke="#0071e3"/>
+  <text x="360" y="34" text-anchor="middle" font-size="11.5" fill="#0071e3">明膠膠殼（內含親水增塑劑：甘油●）</text>
   <line x1="40" y1="95" x2="680" y2="95" stroke="#c0392b" stroke-width="2.5"/>
   <text x="120" y="112" font-size="11" fill="#c0392b">油–明膠界面</text>
   <!-- fill -->
@@ -1187,11 +1247,11 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <figcaption>圖 3-3a（動畫）　磷脂質（紫）不斷聚集到界面，把膠殼裡的甘油（綠●）一顆顆「洗」進油相；接縫處一旦缺甘油就會脆化。動畫在瀏覽器中循環播放。</figcaption>
 </figure>
 <figure>
-<svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="720" height="280" fill="#fff"/>
   <!-- shell layers -->
-  <rect x="40" y="40" width="640" height="55" fill="#dbe7f5" stroke="#2E5A8C"/>
-  <text x="360" y="30" text-anchor="middle" font-size="12.5" fill="#2E5A8C">明膠膠殼（內含親水增塑劑：甘油）</text>
+  <rect x="40" y="40" width="640" height="55" fill="#dbe7f5" stroke="#0071e3"/>
+  <text x="360" y="30" text-anchor="middle" font-size="12.5" fill="#0071e3">明膠膠殼（內含親水增塑劑：甘油）</text>
   <!-- interface -->
   <line x1="40" y1="95" x2="680" y2="95" stroke="#c0392b" stroke-width="2.5"/>
   <text x="120" y="112" font-size="11.5" fill="#c0392b">油–明膠界面</text>
@@ -1279,9 +1339,9 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <p>普通海運乾貨櫃無溫控，夏季日照下<b>櫃內日間溫度可飆升至 50–60℃</b>，相對濕度隨日夜劇烈波動（日間乾熱、夜間凝露）。此環境對軟膠囊有兩條同時發作、方向相反卻都致命的破壞路徑：</p>
 
 <figure>
-<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft JhengHei,sans-serif">
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,SF Pro Text,PingFang TC,Microsoft JhengHei,Noto Sans TC,sans-serif">
   <rect x="0" y="0" width="720" height="300" fill="#fff"/>
-  <text x="360" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#1F4E79">貨櫃內溫度 vs 膠殼軟化風險（示意）</text>
+  <text x="360" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#1d1d1f">貨櫃內溫度 vs 膠殼軟化風險（示意）</text>
   <!-- axes -->
   <line x1="70" y1="250" x2="680" y2="250" stroke="#999"/>
   <line x1="70" y1="60" x2="70" y2="250" stroke="#999"/>
@@ -1299,10 +1359,10 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
   <polyline points="70,182 680,180" fill="none" stroke="#248a3d" stroke-width="2.5"/>
   <text x="470" y="174" font-size="11" fill="#248a3d" font-weight="700">冷藏貨櫃 15–20℃（安全）</text>
   <!-- air line -->
-  <polyline points="70,215 680,220" fill="none" stroke="#2E5A8C" stroke-width="2.5" stroke-dasharray="6,3"/>
-  <text x="120" y="235" font-size="11" fill="#2E5A8C" font-weight="700">空運貨艙（低溫，短時）</text>
+  <polyline points="70,215 680,220" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <text x="120" y="235" font-size="11" fill="#0071e3" font-weight="700">空運（短時；地面段需溫控）</text>
 </svg>
-<figcaption>圖 3-4　三種運輸方式的溫度剖面示意。普通海運在赤道航線反覆衝入 40–60℃ 的軟化危險帶；冷藏貨櫃穩定壓在 15–20℃；空運雖短但處於低溫。</figcaption>
+<figcaption>圖 3-4　三種運輸方式的溫度剖面示意。普通海運在赤道航線反覆衝入 40–60℃ 的軟化危險帶；冷藏貨櫃穩定壓在 15–20℃；空運時間短，風險集中在地面等待段。</figcaption>
 </figure>
 
 <h4>路徑一（物理）：Tg 下降 → 膠殼重熔、黏連、漏油</h4>
@@ -1316,16 +1376,20 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 </div>
 
 <h3>3.3.2　空運的物理環境：為何能規避熱力學降解</h3>
-<p>空運貨艙處於<b>低溫</b>環境（貨艙溫度通常遠低於海運櫃內高溫），且運輸時間短（數日 vs 數週）。低溫使膠殼<b>穩守玻璃態（低於軟化點）</b>、氧化速率依 Arrhenius 大幅趨緩，從根本規避了 Tg 下降與氧化交聯兩條路徑。其代價是<b>低壓</b>：高空低氣壓使膠囊內外產生壓差、對膠殼施加物理應力，可能導致輕微脹裂風險；但相較海運的熱力學降解，此風險小且可控（且客艙／貨艙多有一定增壓）。<b>結論：空運以「低溫＋短時」換取最低的熱力學降解風險，是高價值、高氧化敏感度產品的優選。</b></p>
+<p>空運的優勢是<b>運輸時間短</b>（數日 vs 數週），高溫暴露的「時間積分」小；飛行中貨艙溫度通常也遠低於赤道乾櫃的日間高溫。低溫短時使膠殼<b>穩守玻璃態（低於軟化點）</b>、氧化速率依 Arrhenius 大幅趨緩，從根本規避了 Tg 下降與氧化交聯兩條路徑。要注意的反而是<b>地面段</b>：停機坪等待、轉機、清關倉庫若無溫控，仍可能曝曬升溫，因此應指定<b>溫控空運</b>並放置溫度記錄器。高空低壓方面，貨艙有增壓，對軟膠囊的影響小且可控。<b>結論：空運以「短時＋地面段溫控」換取最低的熱力學降解風險，是高價值、高氧化敏感度產品的優選。</b></p>
 
 <h3>3.3.3　跨國海運必須使用冷藏（控溫）貨櫃（Reefer）的科學論證</h3>
 <div class="note">
   <span class="t"></span>
   <b>是的，15–20℃ 屬「冷藏／控溫」，不是「冷凍」。</b>「冷凍」一般指低於 0℃、使內容物結凍；15–20℃ 屬<b>冷藏（chilled）／控溫</b>範圍。所謂 <b>Reefer（冷藏貨櫃／冷凍櫃的統稱）</b>其實是「可設定溫度的溫控貨櫃」，能依貨物需求設在冷凍（&lt;0℃）或冷藏（如 15–20℃）。軟膠囊<b>不可結凍</b>（結凍會使膠殼含水結晶、破壞結構），因此正確設定是<b>控溫於 15–20℃ 的冷藏模式</b>，並非冷凍。本白皮書所指皆為此冷藏（控溫）設定。
 </div>
-<p>若基於成本必須海運，則<b>普通乾貨櫃在科學上不可接受</b>，必須使用<b>冷藏貨櫃（Reefer Container），控制在 15–20℃、35–45% RH</b>。先看兩種貨櫃的優缺點對照：</p>
+<div class="note">
+  <span class="t"></span>
+  <b>濕度設定的現實限制（v3.0 修正）</b>：冷藏貨櫃的除濕功能有下限——Carrier PrimeLINE 機組可設 50–95% RH（ThinLINE 為 60–95%）、Thermo King 可設 50–99% RH；第三方在溼熱氣候艙的實測甚至發現 60% RH 設定點多半達不到。因此舊版寫的「35–45% RH」<b>無法只靠貨櫃本身做到</b>。實務目標改為：<b>櫃體除濕設 50–60% RH（壓在交聯觸發閾值 60% RH 以下），再搭配貨櫃用乾燥劑袋與全程溫濕度記錄器</b>；若產品真的需要 &lt;45% RH，就必須靠包裝（鋁箔袋、瓶內乾燥劑）來做。
+</div>
+<p>若基於成本必須海運，則<b>普通乾貨櫃在科學上不可接受</b>，必須使用<b>冷藏貨櫃（Reefer Container），控制在 15–20℃、櫃體除濕 50–60% RH</b>。先看兩種貨櫃的優缺點對照：</p>
 <table>
-<thead><tr><th>比較項目</th><th>普通乾貨櫃（無溫控）</th><th>冷藏（控溫）貨櫃 Reefer（15–20℃／35–45% RH）</th></tr></thead>
+<thead><tr><th>比較項目</th><th>普通乾貨櫃（無溫控）</th><th>冷藏（控溫）貨櫃 Reefer（15–20℃／除濕 50–60% RH）</th></tr></thead>
 <tbody>
 <tr><td><b>成本</b></td><td class="pro">✔ 運費最低</td><td class="con">✘ 運費較高（需供電控溫）</td></tr>
 <tr><td><b>膠殼物理穩定</b></td><td class="con">✘ 夏季 50–60℃ 遠超軟化點→重熔、黏連、漏油</td><td class="pro">✔ 穩守玻璃態、不重熔不黏連</td></tr>
@@ -1337,36 +1401,159 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 </table>
 <p>其必要性再由下列三組數據支撐：</p>
 <table>
-<thead><tr><th>控制項</th><th>普通乾櫃（夏季赤道）</th><th>冷藏貨櫃 15–20℃／35–45% RH</th><th>科學依據</th></tr></thead>
+<thead><tr><th>控制項</th><th>普通乾櫃（夏季赤道）</th><th>冷藏貨櫃 15–20℃／除濕 50–60% RH</th><th>科學依據</th></tr></thead>
 <tbody>
 <tr><td><b>溫度 vs Tg</b></td><td class="con">50–60℃，遠高於塑化膠殼軟化點 → 重熔、黏連</td><td class="pro">15–20℃，穩守玻璃態</td><td>Tg（Gordon–Taylor）；避免橡膠態／重熔</td></tr>
 <tr><td><b>氧化速率</b></td><td class="con">相對 20℃ 放大約 8–27 倍</td><td class="pro">維持低速氧化</td><td>Arrhenius／Q₁₀≈2–3</td></tr>
-<tr><td><b>濕度／水分活度</b></td><td class="con">劇烈波動、夜間凝露 → 吸濕壓低 Tg、促交聯</td><td class="pro">35–45% RH，水分活度穩定</td><td>水為增塑劑；濕度觸發交聯（&gt;60% RH）</td></tr>
-<tr><td><b>交聯觸發</b></td><td class="con">高溫&gt;30℃＋高濕&gt;60% 同時滿足觸發條件</td><td class="pro">同時避開溫、濕觸發閾值</td><td>StabiCaps® 型錄之交聯觸發因子</td></tr>
+<tr><td><b>濕度／水分活度</b></td><td class="con">劇烈波動、夜間凝露 → 吸濕壓低 Tg、促交聯</td><td class="pro">50–60% RH（＋乾燥劑），避開 &gt;60% 觸發區</td><td>水為增塑劑；濕度觸發交聯（&gt;60% RH）</td></tr>
+<tr><td><b>交聯觸發</b></td><td class="con">高溫&gt;30℃＋高濕&gt;60% 同時滿足觸發條件</td><td class="pro">同時避開溫、濕觸發閾值</td><td>StabiCaps™ 型錄之交聯觸發因子</td></tr>
 </tbody>
 </table>
 <div class="plain">
   <span class="t"></span>
-  普通貨櫃在赤道大熱天像個「烤箱兼蒸籠」，白天 50–60℃、晚上又反潮。軟膠囊在裡面會「熱到黏成一坨、又慢慢被氧化醛釘硬」。冷藏貨櫃把溫度壓在 15–20℃、濕度壓在 35–45%，等於同時關掉「軟化」和「氧化交聯」兩個開關——對不飽和植物油、尤其磷蝦油這類高氧化敏感度產品，是必要而非選配。
+  普通貨櫃在赤道大熱天像個「烤箱兼蒸籠」，白天 50–60℃、晚上又反潮。軟膠囊在裡面會「熱到黏成一坨、又慢慢被氧化醛釘硬」。冷藏貨櫃把溫度壓在 15–20℃、濕度壓在 60% 以下，等於同時關掉「軟化」和「氧化交聯」兩個開關——對不飽和植物油、尤其磷蝦油這類高氧化敏感度產品，是必要而非選配。
 </div>
 <div class="prio">
   <span class="t"></span>
   <ol>
-    <li><b>高氧化敏感度／高價值產品</b>（磷蝦油、印加果油等高不飽和）：<b>空運</b>優先；或海運<b>冷藏貨櫃（15–20℃、35–45% RH）</b>。</li>
+    <li><b>高氧化敏感度／高價值產品</b>（磷蝦油、印加果油等高不飽和）：<b>空運</b>優先；或海運<b>冷藏貨櫃（15–20℃、除濕 50–60% RH＋乾燥劑）</b>。</li>
     <li><b>一般油脂海運</b>：至少冷藏貨櫃控溫；配合內料抗氧化與氮氣充填、真空鋁箔外包降低氧與濕。</li>
     <li><b>絕不建議</b>：高不飽和／磷蝦油產品以普通乾櫃走赤道長航線。</li>
   </ol>
 </div>
 
 <h2>第三章結論</h2>
-<p>本章證明：內容物不是「被膠殼包起來的旁觀者」，而是<b>主動攻擊膠殼的化學與界面反應物</b>。不飽和脂肪酸經脂質過氧化生成醛、與 Lysine 的 ε-胺基交聯，使膠殼硬化、崩解延長；磷蝦油的磷脂質作為強效表面活性劑，在界面萃取甘油、拉長接縫癒合時間 τ 而引發脆化漏油；跨赤道海運的 50–60℃ 高溫則同時觸發 Tg 下降的物理重熔與 Arrhenius 加速的氧化交聯。<strong>因應之道一律遵循「先製程配方、後特殊材料」：以抗氧化、氮氣充填、甘油／水比優化、溫控物流為第一線，StabiCaps®／EASYSEAL® 為拓寬容錯的進階選項。</strong></p>
+<p>本章證明：內容物不是「被膠殼包起來的旁觀者」，而是<b>主動攻擊膠殼的化學與界面反應物</b>。不飽和脂肪酸經脂質過氧化生成醛、與 Lysine 的 ε-胺基交聯，使膠殼硬化、崩解延長；磷蝦油的磷脂質作為強效表面活性劑，在界面萃取甘油、拉長接縫癒合時間 τ 而引發脆化漏油；跨赤道海運的 50–60℃ 高溫則同時觸發 Tg 下降的物理重熔與 Arrhenius 加速的氧化交聯。<strong>因應之道一律遵循「先製程配方、後特殊材料」：以抗氧化、氮氣充填、甘油／水比優化、溫控物流為第一線，StabiCaps™／EASYSEAL® 為拓寬容錯的進階選項。</strong></p>
 
 <hr>
+<div class="chap-band" id="c4">
+  <div class="n">CHAPTER 04</div>
+  <div class="ti">第四章　競爭指標廠：明膠產能版圖與軟膠囊新技術對照</div>
+</div>
+
+<p class="lead" style="margin-top:22px">前三章談的是「膠囊裡面發生什麼事」；本章往外看一層：供應軟膠囊明膠的幾家指標廠，產能在變大還是變小、往哪裡移，又各自推出了哪些對準軟膠囊痛點的新等級。這些變化會直接影響客戶的<b>採購風險</b>與<b>技術選項</b>。</p>
+
+<div class="callout">
+  <span class="t">資料原則</span>
+  本章每個數字都標出時間點、比較基準與增減方向，只採用公司公告、財報、法說會或原廠型錄等可查來源。各廠「產能」的計算口徑不同：有的含膠原蛋白胜肽，有的只算明膠，有的只是單一工廠。表中已逐一註明，<b>不能直接相加或排名</b>。
+</div>
+
+<h2 id="s41">4.1　2024–2026 供應端的三個結構變化</h2>
+
+<div class="kpis">
+  <div class="kpi">
+    <div class="k">約 20 萬<small>噸／年</small></div>
+    <div class="l">Rousselot＋PB Leiner 合併後的<b>明膠＋膠原蛋白</b>合計產能，22 座廠</div>
+    <div class="d"><span class="up">↑ 集中度上升</span>　2025-12 簽正式協議；原訂 2026 年完成，2026-10-29 法說會改為目標 2027 年第一季</div>
+  </div>
+  <div class="kpi">
+    <div class="k">1.1 萬<small>噸／年</small></div>
+    <div class="l">GELITA 吉林遼源廠產能，已是 GELITA 全球最大明膠基地</div>
+    <div class="d"><span class="up">↑ 擴產</span>　2006 年單一產線起家 → 2026-04 新線投產後達此規模；2026 年出口占比預估約 30%，且逐年上升</div>
+  </div>
+  <div class="kpi">
+    <div class="k">6,000<small>噸／年</small></div>
+    <div class="l">Nitta 印度子公司明膠產能，由 4,500 噸擴增 33%；母公司揭露的目標為 7,500 噸</div>
+    <div class="d"><span class="up">↑ 印度擴產</span>（2025-02）／<span class="down">↓ 北美退出</span>：美國子公司 2025-07 清算完成</div>
+  </div>
+</div>
+
+<h3>① 整併：Rousselot 與 PB Leiner 合為一家</h3>
+<p>Darling Ingredients（Rousselot 品牌）在 2023 年 3 月收購巴西 Gelnex，一口氣增加 <b>6 座廠、年產能 46,000 噸</b>的明膠與膠原蛋白。2025 年 5 月再宣布與 Tessenderlo 集團旗下的 PB Leiner 合組新公司（Darling 持股 85%、Tessenderlo 15%），合併後年營收約 15 億美元、明膠＋膠原蛋白產能約 <b>20 萬噸／年</b>（宣布時為 23 座廠，2025 年 12 月正式協議時為 22 座）。截至 2026 年 10 月 29 日的 Darling 法說會，交易仍在法規審查中，<b>完成時間由「2026 年內」延後為「目標 2027 年第一季」</b>。</p>
+
+<h3>② 歐洲骨明膠退場，產能往亞洲移</h3>
+<p>PB Leiner 在 2024 年 11 月表示歐洲骨明膠「已看不到可行的前景」：關閉英國 Treforest 廠、重組比利時 Vilvoorde 廠（裁員人數由原計畫 106 人修正為 73 人）。2026 年 7 月 2 日更進一步宣布<b>擬關閉 Vilvoorde 整廠</b>（約 140 個職位），而且這座廠不納入上述合併案。同一段時間，亞洲端在加碼：GELITA 遼源廠擴到 1.1 萬噸、Nitta 印度擴到 6,000 噸，中國東寶生物揭露的明膠年產能為 13,500 噸。</p>
+
+<h3>③ 競爭焦點從「規格」轉向「功能」</h3>
+<p>軟膠囊明膠的競爭已不只比 Bloom 與黏度，而是比「能不能解掉某一種缺陷」：抗交聯（RXL®、StabiCaps™、gelwoRx™ Dsolve）、抗漏油（EASYSEAL®）、縮短乾燥（EASYSEAL®、gelwoRx™ Dhydra）、控制釋放（RAPISOL®、DELASOL®）。同時，植物性膠殼（Roquette LYCAGEL® 等）以雙位數成長切入素食與宗教飲食需求（見 4.4）。</p>
+
+<h4>關鍵事件時間軸</h4>
+<div class="tablewrap">
+<table>
+<thead><tr><th style="width:110px">時間</th><th>事件</th><th class="c" style="width:120px">方向</th></tr></thead>
+<tbody>
+<tr><td>2023-03</td><td>Darling 完成收購 Gelnex（巴西 5 廠＋美國 1 廠，46,000 噸／年）</td><td class="c up">整併 ↑</td></tr>
+<tr><td>2024-11</td><td>PB Leiner 宣布關閉英國 Treforest 骨明膠廠、重組比利時 Vilvoorde 廠</td><td class="c down">歐洲產能 ↓</td></tr>
+<tr><td>2025-02</td><td>Nitta 印度明膠產能 4,500 → 6,000 噸／年</td><td class="c up">亞洲擴產 ↑</td></tr>
+<tr><td>2025-05</td><td>Darling 與 Tessenderlo 宣布合組新公司（約 20 萬噸、23 座廠）</td><td class="c up">整併 ↑</td></tr>
+<tr><td>2025-07</td><td>Nitta 美國子公司清算完成，撤出北美生產；印度膠原胜肽 1,150 → 1,800 噸／年</td><td class="c">北美 ↓／印度 ↑</td></tr>
+<tr><td>2025-12</td><td>合併案簽正式協議（22 座廠；Vilvoorde 不納入）</td><td class="c up">整併 ↑</td></tr>
+<tr><td>2026-04</td><td>GELITA 遼源廠新線投產，年產能 1.1 萬噸，成為集團最大明膠基地</td><td class="c up">亞洲擴產 ↑</td></tr>
+<tr><td>2026-07</td><td>Tessenderlo 宣布擬關閉 PB Leiner Vilvoorde 整廠</td><td class="c down">歐洲產能 ↓</td></tr>
+<tr><td>2027 Q1（目標）</td><td>Rousselot＋PB Leiner 合併案預計完成（2026-10 法說會口徑，仍待法規核准）</td><td class="c flat">待定</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout">
+  <span class="t">市場背景（以同一份研究的前後年度比較）</span>
+  MarketsandMarkets 估計全球明膠市場由 <b>2025 年 43.1 億美元</b>成長到 <b>2026 年 45.9 億美元</b>（年增約 6.5%），並預測 <b>2031 年達 64.3 億美元</b>（2026–2031 年複合成長率 7.0%）；2026 年牛源明膠占 47.8%，為最大原料別。軟膠囊用的藥用明膠，GELITA 引用同機構數據指出 <b>2022 年規模逾 2.15 億美元</b>、預估年複合成長 6.1%。整體市場溫和成長，供應端卻在整併與移位，這是本章的主軸。
+</div>
+
+<h2 id="s42">4.2　指標廠產能一覽</h2>
+<div class="tablewrap">
+<table>
+<thead><tr><th>廠商（總部）</th><th>可查產能／規模</th><th>口徑</th><th>變化方向與時間</th><th>與軟膠囊相關</th></tr></thead>
+<tbody>
+<tr><td><b>Rousselot＋PB Leiner 合併案</b><br><span class="src">Darling（美）85%／Tessenderlo（比）15%</span></td><td>約 200,000 噸／年；22 座廠；年營收約 15 億美元</td><td>明膠＋膠原蛋白合計</td><td class="up">↑ 2025-05 宣布 → 2025-12 正式協議 → 目標 2027 Q1 完成</td><td>兩家各有抗交聯等級（StabiCaps™、gelwoRx™ Dsolve），合併後產品線可能整合</td></tr>
+<tr><td><b>Rousselot</b><br><span class="src">Darling Ingredients</span></td><td>2023 年收購 Gelnex 增加 46,000 噸／年；Darling 自述其產量約占全球膠原（明膠＋水解膠原）三成（2025-05）</td><td>明膠＋膠原蛋白</td><td><span class="up">↑</span> 2026 Q3 食品部門營收年增 9.3% 至 4.158 億美元；<span class="down">↓</span> 美國對巴西明膠／膠原加徵關稅，影響南美出貨量</td><td>StabiCaps™／StabiCaps™ Plus</td></tr>
+<tr><td><b>PB Leiner</b><br><span class="src">Tessenderlo 集團</span></td><td>未公開總噸數；據點分布亞、歐、北美、南美；約 1,200 名員工（2024-11）</td><td>—</td><td class="down">↓ 2024-11 關英國 Treforest、重組 Vilvoorde；2026-07 擬關 Vilvoorde 全廠</td><td>gelwoRx™ Dsolve（2020 推出，2022-10 擴充 B／P／xTRA）、gelwoRx™ Dhydra</td></tr>
+<tr><td><b>GELITA</b><br><span class="src">德國，家族企業</span></td><td>20 個以上生產據點；吉林遼源廠 11,000 噸／年；土耳其 SelJel 約 6,500 噸／年</td><td>單廠／子公司產能（集團總噸數未公開）</td><td class="up">↑ 遼源 2006 單線 → 2026-04 達 1.1 萬噸；SelJel 為 2020 年取得 65% 股權時的數據，之後增持至近全資</td><td>EASYSEAL®、RXL®、RAPISOL®、DELASOL®</td></tr>
+<tr><td><b>Nitta Gelatin</b><br><span class="src">日本</span></td><td>印度明膠 6,000 噸／年；印度膠原胜肽 1,800 噸／年</td><td>印度子公司 NGIL</td><td><span class="up">↑</span> 明膠 4,500→6,000（2025-02，+33%），目標 7,500；胜肽 1,150→1,800（2025-07 起，+57%）；<span class="down">↓</span> 美國子公司 2025-07 清算</td><td>印度廠 2025–26 會計年度滿載，軟膠囊與硬膠囊用明膠銷售帶動成長</td></tr>
+<tr><td><b>東寶生物</b><br><span class="src">中國包頭，300239.SZ</span></td><td>明膠 13,500 噸／年、膠原蛋白 4,300 噸／年</td><td>公司自述（2026-04 投資人調研紀要）</td><td class="flat">公開資料未揭露年增減</td><td>主業為明膠、膠原蛋白、空心膠囊</td></tr>
+<tr><td><b>Weishardt</b><br><span class="src">法國</span></td><td>4 座廠、430 名員工、外銷占營收 85%</td><td>未公開噸數</td><td class="flat">公開資料未揭露</td><td>豬皮、魚皮明膠；Naticol® 海洋膠原</td></tr>
+</tbody>
+</table>
+</div>
+<p class="src">註：「—」或「未揭露」表示公開資料查不到，不代表沒有。各列口徑不同，請勿橫向比大小。</p>
+
+<h2 id="s43">4.3　軟膠囊痛點 × 各廠對應新技術</h2>
+<p>把前三章的缺陷清單當成「需求」，對照各廠公開的專用等級，就得到下面這張選型地圖。</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th style="width:120px">痛點<br><span class="src">（章節）</span></th><th>GELITA</th><th>Rousselot</th><th>PB Leiner</th><th>植物性（Roquette）</th></tr></thead>
+<tbody>
+<tr><td><b>交聯、崩解延遲</b><br><span class="src">3.1、Q3</span></td><td>RXL® Prime／Advanced／Pro（分子量設計）；RXL® Ultra（琥珀酸化，僅歐盟、非 USP／EP）</td><td>StabiCaps™／StabiCaps™ Plus（含鹽），牛源；2022-05 歐洲專利、2023-12 美國專利</td><td>gelwoRx™ Dsolve；2022-10 擴充 Dsolve B、P、xTRA</td><td>LYCAGEL®：原廠稱不交聯</td></tr>
+<tr><td><b>漏油、接縫弱</b><br><span class="src">2.1、Q1</span></td><td>EASYSEAL®：接縫厚度牛骨增 50% 以上、豬皮增 40% 以上</td><td>公開資料未見專用抗漏油等級</td><td>公開資料未見專用等級</td><td>SeaGel®（鹿角菜膠）：強調熱封品質</td></tr>
+<tr><td><b>產能、乾燥時間</b><br><span class="src">1.4、Q1</span></td><td>EASYSEAL®：乾燥 32 h → 18 h（型錄案例，膠液配方亦不同）</td><td>StabiCaps™：稱可縮短熟成與乾燥（型錄未附數據）</td><td>gelwoRx™ Dhydra：縮短軟膠囊生產時間</td><td>LYCAGEL®：原廠稱快乾、不黏</td></tr>
+<tr><td><b>釋放控制</b></td><td>RAPISOL®（快速崩解，不受貨架期影響）；DELASOL®（一步法腸溶，調到腸液 pH 後平均 10 分鐘內釋放）</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><b>非動物來源</b></td><td>—</td><td>—</td><td>—</td><td>LYCAGEL®、LYCAGEL® Flex（2024-05，無塑化劑預拌粉）、SeaGel®、VERDIGEL™ SC（果膠–澱粉，不含鹿角菜膠）</td></tr>
+</tbody>
+</table>
+</div>
+<div class="plain">
+  <span class="t"></span>
+  三大明膠廠都在做「抗交聯」，因為這是植物油、草本萃取軟膠囊最常見、也最難靠製程救回來的問題。差別在做法：GELITA 和 Rousselot 主要靠調整明膠的分子量分佈與 pH，讓醛「比較難咬上去」；GELITA 的 RXL® Ultra 則直接把明膠上給醛咬的 –NH₂ 用琥珀酸先蓋住，效果最強，但因為改了分子結構，法規上就不再是一般藥典明膠。
+</div>
+
+<h2 id="s44">4.4　植物性膠殼：替代還是補位？</h2>
+<p>Roquette 在 2024 年 5 月受訪時表示，軟膠囊空殼（B2B）市場約 10 億歐元，其中<b>明膠約占 90%、素食膠殼約占 10%</b>，素食需求以雙位數成長。Roquette 2026 年 4 月的型錄已涵蓋羥丙基豌豆澱粉（LYCAGEL®）、鹿角菜膠（SeaGel®）與不含鹿角菜膠的果膠–澱粉預拌粉（VERDIGEL™ SC）三條路線，2026 年 2 月也發表了與 GELITA 160 Bloom 牛骨明膠並列比較的 6 個月安定性研究。</p>
+<p><b>用第一性原理看它的優缺點</b>：澱粉與鹿角菜膠是多醣，分子上沒有 Lysine 的 ε-胺基，所以第三章那條「醛 → Schiff 鹼 → 交聯」的路徑從根本上不存在，這是植物膠殼最大的技術賣點。代價是凝膠機制完全不同：明膠靠三股螺旋的可逆熔解，多醣靠離子或螺旋聚集成膠，化膠、展膠、封合與乾燥的參數都要重新建立，等於換一套製程。</p>
+<div class="callout">
+  <span class="t">定位建議</span>
+  以目前約 9：1 的市場比例來看，植物膠殼是<b>補位</b>而非全面替代：適合有素食、清真／猶太飲食認證需求，或內料交聯問題極嚴重的產品線；一般油脂與魚油軟膠囊，明膠仍是成本、機台相容性與供應量都最成熟的選擇。
+</div>
+
+<h2 id="s45">4.5　對軟膠囊廠的採購與技術意涵</h2>
+<div class="prio">
+  <span class="t"></span>
+  <ol>
+    <li><b>確認文件跟著產地走</b>：整併後同一集團內，料號可能調整供應工廠。牛源明膠請確認 EDQM 證書、BSE／TSE 聲明與原產地證明是否隨之更新；關鍵料號建議維持一個已驗證的第二來源。</li>
+    <li><b>交期與報價的地緣變數變多</b>：歐洲骨明膠產能縮減（Treforest 已關、Vilvoorde 擬關），美國又對巴西明膠／膠原加徵關稅。外銷美國的客戶尤其要留意供貨工廠所在國。</li>
+    <li><b>技術選型照本白皮書的順序</b>：先窮盡製程與配方，再依痛點對位：漏油／梨形 → EASYSEAL®；交聯 → RXL®／StabiCaps™／gelwoRx™ Dsolve；腸溶 → DELASOL®；素食需求 → 植物膠殼（需整套重新驗證）。</li>
+    <li><b>型錄數據只是起點</b>：原廠數據是在原廠的配方與機台條件下測得。導入前一律用自家配方小量試產，並以加速儲存（40℃／75% RH）追蹤崩散與溶離。</li>
+  </ol>
+</div>
+
+<h2>第四章結論</h2>
+<p>需求端溫和成長，供應端正在重排：歐美兩大廠合併、歐洲骨明膠退場、亞洲產能加碼。對軟膠囊廠來說，好消息是每一種常見缺陷幾乎都有原廠的專用等級可以對位；要做的功課，是把<b>供應來源的穩定性</b>和<b>功能等級的驗證</b>都提早排進計畫裡。</p>
+
+
 <div class="chap-band" id="appx">
   <div class="n">APPENDIX A</div>
   <div class="ti">附錄 A　軟膠囊製程技術 Q&amp;A 與極限故障排除指南</div>
 </div>
-<p class="lead">本附錄以前三章推導的底層機制為據，針對客戶四個高頻痛點做一問一答的深度解析。每題皆循「現象 → 第一性機制 → 三位一體對策 → 原廠產品對應（進階選項）」的結構。</p>
+<p class="lead">本附錄以第一至三章推導的底層機制為據，針對客戶四個高頻痛點做一問一答的深度解析。每題皆循「現象 → 第一性機制 → 三位一體對策 → 原廠產品對應（進階選項）」的結構。</p>
 
 <div class="qa" id="q1">
   <div class="q"><span class="tag">Q1</span>為什麼台灣夏天（高溫高濕）生產時，接縫強度明顯下降、且烘乾時間大幅延長？</div>
@@ -1411,10 +1598,10 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
     <ol>
       <li><b>降低醛負荷（第一線）</b>：內料添加抗氧化劑（天然維生素 E／迷迭香）、<b>氮氣充填、減少頂空氧</b>、嚴管進料過氧化價 PV／茴香胺價 AV、降低內料加工溫度與滯留。</li>
       <li><b>膠液與儲存</b>：控制膠液 pH 與水分、避免殘氧（保溫維持真空）、成品<b>控溫控濕儲存</b>（避開 &gt;30℃、&gt;60% RH 的交聯觸發區）。</li>
-      <li><b>低交聯明膠（進階，優先 RXL®）</b>：以 <b>GELITA RXL®</b> 降低對醛的敏感度——RXL® 透過特殊分子量分佈（MW profile）設計、降低與醛反應的活性位可及性，並提供<b>可依內料反應性分級的抗交聯強度（RXL→Pro→Adv→Ultra）</b>；在 <b>40℃／75% RH</b> 加速下 12 個月仍維持穩定內料釋放，而標準骨膠數月即嚴重延遲、牛皮膠更甚。<b>Rousselot StabiCaps®</b> 為同類對應產品（以反應時間／斜率量化交聯敏感度）。可依供應鏈與原料型態擇一，並以加速試驗驗證。</li>
+      <li><b>低交聯明膠（進階，優先 RXL®）</b>：以 <b>GELITA RXL®</b> 降低對醛的敏感度——RXL® 透過特殊分子量分佈（MW profile）設計、降低與醛反應的活性位可及性，並提供<b>可依內料反應性分級的抗交聯強度（Prime→Advanced→Pro→Ultra）</b>；在 <b>40℃／75% RH</b> 加速下 RXL® Prime 12 個月仍維持穩定內料釋放，而標準骨膠數月即嚴重延遲、牛皮膠更快。最強的 Ultra 為琥珀酸化明膠，目前僅歐盟供應、不在 USP／EP 範圍，外銷美國或藥用前須先確認法規。<b>Rousselot StabiCaps™</b> 為同類對應產品（以反應時間／斜率量化交聯敏感度）。可依供應鏈與原料型態擇一，並以加速試驗驗證。</li>
       <li><b>腸溶保護（omega-3）</b>：必要時以 <b>GELITA DELASOL®</b> 一步法腸溶，讓膠囊在腸道而非胃中打開，避免胃酸再觸發氧化。</li>
     </ol>
-    <p class="src">驗證建議：以加速儲存（40℃／75% RH）配合溶離度／崩散度追蹤，比較標準明膠與 RXL®／StabiCaps® 的釋放曲線衰減。</p>
+    <p class="src">驗證建議：以加速儲存（40℃／75% RH）配合溶離度／崩散度追蹤，比較標準明膠與 RXL®／StabiCaps™ 的釋放曲線衰減。</p>
   </div>
 </div>
 
@@ -1430,15 +1617,15 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
       <thead><tr><th>控制項</th><th class="c">標準設定</th><th>科學依據</th></tr></thead>
       <tbody>
         <tr><td>櫃內／倉儲溫度</td><td class="c pro">15–20℃（冷藏控溫，不可結凍）</td><td>穩守塑化膠殼玻璃態、避免重熔；結凍會破壞膠殼含水結構</td></tr>
-        <tr><td>相對濕度</td><td class="c pro">35–45% RH</td><td>穩定水分活度、避免吸濕壓低 Tg 與觸發交聯</td></tr>
-        <tr><td>避開觸發區</td><td class="c">溫度 &lt; 30℃ 且 RH &lt; 60%</td><td>同時避開交聯觸發雙閾值（StabiCaps®／RXL® 型錄）</td></tr>
-        <tr><td>運輸方式</td><td class="c">冷藏（控溫）貨櫃 Reefer；高價值高不飽和品優先空運</td><td>Reefer 可設控溫 15–20℃；空運低溫短時最小化降解</td></tr>
+        <tr><td>相對濕度</td><td class="c pro">櫃體除濕設 50–60% RH＋貨櫃乾燥劑</td><td>貨櫃除濕下限約 50% RH（Carrier／Thermo King 規格）；壓在交聯觸發 60% RH 以下、避免吸濕壓低 Tg</td></tr>
+        <tr><td>避開觸發區</td><td class="c">溫度 &lt; 30℃ 且 RH &lt; 60%</td><td>同時避開交聯觸發雙閾值（StabiCaps™ 型錄）</td></tr>
+        <tr><td>運輸方式</td><td class="c">冷藏（控溫）貨櫃 Reefer；高價值高不飽和品優先溫控空運</td><td>Reefer 可設控溫 15–20℃；空運短時，地面段需溫控</td></tr>
         <tr><td>監控</td><td class="c">全程溫濕度資料記錄器（data logger）</td><td>留存溫濕曲線佐證與異常追溯</td></tr>
       </tbody>
     </table>
     <div class="plain">
       <span class="t"></span>
-      普通貨櫃在赤道像「烤箱兼蒸籠」，白天 50–60℃、晚上反潮。軟膠囊會「熱到黏成一坨、又慢慢被氧化醛釘硬」。把 Reefer 設在 <b>15–20℃、35–45% RH</b>，等於同時關掉「軟化」與「氧化交聯」兩個開關——對高不飽和油、尤其藻油／磷蝦油，這是必要而非選配。注意 15–20℃ 是<b>冷藏（控溫）</b>，不是冷凍，膠囊不可結凍。
+      普通貨櫃在赤道像「烤箱兼蒸籠」，白天 50–60℃、晚上反潮。軟膠囊會「熱到黏成一坨、又慢慢被氧化醛釘硬」。把 Reefer 設在 <b>15–20℃、除濕 50–60% RH</b>，等於同時關掉「軟化」與「氧化交聯」兩個開關——對高不飽和油、尤其藻油／磷蝦油，這是必要而非選配。注意 15–20℃ 是<b>冷藏（控溫）</b>，不是冷凍，膠囊不可結凍。
     </div>
   </div>
 </div>
@@ -1448,20 +1635,42 @@ hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
 <ol class="src">
   <li>客戶《軟膠囊製程技術交流議題》，2026。（環境 &gt;26℃／&lt;15℃ 之膠液性狀差異、48℃ 保溫隔夜、60℃ 黏度 15,000–18,000 cps、清油／黑種草／混懸水比 0.95／0.90／0.88、梨形與漏油、磷蝦油／混懸案例）</li>
   <li>R. Schrieber &amp; H. Gareis, <i>Gelatine Handbook: Theory and Industrial Practice</i>, Wiley-VCH.（三股螺旋、螺旋–捲曲熔解、溶膠–凝膠轉變與流變基礎）</li>
-  <li>GELITA, <i>EASYSEAL® – Reliable Softgel Seams</i>（技術型錄，2025）。（接縫增厚 40–50%、爆破強度、溫度非依賴性、漏油率實測）</li>
+  <li>GELITA, <i>EASYSEAL® – Reliable Softgel Seams</i>（技術型錄，2025）。（接縫增厚 40–50%、爆破強度、溫度非依賴性、乾燥時間、漏油率實測）</li>
   <li>Rousselot, <i>StabiCaps™ – The Proven Solution for More Stable Soft Gels</i>（技術型錄，v2.0, 2021）。（醛類 Schiff 鹼交聯、交聯敏感度預測法、低交聯明膠、交聯觸發因子）</li>
   <li>黃儀友，〈巴西綠蜂膠軟膠囊的配方工藝研究〉，《食品安全質量檢測學報》6(11)，2015。（明膠:甘油:純水＝1:0.4–0.5:0.9–1、Bloom／黏度與漏油、蜂蠟助懸、混懸沉降體積比）</li>
   <li>Digenis G.A. et al., Cross-linking of gelatin capsules and its relevance to in-vitro–in-vivo performance, <i>J. Pharm. Sci.</i>, 1994.（醛–明膠交聯機制）</li>
-  <li>GELITA, <i>RXL® Portfolio – Reduced Crosslinking Gelatins</i>（技術型錄，2024）。（抗交聯明膠、MW profile 設計、40℃／75% RH 加速試驗、RXL／Pro／Adv／Ultra 分級）</li>
+  <li>GELITA, <i>RXL® Portfolio – Reduced Crosslinking Gelatins</i>（技術型錄，2024）。（抗交聯明膠、MW profile 設計、40℃／75% RH 加速試驗、Prime／Advanced／Pro／Ultra 分級與法規範圍）</li>
   <li>GELITA, <i>DELASOL® – Enteric Capsule Release</i>（技術型錄，2024）。（一步法真腸溶、保護 omega-3、USP／Ph.Eur. 崩散參數）</li>
   <li>GELITA, <i>Softgel Specialties（RAPISOL®／EASYSEAL®／RXL®／DELASOL®）</i> 綜合資料，2024–2025。</li>
   <li>脂肪酸組成與甲烯間隔多元不飽和結構（雙烯丙基位）之一般脂質化學資料：油酸(18:1)／亞油酸(18:2)／α-次亞麻油酸(18:3)／EPA(20:5)／DHA(22:6)。</li>
+  <li>Holman, R.T. &amp; Elmer, O.C., The rates of oxidation of unsaturated fatty acids and esters, <i>J. Am. Oil Chem. Soc.</i> 24, 1947.（油酸：亞油酸：次亞麻油酸相對氧化速率約 1：12：25）</li>
+  <li>Wool, R.P., <i>Polymer Interfaces: Structure and Strength</i>, Hanser, 1995.（界面癒合 reptation 標度律 σ∝t<sup>1/4</sup>、τ∝M³）</li>
+  <li><a href="https://www.mdpi.com/2310-2861/10/8/486">哺乳類與魚明膠水凝膠流變比較，<i>Gels</i> 10(8):486, 2024</a>。（6.67% 哺乳類明膠凝膠熔點 22–34℃）</li>
+  <li><a href="https://www.gelita.com/sites/default/files/documents/2025-04/EASYSEAL%20Brochure%202025.pdf">GELITA, EASYSEAL® Brochure 2025</a>（乾燥 32 h→18 h、膠液配方、可選等級、卵磷脂內料漏油試驗）；<a href="https://www.gelita.com/en/products/gelatine/rxl">GELITA RXL® 產品頁</a>（RXL® Ultra 琥珀酸化機制）。</li>
+  <li><a href="https://darlingii.com/rousselot/brands/stabicaps">Rousselot StabiCaps™ 產品頁</a>；<a href="https://www.nutritioninsight.com/news/rousselots-stabicaps-score-european-patent-improving-soft-gel-stability-and-performance.html">NutritionInsight, 2022-05-09（歐洲專利）</a>；<a href="https://www.nutraceuticalsworld.com/?p=41759">Nutraceuticals World, 2023-12-04（美國專利）</a>。</li>
+  <li><a href="https://dairy-international.com/news/home/pb-leiner-jump-starts-new-pharma-brand-with-two-soft-capsule-specialty-products">PB Leiner gelwoRx™ Dsolve／Dhydra 上市，2020-09</a>；<a href="https://manufacturingchemist.com/pb-leiner-s-pharmaceutical-portfolio-expands-204546">Manufacturing Chemist, 2022-10-28（Dsolve B／P／xTRA）</a>。</li>
+  <li><a href="https://www.darlingii.com/media/news/rousselot-darling-completes-acquisition-of-brazilian-gelatin-and-collagen-producer-gelnex">Darling 完成收購 Gelnex，2023-04-03</a>；<a href="https://www.darlingii.com/media/news/20250512-darling-ingredients-and-tessenderlo-group-agree-to-form-new-company">Darling × Tessenderlo 合組新公司，2025-05-12</a>；<a href="https://www.darlingii.com/media/news/20251210-darling-ingredients-and-tessenderlo-group-sign-definitive-agreements-to-form-new-company">正式協議，2025-12-10</a>。</li>
+  <li><a href="https://stockanalysis.com/stocks/dar/transcripts/719929-q3-2026/">Darling 2026 年第三季法說會逐字稿，2026-10-29</a>（合併案目標 2027 Q1 完成）；<a href="https://www.nasdaq.com/articles/dar-q3-earnings-surpass-estimates-solid-feed-performance">Nasdaq／Zacks 2026 Q3 摘要</a>（食品部門營收年增 9.3%、巴西關稅影響）。</li>
+  <li><a href="https://financialreports.eu/filings/tessenderlo-group-nv/ma-activity/2024/3212621/">Tessenderlo 新聞稿，2024-11-21（Treforest 關廠、Vilvoorde 重組）</a>；<a href="https://www.vrt.be/vrtnws/nl/2025/03/28/gelatineproducent-pb-leiner-in-vilvoorde-vermindert-aantal-gepla/">VRT，2025-03-28（裁員 106→73）</a>；<a href="https://www.tessenderlo.com/investor-relations/press-releases/tessenderlo-group-announces-intention-close-vilvoorde-production-site">Tessenderlo 新聞稿，2026-07-02（擬關閉 Vilvoorde）</a>；<a href="https://www.tessenderlo.com/sites/tessenderlo/files/files/2026-03/2025-pr-tessenderlo-group-results-english_0.pdf">Tessenderlo 2025 年報新聞稿，2026-03-26（Vilvoorde 不納入合併）</a>。</li>
+  <li><a href="https://global.chinadaily.com.cn/a/202604/28/WS69f050eda310d6866eb45f6c.html">China Daily，2026-04-28（GELITA 遼源廠 1.1 萬噸）</a>；<a href="https://www.gelita.com/de/node/670">GELITA 取得 SelJel 65% 股權（約 6,500 噸）</a>；<a href="https://www.gelita.com/en/company">GELITA 公司簡介（20 個以上生產據點）</a>。</li>
+  <li><a href="https://www.indiainfoline.com/company/nitta-gelatin-india-ltd-management/summary/1526">Nitta Gelatin India 公司摘要（2025-02 擴產 1,500 噸）</a>；<a href="https://indiainfoline.com/company/nitta-gelatin-india-ltd-share-price/directors-report/1526">NGIL 2025–26 董事會報告（滿載運轉）</a>；<a href="https://envalith.com/en/companies/4977/overview">Nitta Gelatin Inc. 概況（目標 7,500 噸、胜肽 1,150→1,800 噸、美國子公司清算）</a>。</li>
+  <li><a href="https://www.fxbaogao.com/detail/5345732">東寶生物機構調研紀要，2026-04-10（明膠 13,500 噸、膠原蛋白 4,300 噸）</a>；<a href="https://www.weishardt.com/en/about-weishardt/">Weishardt 公司簡介</a>。</li>
+  <li><a href="https://www.marketsandmarkets.com/Market-Reports/content-creation-market-850.html">MarketsandMarkets 明膠市場報告（2025：43.1 億美元；2026：45.9 億；2031：64.3 億美元）</a>；<a href="https://issuu.com/inpharma/docs/b2b_nutramedic_cosmetics_no._7/s/39567524">GELITA 引述之軟膠囊藥用明膠市場（2022 年逾 2.15 億美元）</a>。</li>
+  <li><a href="https://www.foodnavigator.com/Article/2024/05/28/Roquette-champions-flexibility-with-new-pea-starch-softgel">FoodNavigator，2024-05-28（明膠約 90%／素食約 10%）</a>；<a href="https://www.roquette.com/health-pharma/press-releases/lycagel-flex-softgel-capsule-shell-system">Roquette LYCAGEL® Flex，2024-05-14</a>；<a href="https://www.ingredientsnetwork.com/47/resourcefile/16/94/53/roquette-softgel-brochure-04-2026.pdf">Roquette Softgel Solutions 型錄，2026-04</a>；<a href="https://www.roquette.com/health-pharma/resources/soft-capsule-modified-pea-starch">Roquette 技術文章，2026-02-07</a>。</li>
+  <li><a href="https://pdf.directindustry.com/pdf/carrier-transport-refrigeration-container-products/dehumidification/29142-334365.html">Carrier 冷藏貨櫃除濕規格（PrimeLINE 50–95% RH）</a>；<a href="https://www.emea-user-manuals.thermoking.com/etech-emea-public/thermoking-emea/Minneapolis%20-%20Container%20-%20Generator%20Sets/Literature/Maintenance%20or%20Service/0005725493.xml/$/0005725892">Thermo King 控制器手冊（50–99% RH）</a>；<a href="https://iifiir.org/en/fridoc/142452">IIR 2020 冷鏈研討會（溼熱環境下 60% RH 設定多半達不到）</a>。</li>
 </ol>
 
 <hr>
-<p class="src" style="text-align:center">軟膠囊製程技術白皮書　｜　第一性原理系列　｜　版本 2.0（HTML 圖解版）　｜　2026 年 7 月</p>
+<p style="text-align:center;margin-top:40px">有任何製程狀況想一起拆解，隨時找我聊。</p>
+<p class="src" style="text-align:center">軟膠囊製程技術白皮書　｜　第一性原理系列　｜　版本 3.0　｜　2026 年 11 月</p>
 
 </div>
+<script>
+document.querySelectorAll('table').forEach(function(tb){
+  if(tb.parentElement && tb.parentElement.classList.contains('tablewrap')) return;
+  var w=document.createElement('div'); w.className='tablewrap'; tb.parentNode.insertBefore(w,tb); w.appendChild(tb);
+});
+</script>
 <script>
 (function(){
   var vac=document.getElementById('vac'),temp=document.getElementById('temp'),time=document.getElementById('time'),lane=document.getElementById('lane');
