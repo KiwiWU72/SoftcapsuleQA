@@ -109,6 +109,50 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 .chg{display:inline-block;background:#f5f9ff !important;color:#0071e3 !important;border-radius:999px;font-size:.75rem;padding:0 9px;margin-left:6px;font-weight:600;vertical-align:middle;}
 @media (max-width:760px){.tablewrap table{min-width:820px;}.wrap{padding:0 18px 70px;}.cover h1{font-size:2.2rem;}.kpis{grid-template-columns:1fr;}h2{font-size:1.6rem;}.chap-band .ti{font-size:1.7rem;}}
 @media print{.wrap{max-width:100%;}.chap-band{page-break-before:always;}}
+
+.anim{background:#f5f5f7 !important;border-radius:18px;padding:20px 24px;margin:24px 0;}
+.anim .ah{font-weight:600;color:#1d1d1f !important;font-size:1.05rem;}
+.anim .ad{font-size:.95rem;color:#1d1d1f !important;margin:6px 0 10px;}
+.anim .actrl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:8px 0;}
+.anim .actrl label{font-weight:600;min-width:84px;color:#1d1d1f !important;font-size:.93rem;}
+.anim input[type=range]{flex:1;min-width:160px;accent-color:#0071e3;}
+.anim select{font:inherit;font-size:.9rem;padding:5px 10px;border-radius:10px;border:1px solid #d2d2d7;background:#ffffff !important;color:#1d1d1f !important;}
+.anim .aval{min-width:64px;text-align:right;color:#0071e3 !important;font-weight:600;}
+.anim button{font:inherit;font-size:.88rem;border:none;border-radius:999px;padding:6px 14px;background:#0071e3 !important;color:#ffffff !important;cursor:pointer;}
+.anim .seg{display:inline-flex;background:#e8e8ed !important;border-radius:999px;padding:3px;gap:2px;}
+.anim .seg button{background:transparent !important;color:#1d1d1f !important;}
+.anim .seg button.on{background:#ffffff !important;color:#0071e3 !important;box-shadow:0 1px 3px rgba(0,0,0,.12);}
+.anim .asvg{width:100%;height:auto;background:#ffffff !important;border-radius:14px;margin-top:8px;display:block;}
+.anim .aread{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
+.anim .aread div{background:#ffffff !important;color:#1d1d1f !important;border-radius:12px;padding:6px 12px;font-size:.9rem;}
+.anim .aread b{color:#0071e3 !important;}
+.anim .anote{font-size:.8rem;color:#6e6e73 !important;margin:10px 0 0;}
+
+[id]{scroll-margin-top:76px;}
+.tabbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9) !important;-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid #d2d2d7;margin:0 -40px;padding:0 40px;}
+.tabin{display:flex;gap:4px;overflow-x:auto;padding:10px 0;scrollbar-width:none;}
+.tabin::-webkit-scrollbar{display:none;}
+.tabbar a{white-space:nowrap;padding:6px 14px;border-radius:999px;color:#1d1d1f !important;font-size:.9rem;text-decoration:none !important;}
+.tabbar a:hover{background:#f5f5f7 !important;}
+.tabbar a.on{background:#1d1d1f !important;color:#ffffff !important;}
+.newdot{display:inline-block;background:#0071e3 !important;color:#ffffff !important;font-size:.62rem;border-radius:999px;padding:0 6px;margin-left:5px;vertical-align:middle;}
+.tab{display:none;}
+.tab.on{display:block;animation:fadein .35s ease;}
+@keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+.tab>.chap-band:first-child{border-top:none;padding-top:34px;margin-top:0;}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:60px;padding-top:22px;border-top:1px solid #d2d2d7;}
+.pager a{display:block;background:#f5f5f7 !important;border-radius:14px;padding:12px 18px;color:#1d1d1f !important;max-width:48%;text-decoration:none !important;}
+.pager a small{display:block;color:#6e6e73 !important;font-size:.78rem;}
+.pager a.next{margin-left:auto;text-align:right;}
+.pager a:hover{background:#e8e8ed !important;}
+.brands{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:12px;margin:22px 0 0;}
+.brand{background:#ffffff !important;border:1px solid #e8e8ed;border-radius:14px;height:74px;display:flex;align-items:center;justify-content:center;padding:10px;}
+.brand img{max-width:100%;max-height:46px;object-fit:contain;}
+.brand .bname{font-weight:600;font-size:.95rem;color:#1d1d1f !important;text-align:center;}
+.brand.haslogo .bname{display:none;}
+.blogo img{height:18px;width:auto;vertical-align:-3px;margin-right:6px;}
+@media (max-width:760px){.tabbar{margin:0 -18px;padding:0 18px;}.pager a{max-width:none;}.pager{flex-direction:column;}}
+@media print{.tab{display:block !important;}.tabbar,.pager{display:none !important;}}
 </style>
 </head>
 <body>
@@ -125,6 +169,8 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
   <path d="M34 49 L35 57 M35 57 L31 58 M35 57 L38 59" stroke="#c9a46a" stroke-width="2" fill="none" stroke-linecap="round"/>
 </svg>
 </div>
+<nav class="tabbar"><div class="tabin"><a href="#tab-home" data-tab="tab-home">首頁</a><a href="#tab-c1" data-tab="tab-c1">第一章 化膠</a><a href="#tab-c2" data-tab="tab-c2">第二章 封裝</a><a href="#tab-c3" data-tab="tab-c3">第三章 內料物流</a><a href="#tab-c4" data-tab="tab-c4">第四章 競爭廠<span class="newdot">NEW</span></a><a href="#tab-appx" data-tab="tab-appx">附錄　Q&amp;A</a><a href="#tab-refs" data-tab="tab-refs">參考文獻</a></div></nav>
+<section class="tab" id="tab-home" data-title="首頁">
 <div class="cover">
   <div class="eyebrow">第一性原理（First Principles）系列</div>
   <h1>軟膠囊製程技術白皮書</h1>
@@ -205,6 +251,9 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
   </ol>
 </div>
 
+<nav class="pager"></nav>
+</section>
+<section class="tab" id="tab-c1" data-title="第一章　化膠與脫氣">
 <div class="chap-band" id="c1">
   <div class="n">CHAPTER 01</div>
   <div class="ti">第一章　明膠溶膠化、真空脫氣之流變學控制與環境熱力學干擾</div>
@@ -290,6 +339,16 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 </svg>
 <figcaption>圖 1-1　煮膠的本質：加熱把「鎖住三股螺旋的氫鍵」拆開，鏈段從有序的低熵螺旋，變成自由亂動的高熵捲曲。溫度越高越有利捲曲，因為 −T·ΔS 這一項會壓過吸熱的 ΔH。</figcaption>
 </figure>
+
+<div class="anim" id="anim-helix">
+  <div class="ah">▶ 動畫 1-1：加熱看三股螺旋解開</div>
+  <p class="ad">拖動溫度，或按「自動加熱／冷卻」。低溫時三條鏈靠氫鍵（虛線）擰成螺旋；過了 Tₘ，氫鍵斷開、鏈段亂扭成無規捲曲。冷卻時又會慢慢擰回去——這就是明膠「熱則化、冷則凝」的可逆性。</p>
+  <div class="actrl"><label>膠液溫度</label><input type="range" min="20" max="70" step="0.5" value="24" data-k="T"><span class="aval" data-v="T">24 ℃</span><button type="button" data-act="play">自動加熱／冷卻</button></div>
+  <svg viewBox="0 0 720 210" class="asvg"></svg>
+  <div class="aread"><div>螺旋比例 <b data-v="f">—</b></div><div>狀態 <b data-v="st">—</b></div></div>
+  <p class="anote">示意模型：螺旋比例＝1／(1＋e<sup>(T−Tₘ)/w</sup>)，取 Tₘ＝32℃。實際 Tₘ 依 Bloom、濃度、甘油比例而異。</p>
+</div>
+
 
 <div class="plain">
   <span class="t"></span>
@@ -523,6 +582,17 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 <figcaption>圖 1-4　「隔夜偏軟」的完整因果鏈：熱把長鏈剪短 → 能形成的三股螺旋連結區變少 → 凝膠網絡變弱 → 膠皮軟、接縫易漏。此鏈正對應客戶「高室溫、48℃ 隔夜後膠皮偏軟」的觀察。</figcaption>
 </figure>
 
+<div class="anim" id="anim-scission">
+  <div class="ah">▶ 動畫 1-4：保溫越久，長鏈被剪得越碎</div>
+  <p class="ad">每一條線是一條明膠長鏈；紅色剪刀點是水解斷鏈。被剪到太短（灰色）的片段就搭不出三股螺旋連結區，凝膠強度跟著掉。試試把溫度從 48℃ 拉到 65℃，同樣的時間剪得快很多。</p>
+  <div class="actrl"><label>保溫溫度</label><select data-k="T"><option value="48" selected>48 ℃（保溫）</option><option value="55">55 ℃</option><option value="65">65 ℃（化膠上限）</option></select></div>
+  <div class="actrl"><label>保溫時間</label><input type="range" min="0" max="24" step="0.5" value="0" data-k="t"><span class="aval" data-v="t">0 h</span><button type="button" data-act="play">播放隔夜</button></div>
+  <svg viewBox="0 0 720 230" class="asvg"></svg>
+  <div class="aread"><div>平均鏈長 <b data-v="L">—</b></div><div>可成網鏈段 <b data-v="net">—</b></div><div>相對斷鏈速率 <b data-v="k">—</b></div></div>
+  <p class="anote">示意模型：斷鏈為一級反應、速率依 Arrhenius 隨溫度上升（以 48℃ 為 1 倍）。用來看「趨勢與倍數」，不代表特定批次的實測 Bloom。</p>
+</div>
+
+
 <div class="plain">
   <span class="t"></span>
   <b>Bloom 值</b>是明膠「凝膠強度」的指標。凝膠的強度來自「長鏈互相纏繞、形成的連結點」。熱把長鏈剪短後，連結點變少變短，凝膠自然變軟——就像把一團長毛線剪成短毛線，就再也打不出牢固的結。
@@ -704,6 +774,9 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 <h2 id="s15">1.6　本章結論</h2>
 <p>本章從氫鍵協同穩定的三股螺旋（而非雙硫鍵），談到水和擴散、螺旋–捲曲的熵驅動熔解；再以 Stokes／Boyle／Henry 解構真空脫氣，以 Arrhenius 一級動力學解釋 48℃×隔夜如何經「分子量↓→Bloom↓→G′↓」使膠皮偏軟；最後落到台灣高溫與低溫兩極端如何分別透過「過冷度遲滯」與「黏度急升／氣泡受困」破壞良率。<strong>貫穿全章的工程哲學是：每個參數設定，都是在「流變學可加工性」與「化學分子完整性」之間、在「熱力學窗口」與「動力學時間」之間的定量權衡。</strong></p>
 
+<nav class="pager"></nav>
+</section>
+<section class="tab" id="tab-c2" data-title="第二章　封裝與梨形">
 <div class="chap-band" id="c2">
   <div class="n">CHAPTER 02</div>
   <div class="ti">第二章　模具封裝動力學、界面融合與幾何形狀異常之流變學解析</div>
@@ -747,6 +820,17 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 </svg>
 <figcaption>圖 2-1　接縫是「界面癒合」：溫度提供鏈段運動的動力、壓力提供緊密接觸，兩片膠帶的分子鏈互相鑽入纏結，界面在分子尺度上消融。</figcaption>
 </figure>
+
+<div class="anim" id="anim-seam">
+  <div class="ah">▶ 動畫 2-1：接縫「癒合」是怎麼長出來的</div>
+  <p class="ad">兩片膠帶在楔尖壓合後，鏈段像蛇一樣鑽過界面（中間虛線）。鑽得越深，接縫強度越接近膠皮本體。楔溫越高，鏈段跑得越快（τ 變短）；如果甘油被磷蝦油的磷脂抽走，鏈段變僵、τ 拉長，同樣時間內就癒合不完。</p>
+  <div class="actrl"><label>楔溫</label><input type="range" min="34" max="44" step="0.5" value="38" data-k="W"><span class="aval" data-v="W">38 ℃</span></div>
+  <div class="actrl"><label>界面甘油</label><select data-k="G"><option value="1" selected>正常</option><option value="4">被磷脂抽走（τ ×4）</option></select><button type="button" data-act="play">重新壓合</button></div>
+  <svg viewBox="0 0 720 220" class="asvg"></svg>
+  <div class="aread"><div>接觸時間 <b data-v="t">—</b></div><div>接縫強度／本體 <b data-v="s">—</b></div></div>
+  <p class="anote">示意模型：σ(t)／σ<sub>∞</sub>＝min[1,(t／τ)<sup>1/4</sup>]，τ 隨楔溫依 Arrhenius 縮短。封合窗口固定為 1 個時間單位，代表機速不變。</p>
+</div>
+
 
 <p>此癒合可由高分子的<b>爬行理論（reptation，分子鏈像蛇般沿自身管道擴散）</b>描述。鏈段跨越界面所需的特徵時間，本白皮書統一稱為<b>「接縫癒合時間 τ」</b>（healing／welding time，源自 reptation 時間），界面強度隨接觸時間依標度律成長：</p>
 <div class="eq">σ(t) ∝ (t / τ)<sup>1/4</sup>　，　τ ∝ M³（M＝分子量）</div>
@@ -971,6 +1055,18 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 </svg>
 <figcaption>圖 2-4　梨形成形：注射前段對稱充填出「圓端」；末段因高黏度／降伏應力使內料流動受限、來不及對稱到位，而模具仍持續旋轉封合，把該端膠帶「捏尖」。</figcaption>
 </figure>
+
+<div class="anim" id="anim-pear">
+  <div class="ah">▶ 動畫 2-4：同一台機，換內料就變梨形</div>
+  <p class="ad">選內料看注射充填的過程。石蠟油稀、界面張力高，液滴在封合前就彈回對稱的橢圓；黑種草油較稠，末段流不過去；高粉混懸料又稠又有降伏應力，尾端被模具「捏尖」。</p>
+  <div class="actrl"><label>內料</label>
+    <span class="seg"><button type="button" data-pick="0" class="on">石蠟油</button><button type="button" data-pick="1">黑種草油</button><button type="button" data-pick="2">高粉混懸</button></span>
+    <label style="min-width:auto;margin-left:6px">填充保溫</label><select data-k="H"><option value="0" selected>不加溫</option><option value="1">適度加溫（降黏）</option></select></div>
+  <svg viewBox="0 0 720 230" class="asvg"></svg>
+  <div class="aread"><div>相對毛細數 Ca <b data-v="ca">—</b></div><div>成形結果 <b data-v="res">—</b></div></div>
+  <p class="anote">示意模型：不對稱程度隨 Ca 上升而增加；「適度加溫」以黏度約減半估算。只用來說明方向，實際形狀還受注射時序、膠帶 G′ 影響。</p>
+</div>
+
 <ol>
   <li><b>圓端形成</b>：注射前段流量充分，把膠帶對稱撐開、貼合凹穴圓弧，形成規則圓端。</li>
   <li><b>尖端形成</b>：末段對高黏度／具降伏應力的混懸料，流動性受限（剪切率降低使表觀黏度回升、降伏應力使殘料「拉絲」不俐落），內料無法及時對稱充滿另一端；此時模具已開始封合，<b>膠帶在內料尚未到位前被拉伸收攏、捏成尖端</b>。</li>
@@ -1048,6 +1144,9 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
   接縫是<b>界面爬行擴散與纏結的癒合</b>（σ∝(t/τ)<sup>1/4</sup>，τ∝M³）；注射三要素是<b>流量與相位的雙重匹配</b>，容錯窗口隨機速收窄、隨內料黏度偏移；梨形則是<b>液滴形變（Bo、Ca、We）在封合前來不及被界面張力鬆弛</b>的必然結果。故石蠟油恆正常、高黏高密的黑種草油與混懸料恆易梨形。<u>所有對策一律先窮盡製程與配方，特殊型明膠僅作為拓寬容錯窗口的加分項。</u>
 </div>
 
+<nav class="pager"></nav>
+</section>
+<section class="tab" id="tab-c3" data-title="第三章　內料與物流">
 <div class="chap-band" id="c3">
   <div class="n">CHAPTER 03</div>
   <div class="ti">第三章　內容物化學交互作用、膠殼物理化學穩定性與跨國物流熱力學風險評估</div>
@@ -1365,6 +1464,15 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 <figcaption>圖 3-4　三種運輸方式的溫度剖面示意。普通海運在赤道航線反覆衝入 40–60℃ 的軟化危險帶；冷藏貨櫃穩定壓在 15–20℃；空運時間短，風險集中在地面等待段。</figcaption>
 </figure>
 
+<div class="anim" id="anim-ship">
+  <div class="ah">▶ 動畫 3-4：30 天航程，氧化量怎麼累積</div>
+  <p class="ad">按播放，看三種運輸方式的櫃內溫度一天天走，右側的長條是「累積氧化量」（以 20℃ 下放 30 天＝100 為基準）。普通乾櫃每次衝上 50℃，氧化就加速好幾倍，30 天下來差距會非常明顯。</p>
+  <div class="actrl"><label>Q₁₀</label><select data-k="Q"><option value="2">2（保守）</option><option value="2.5" selected>2.5</option><option value="3">3（敏感油脂）</option></select><button type="button" data-act="play">播放航程</button></div>
+  <svg viewBox="0 0 720 260" class="asvg"></svg>
+  <p class="anote">示意模型：氧化速率∝Q₁₀<sup>(T−20)/10</sup>。普通乾櫃以赤道段日夜 30–55℃ 震盪示意；空運以 3 天運輸＋1 天 35℃ 地面等待估算，之後在 20℃ 倉儲。實際溫度請以航線的資料記錄器為準。</p>
+</div>
+
+
 <h4>路徑一（物理）：Tg 下降 → 膠殼重熔、黏連、漏油</h4>
 <p>明膠膠殼富含甘油增塑劑，其<b>玻璃化轉變溫度 Tg</b> 因甘油與吸附水分（兩者都是增塑劑）而<b>大幅下降</b>（可由 Gordon–Taylor／Fox 關係描述：增塑劑越多、Tg 越低）。乾明膠 Tg 很高，但塑化後的軟膠囊殼有效軟化點會落到偏低的區間。當櫃溫衝到 50–60℃、遠高於塑化膠殼的軟化點時，<b>膠殼從玻璃態轉為橡膠態甚至局部重熔</b> → 膠囊互相<b>黏連（Clumping）</b>、變形、接縫重新軟化而<b>漏油</b>。夜間凝露使表面吸濕，進一步壓低 Tg，惡性循環。</p>
 
@@ -1425,7 +1533,9 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 <h2>第三章結論</h2>
 <p>本章證明：內容物不是「被膠殼包起來的旁觀者」，而是<b>主動攻擊膠殼的化學與界面反應物</b>。不飽和脂肪酸經脂質過氧化生成醛、與 Lysine 的 ε-胺基交聯，使膠殼硬化、崩解延長；磷蝦油的磷脂質作為強效表面活性劑，在界面萃取甘油、拉長接縫癒合時間 τ 而引發脆化漏油；跨赤道海運的 50–60℃ 高溫則同時觸發 Tg 下降的物理重熔與 Arrhenius 加速的氧化交聯。<strong>因應之道一律遵循「先製程配方、後特殊材料」：以抗氧化、氮氣充填、甘油／水比優化、溫控物流為第一線，StabiCaps™／EASYSEAL® 為拓寬容錯的進階選項。</strong></p>
 
-<hr>
+<nav class="pager"></nav>
+</section>
+<section class="tab" id="tab-c4" data-title="第四章　競爭指標廠">
 <div class="chap-band" id="c4">
   <div class="n">CHAPTER 04</div>
   <div class="ti">第四章　競爭指標廠：明膠產能版圖與軟膠囊新技術對照</div>
@@ -1433,6 +1543,8 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 
 <p class="lead" style="margin-top:22px">前三章談的是「膠囊裡面發生什麼事」；本章往外看一層：供應軟膠囊明膠的幾家指標廠，產能在變大還是變小、往哪裡移，又各自推出了哪些對準軟膠囊痛點的新等級。這些變化會直接影響客戶的<b>採購風險</b>與<b>技術選項</b>。</p>
 
+<div class="brands"><div class="brand" data-logo="gelita"><span class="bname">GELITA</span></div><div class="brand" data-logo="rousselot"><span class="bname">Rousselot</span></div><div class="brand" data-logo="pb-leiner"><span class="bname">PB Leiner</span></div><div class="brand" data-logo="nitta"><span class="bname">Nitta Gelatin</span></div><div class="brand" data-logo="dongbao"><span class="bname">東寶生物</span></div><div class="brand" data-logo="weishardt"><span class="bname">Weishardt</span></div><div class="brand" data-logo="roquette"><span class="bname">Roquette</span></div></div>
+<p class="src" style="margin-top:6px">各公司 LOGO 為其商標，僅作識別用途。</p>
 <div class="callout">
   <span class="t">資料原則</span>
   本章每個數字都標出時間點、比較基準與增減方向，只採用公司公告、財報、法說會或原廠型錄等可查來源。各廠「產能」的計算口徑不同：有的含膠原蛋白胜肽，有的只算明膠，有的只是單一工廠。表中已逐一註明，<b>不能直接相加或排名</b>。
@@ -1496,12 +1608,12 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 <thead><tr><th>廠商（總部）</th><th>可查產能／規模</th><th>口徑</th><th>變化方向與時間</th><th>與軟膠囊相關</th></tr></thead>
 <tbody>
 <tr><td><b>Rousselot＋PB Leiner 合併案</b><br><span class="src">Darling（美）85%／Tessenderlo（比）15%</span></td><td>約 200,000 噸／年；22 座廠；年營收約 15 億美元</td><td>明膠＋膠原蛋白合計</td><td class="up">↑ 2025-05 宣布 → 2025-12 正式協議 → 目標 2027 Q1 完成</td><td>兩家各有抗交聯等級（StabiCaps™、gelwoRx™ Dsolve），合併後產品線可能整合</td></tr>
-<tr><td><b>Rousselot</b><br><span class="src">Darling Ingredients</span></td><td>2023 年收購 Gelnex 增加 46,000 噸／年；Darling 自述其產量約占全球膠原（明膠＋水解膠原）三成（2025-05）</td><td>明膠＋膠原蛋白</td><td><span class="up">↑</span> 2026 Q3 食品部門營收年增 9.3% 至 4.158 億美元；<span class="down">↓</span> 美國對巴西明膠／膠原加徵關稅，影響南美出貨量</td><td>StabiCaps™／StabiCaps™ Plus</td></tr>
-<tr><td><b>PB Leiner</b><br><span class="src">Tessenderlo 集團</span></td><td>未公開總噸數；據點分布亞、歐、北美、南美；約 1,200 名員工（2024-11）</td><td>—</td><td class="down">↓ 2024-11 關英國 Treforest、重組 Vilvoorde；2026-07 擬關 Vilvoorde 全廠</td><td>gelwoRx™ Dsolve（2020 推出，2022-10 擴充 B／P／xTRA）、gelwoRx™ Dhydra</td></tr>
-<tr><td><b>GELITA</b><br><span class="src">德國，家族企業</span></td><td>20 個以上生產據點；吉林遼源廠 11,000 噸／年；土耳其 SelJel 約 6,500 噸／年</td><td>單廠／子公司產能（集團總噸數未公開）</td><td class="up">↑ 遼源 2006 單線 → 2026-04 達 1.1 萬噸；SelJel 為 2020 年取得 65% 股權時的數據，之後增持至近全資</td><td>EASYSEAL®、RXL®、RAPISOL®、DELASOL®</td></tr>
-<tr><td><b>Nitta Gelatin</b><br><span class="src">日本</span></td><td>印度明膠 6,000 噸／年；印度膠原胜肽 1,800 噸／年</td><td>印度子公司 NGIL</td><td><span class="up">↑</span> 明膠 4,500→6,000（2025-02，+33%），目標 7,500；胜肽 1,150→1,800（2025-07 起，+57%）；<span class="down">↓</span> 美國子公司 2025-07 清算</td><td>印度廠 2025–26 會計年度滿載，軟膠囊與硬膠囊用明膠銷售帶動成長</td></tr>
-<tr><td><b>東寶生物</b><br><span class="src">中國包頭，300239.SZ</span></td><td>明膠 13,500 噸／年、膠原蛋白 4,300 噸／年</td><td>公司自述（2026-04 投資人調研紀要）</td><td class="flat">公開資料未揭露年增減</td><td>主業為明膠、膠原蛋白、空心膠囊</td></tr>
-<tr><td><b>Weishardt</b><br><span class="src">法國</span></td><td>4 座廠、430 名員工、外銷占營收 85%</td><td>未公開噸數</td><td class="flat">公開資料未揭露</td><td>豬皮、魚皮明膠；Naticol® 海洋膠原</td></tr>
+<tr><td><span class="blogo" data-logo="rousselot"></span><b>Rousselot</b><br><span class="src">Darling Ingredients</span></td><td>2023 年收購 Gelnex 增加 46,000 噸／年；Darling 自述其產量約占全球膠原（明膠＋水解膠原）三成（2025-05）</td><td>明膠＋膠原蛋白</td><td><span class="up">↑</span> 2026 Q3 食品部門營收年增 9.3% 至 4.158 億美元；<span class="down">↓</span> 美國對巴西明膠／膠原加徵關稅，影響南美出貨量</td><td>StabiCaps™／StabiCaps™ Plus</td></tr>
+<tr><td><span class="blogo" data-logo="pb-leiner"></span><b>PB Leiner</b><br><span class="src">Tessenderlo 集團</span></td><td>未公開總噸數；據點分布亞、歐、北美、南美；約 1,200 名員工（2024-11）</td><td>—</td><td class="down">↓ 2024-11 關英國 Treforest、重組 Vilvoorde；2026-07 擬關 Vilvoorde 全廠</td><td>gelwoRx™ Dsolve（2020 推出，2022-10 擴充 B／P／xTRA）、gelwoRx™ Dhydra</td></tr>
+<tr><td><span class="blogo" data-logo="gelita"></span><b>GELITA</b><br><span class="src">德國，家族企業</span></td><td>20 個以上生產據點；吉林遼源廠 11,000 噸／年；土耳其 SelJel 約 6,500 噸／年</td><td>單廠／子公司產能（集團總噸數未公開）</td><td class="up">↑ 遼源 2006 單線 → 2026-04 達 1.1 萬噸；SelJel 為 2020 年取得 65% 股權時的數據，之後增持至近全資</td><td>EASYSEAL®、RXL®、RAPISOL®、DELASOL®</td></tr>
+<tr><td><span class="blogo" data-logo="nitta"></span><b>Nitta Gelatin</b><br><span class="src">日本</span></td><td>印度明膠 6,000 噸／年；印度膠原胜肽 1,800 噸／年</td><td>印度子公司 NGIL</td><td><span class="up">↑</span> 明膠 4,500→6,000（2025-02，+33%），目標 7,500；胜肽 1,150→1,800（2025-07 起，+57%）；<span class="down">↓</span> 美國子公司 2025-07 清算</td><td>印度廠 2025–26 會計年度滿載，軟膠囊與硬膠囊用明膠銷售帶動成長</td></tr>
+<tr><td><span class="blogo" data-logo="dongbao"></span><b>東寶生物</b><br><span class="src">中國包頭，300239.SZ</span></td><td>明膠 13,500 噸／年、膠原蛋白 4,300 噸／年</td><td>公司自述（2026-04 投資人調研紀要）</td><td class="flat">公開資料未揭露年增減</td><td>主業為明膠、膠原蛋白、空心膠囊</td></tr>
+<tr><td><span class="blogo" data-logo="weishardt"></span><b>Weishardt</b><br><span class="src">法國</span></td><td>4 座廠、430 名員工、外銷占營收 85%</td><td>未公開噸數</td><td class="flat">公開資料未揭露</td><td>豬皮、魚皮明膠；Naticol® 海洋膠原</td></tr>
 </tbody>
 </table>
 </div>
@@ -1511,7 +1623,7 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 <p>把前三章的缺陷清單當成「需求」，對照各廠公開的專用等級，就得到下面這張選型地圖。</p>
 <div class="tablewrap">
 <table>
-<thead><tr><th style="width:120px">痛點<br><span class="src">（章節）</span></th><th>GELITA</th><th>Rousselot</th><th>PB Leiner</th><th>植物性（Roquette）</th></tr></thead>
+<thead><tr><th style="width:120px">痛點<br><span class="src">（章節）</span></th><th><span class="blogo" data-logo="gelita"></span>GELITA</th><th><span class="blogo" data-logo="rousselot"></span>Rousselot</th><th><span class="blogo" data-logo="pb-leiner"></span>PB Leiner</th><th><span class="blogo" data-logo="roquette"></span>植物性（Roquette）</th></tr></thead>
 <tbody>
 <tr><td><b>交聯、崩解延遲</b><br><span class="src">3.1、Q3</span></td><td>RXL® Prime／Advanced／Pro（分子量設計）；RXL® Ultra（琥珀酸化，僅歐盟、非 USP／EP）</td><td>StabiCaps™／StabiCaps™ Plus（含鹽），牛源；2022-05 歐洲專利、2023-12 美國專利</td><td>gelwoRx™ Dsolve；2022-10 擴充 Dsolve B、P、xTRA</td><td>LYCAGEL®：原廠稱不交聯</td></tr>
 <tr><td><b>漏油、接縫弱</b><br><span class="src">2.1、Q1</span></td><td>EASYSEAL®：接縫厚度牛骨增 50% 以上、豬皮增 40% 以上</td><td>公開資料未見專用抗漏油等級</td><td>公開資料未見專用等級</td><td>SeaGel®（鹿角菜膠）：強調熱封品質</td></tr>
@@ -1549,6 +1661,9 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 <p>需求端溫和成長，供應端正在重排：歐美兩大廠合併、歐洲骨明膠退場、亞洲產能加碼。對軟膠囊廠來說，好消息是每一種常見缺陷幾乎都有原廠的專用等級可以對位；要做的功課，是把<b>供應來源的穩定性</b>和<b>功能等級的驗證</b>都提早排進計畫裡。</p>
 
 
+<nav class="pager"></nav>
+</section>
+<section class="tab" id="tab-appx" data-title="附錄　Q&amp;A">
 <div class="chap-band" id="appx">
   <div class="n">APPENDIX A</div>
   <div class="ti">附錄 A　軟膠囊製程技術 Q&amp;A 與極限故障排除指南</div>
@@ -1630,7 +1745,9 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
   </div>
 </div>
 
-<hr>
+<nav class="pager"></nav>
+</section>
+<section class="tab" id="tab-refs" data-title="參考文獻">
 <h2 id="refs">參考文獻與知識庫來源</h2>
 <ol class="src">
   <li>客戶《軟膠囊製程技術交流議題》，2026。（環境 &gt;26℃／&lt;15℃ 之膠液性狀差異、48℃ 保溫隔夜、60℃ 黏度 15,000–18,000 cps、清油／黑種草／混懸水比 0.95／0.90／0.88、梨形與漏油、磷蝦油／混懸案例）</li>
@@ -1660,11 +1777,237 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
   <li><a href="https://pdf.directindustry.com/pdf/carrier-transport-refrigeration-container-products/dehumidification/29142-334365.html">Carrier 冷藏貨櫃除濕規格（PrimeLINE 50–95% RH）</a>；<a href="https://www.emea-user-manuals.thermoking.com/etech-emea-public/thermoking-emea/Minneapolis%20-%20Container%20-%20Generator%20Sets/Literature/Maintenance%20or%20Service/0005725493.xml/$/0005725892">Thermo King 控制器手冊（50–99% RH）</a>；<a href="https://iifiir.org/en/fridoc/142452">IIR 2020 冷鏈研討會（溼熱環境下 60% RH 設定多半達不到）</a>。</li>
 </ol>
 
+<nav class="pager"></nav>
+</section>
 <hr>
 <p style="text-align:center;margin-top:40px">有任何製程狀況想一起拆解，隨時找我聊。</p>
 <p class="src" style="text-align:center">軟膠囊製程技術白皮書　｜　第一性原理系列　｜　版本 3.0　｜　2026 年 11 月</p>
 
 </div>
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  var links=[].slice.call(document.querySelectorAll('.tabbar a'));
+  tabs.forEach(function(tb,i){
+    var pg=tb.querySelector('.pager'); if(!pg) return;
+    if(i>0){var a=document.createElement('a');a.href='#'+tabs[i-1].id;a.className='prev';a.innerHTML='<small>← 上一頁</small>'+tabs[i-1].getAttribute('data-title');pg.appendChild(a);}
+    if(i<tabs.length-1){var b=document.createElement('a');b.href='#'+tabs[i+1].id;b.className='next';b.innerHTML='<small>下一頁 →</small>'+tabs[i+1].getAttribute('data-title');pg.appendChild(b);}
+  });
+  function route(){
+    var h=decodeURIComponent(location.hash.slice(1))||'tab-home';
+    var target=document.getElementById(h); if(!target||!target.closest('.tab')) target=document.getElementById('tab-home');
+    var tab=target.closest('.tab');
+    tabs.forEach(function(x){x.classList.toggle('on',x===tab);});
+    links.forEach(function(a){var on=a.getAttribute('data-tab')===tab.id;a.classList.toggle('on',on);if(on&&a.scrollIntoView)a.scrollIntoView({block:'nearest',inline:'center'});});
+    if(target===tab) window.scrollTo(0,0); else setTimeout(function(){target.scrollIntoView();},30);
+  }
+  window.addEventListener('hashchange',route); route();
+  // logos: drop official files into logos/<key>.png or .svg
+  function tryLoad(key,cb){var exts=['png','svg'],i=0;(function next(){if(i>=exts.length)return;var img=new Image();img.alt=key;img.onload=function(){cb(img);};img.onerror=function(){i++;next();};img.src='logos/'+key+'.'+exts[i];})();}
+  document.querySelectorAll('[data-logo]').forEach(function(n){
+    var key=n.getAttribute('data-logo');
+    tryLoad(key,function(img){ if(n.classList.contains('brand')){img.alt=n.textContent;n.insertBefore(img,n.firstChild);n.classList.add('haslogo');} else {n.appendChild(img);} });
+  });
+})();
+</script>
+
+<script>
+(function(){
+var NS='http://www.w3.org/2000/svg';
+function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+function visible(n){return n.offsetParent!==null;}
+function seeded(s){return function(){s=(s*9301+49297)%233280;return s/233280;};}
+function smoothNoise(rnd,n){var a=[];for(var i=0;i<n;i++)a.push(rnd());return function(x){var p=x*(n-1),i=Math.floor(p),f=p-i;if(i>=n-1)return a[n-1];var u=f*f*(3-2*f);return a[i]*(1-u)+a[i+1]*u;};}
+
+/* ---------- 1) helix–coil ---------- */
+(function(){
+  var box=document.getElementById('anim-helix'); if(!box) return;
+  var svg=box.querySelector('svg'), sl=box.querySelector('[data-k=T]'), btn=box.querySelector('[data-act=play]');
+  var v=function(k){return box.querySelector('[data-v='+k+']');};
+  var cols=['#0071e3','#c0392b','#248a3d'], N=140, x0=40, x1=680, cy=110;
+  var rnd=seeded(7), thr=smoothNoise(rnd,9);
+  var coil=[0,1,2].map(function(k){var r=seeded(31+k*17);return [smoothNoise(r,14),smoothNoise(r,23)];});
+  el('text',{x:40,y:24,'font-size':13,fill:'#6e6e73'},svg).textContent='三條 α 鏈（藍、紅、綠）　· · · 氫鍵';
+  var paths=cols.map(function(c){return el('path',{fill:'none',stroke:c,'stroke-width':3,'stroke-linecap':'round'},svg);});
+  var hb=el('g',{},svg);
+  var therm=el('rect',{x:700,y:40,width:8,height:150,rx:4,fill:'#e8e8ed'},svg), merc=el('rect',{x:700,y:190,width:8,height:0,rx:4,fill:'#c0392b'},svg);
+  var playing=false, dir=1, Tf=+sl.value;
+  function draw(ts){
+    var T=Tf, f=1/(1+Math.exp((T-32)/2.2)), jig=(T-15)/55;
+    var w=(ts||0)/1000;
+    var pts=[[],[],[]], hel=[];
+    for(var i=0;i<=N;i++){
+      var s=i/N, x=x0+(x1-x0)*s;
+      var loc=1/(1+Math.exp(-(f-thr(s))*14));
+      hel.push(loc);
+      for(var k=0;k<3;k++){
+        var hy=cy+22*Math.sin(2*Math.PI*s*9+k*2.094);
+        var cyy=cy+(coil[k][0](s)-.5)*150+(coil[k][1](s)-.5)*50+Math.sin(w*3+i*.6+k)*6*jig;
+        pts[k].push(x.toFixed(1)+','+(hy*loc+cyy*(1-loc)).toFixed(1));
+      }
+    }
+    for(var k=0;k<3;k++)paths[k].setAttribute('d','M'+pts[k].join(' L'));
+    while(hb.firstChild)hb.removeChild(hb.firstChild);
+    for(var i=4;i<N;i+=8){ if(hel[i]>.6){var x=x0+(x1-x0)*i/N; el('line',{x1:x,y1:cy-20,x2:x,y2:cy+20,stroke:'#6e6e73','stroke-width':1.2,'stroke-dasharray':'2 3',opacity:hel[i]},hb);} }
+    var h=150*(T-20)/50; merc.setAttribute('y',190-h); merc.setAttribute('height',h);
+    v('T').textContent=T.toFixed(1)+' ℃'; v('f').textContent=Math.round(f*100)+'%';
+    v('st').textContent=f>.8?'凝膠（螺旋為主）':f>.2?'轉變區：正在熔解／成膠':'溶膠（無規捲曲）';
+  }
+  function loop(ts){
+    if(playing){ Tf+=dir*0.08; if(Tf>=68){dir=-1;} if(Tf<=22){dir=1;} sl.value=Tf; }
+    if(visible(box)) draw(ts);
+    requestAnimationFrame(loop);
+  }
+  sl.addEventListener('input',function(){Tf=+sl.value;playing=false;btn.textContent='自動加熱／冷卻';});
+  btn.addEventListener('click',function(){playing=!playing;btn.textContent=playing?'暫停':'自動加熱／冷卻';});
+  requestAnimationFrame(loop);
+})();
+
+/* ---------- 2) chain scission ---------- */
+(function(){
+  var box=document.getElementById('anim-scission'); if(!box) return;
+  var svg=box.querySelector('svg'), sl=box.querySelector('[data-k=t]'), selT=box.querySelector('[data-k=T]'), btn=box.querySelector('[data-act=play]');
+  var v=function(k){return box.querySelector('[data-v='+k+']');};
+  var rnd=seeded(42), chains=[];
+  for(var c=0;c<8;c++){var cuts=[];for(var j=0;j<40;j++)cuts.push({x:0.03+0.94*rnd(),u:rnd()});chains.push(cuts);}
+  var g=el('g',{},svg);
+  var playing=false, tf=0;
+  function rate(T){return Math.exp(9000*(1/321.15-1/(T+273.15)));}
+  function draw(){
+    var t=tf, T=+selT.value, k=rate(T), lam=0.22*k*t; // expected cuts per chain
+    while(g.firstChild)g.removeChild(g.firstChild);
+    var segs=0, netLen=0, total=0;
+    chains.forEach(function(cuts,ci){
+      var y=26+ci*25;
+      var xs=cuts.filter(function(q){return q.u<lam/40;}).map(function(q){return q.x;}).sort(function(a,b){return a-b;});
+      var b=[0].concat(xs,[1]);
+      for(var i=0;i<b.length-1;i++){
+        var a=b[i],e=b[i+1],len=e-a; total+=len; segs++;
+        var ok=len>=0.12; if(ok)netLen+=len;
+        el('line',{x1:40+640*a+(i?3:0),y1:y,x2:40+640*e-(i<b.length-2?3:0),y2:y,stroke:ok?'#0071e3':'#c7c7cc','stroke-width':5,'stroke-linecap':'round'},g);
+      }
+      xs.forEach(function(x){el('circle',{cx:40+640*x,cy:y,r:3.2,fill:'#c0392b'},g);});
+    });
+    el('text',{x:40,y:224,'font-size':12,fill:'#6e6e73'},g).textContent='藍＝夠長、能形成螺旋連結區　灰＝太短　● 斷鏈點';
+    v('t').textContent=t.toFixed(1)+' h';
+    v('L').textContent=Math.round(100*8/segs)+'%（以未斷鏈＝100%）';
+    v('net').textContent=Math.round(100*netLen/8)+'%';
+    v('k').textContent='×'+k.toFixed(1)+'（48℃＝1）';
+  }
+  function loop(){ if(playing){tf+=0.05; if(tf>=24){tf=24;playing=false;btn.textContent='播放隔夜';} sl.value=tf; draw();} requestAnimationFrame(loop); }
+  sl.addEventListener('input',function(){tf=+sl.value;playing=false;btn.textContent='播放隔夜';draw();}); selT.addEventListener('change',draw);
+  btn.addEventListener('click',function(){ if(!playing && tf>=24){tf=0;sl.value=0;} playing=!playing; btn.textContent=playing?'暫停':'播放隔夜';});
+  draw(); requestAnimationFrame(loop);
+})();
+
+/* ---------- 3) seam healing ---------- */
+(function(){
+  var box=document.getElementById('anim-seam'); if(!box) return;
+  var svg=box.querySelector('svg'), slW=box.querySelector('[data-k=W]'), selG=box.querySelector('[data-k=G]'), btn=box.querySelector('[data-act=play]');
+  var v=function(k){return box.querySelector('[data-v='+k+']');};
+  el('rect',{x:40,y:30,width:300,height:160,rx:14,fill:'#e8f1fd'},svg);
+  el('rect',{x:360,y:30,width:300,height:160,rx:14,fill:'#fdf1e8'},svg);
+  el('line',{x1:350,y1:22,x2:350,y2:198,stroke:'#6e6e73','stroke-dasharray':'5 5'},svg);
+  el('text',{x:190,y:212,'text-anchor':'middle','font-size':12,fill:'#6e6e73'},svg).textContent='左膠帶';
+  el('text',{x:510,y:212,'text-anchor':'middle','font-size':12,fill:'#6e6e73'},svg).textContent='右膠帶';
+  var bar=el('rect',{x:684,y:190,width:18,height:0,rx:6,fill:'#248a3d'},svg);
+  el('rect',{x:684,y:30,width:18,height:160,rx:6,fill:'none',stroke:'#d2d2d7'},svg);
+  el('text',{x:693,y:22,'text-anchor':'middle','font-size':11,fill:'#6e6e73'},svg).textContent='σ';
+  var rnd=seeded(5), L=[], R=[], g=el('g',{},svg);
+  for(var i=0;i<9;i++){L.push({y:44+i*16.5,ph:rnd()*6});R.push({y:52+i*16.5,ph:rnd()*6});}
+  var t=0, run=true;
+  function tau(){var W=+slW.value;return 0.55*Math.exp(5200*(1/(W+273.15)-1/(38+273.15)))*(+selG.value);}
+  function draw(){
+    var ta=tau(), s=Math.min(1,Math.pow(Math.max(t,1e-4)/ta,0.25)), d=s*95;
+    while(g.firstChild)g.removeChild(g.firstChild);
+    function chain(side,o){
+      var pts=[], base=side<0?60:640, tip=side<0?342+d:358-d;
+      for(var k=0;k<=40;k++){var f=k/40, x=base+(tip-base)*f, y=o.y+5*Math.sin(f*16+o.ph+t*5*f);pts.push(x.toFixed(1)+','+y.toFixed(1));}
+      el('path',{d:'M'+pts.join(' L'),fill:'none',stroke:side<0?'#0071e3':'#e07a1f','stroke-width':2.4,'stroke-linecap':'round'},g);
+    }
+    L.forEach(function(o){chain(-1,o);}); R.forEach(function(o){chain(1,o);});
+    bar.setAttribute('y',190-160*s); bar.setAttribute('height',160*s); bar.setAttribute('fill',s>.9?'#248a3d':s>.7?'#b25e09':'#c0392b');
+    v('t').textContent=(t/1).toFixed(2)+'（封合窗口＝1）';
+    v('s').textContent=Math.round(s*100)+'%'+(t>=1?(s>.9?'　✔ 牢固':s>.7?'　△ 偏弱':'　✘ 易漏油'):'');
+  }
+  function loop(){ if(run){t+=0.006; if(t>=1){t=1;run=false;}} if(visible(box))draw(); requestAnimationFrame(loop);}
+  function restart(){t=0;run=true;}
+  slW.addEventListener('input',function(){v('W').textContent=(+slW.value).toFixed(1)+' ℃';restart();});
+  selG.addEventListener('change',restart); btn.addEventListener('click',restart);
+  requestAnimationFrame(loop);
+})();
+
+/* ---------- 4) pear shape ---------- */
+(function(){
+  var box=document.getElementById('anim-pear'); if(!box) return;
+  var svg=box.querySelector('svg'), selH=box.querySelector('[data-k=H]'), btns=box.querySelectorAll('[data-pick]');
+  var v=function(k){return box.querySelector('[data-v='+k+']');};
+  var fills=[{n:'石蠟油',ca:1,col:'#f5d76e'},{n:'黑種草油',ca:6,col:'#8a6a2a'},{n:'高粉混懸',ca:14,col:'#7a5c3e'}], pick=0, p=0;
+  // die cavity + wedge
+  el('rect',{x:300,y:8,width:120,height:34,rx:6,fill:'#e8e8ed'},svg);
+  el('text',{x:360,y:30,'text-anchor':'middle','font-size':12,fill:'#1d1d1f'},svg).textContent='注射楔';
+  var cav=el('path',{fill:'none',stroke:'#d2d2d7','stroke-width':2,'stroke-dasharray':'6 5'},svg);
+  var shell=el('path',{fill:'#f6efe0',stroke:'#b25e09','stroke-width':3},svg);
+  var liq=el('path',{opacity:.9},svg);
+  var jet=el('line',{x1:360,y1:42,x2:360,y2:80,'stroke-width':6,'stroke-linecap':'round'},svg);
+  var lbl=el('text',{x:360,y:222,'text-anchor':'middle','font-size':12,fill:'#6e6e73'},svg);
+  function outline(scale,asym){
+    var cx=360, cy=128, Lh=230*scale, W=70*scale, top=[], bot=[];
+    for(var i=0;i<=60;i++){
+      var x=-1+2*i/60, base=Math.sqrt(Math.max(0,1-x*x));
+      var taper=x>0?1-asym*Math.pow(x,1.6):1+asym*0.12*(-x);
+      var w=W*base*taper, X=cx+Lh*x;
+      top.push(X.toFixed(1)+','+(cy-w).toFixed(1)); bot.unshift(X.toFixed(1)+','+(cy+w).toFixed(1));
+    }
+    return 'M'+top.join(' L')+' L'+bot.join(' L')+'Z';
+  }
+  cav.setAttribute('d',outline(1.06,0));
+  function ca(){return fills[pick].ca*(+selH.value?0.5:1);}
+  function draw(){
+    var c=ca(), asym=Math.min(0.78,0.06*c), e=p<0.75?p/0.75:1, a=asym*Math.min(1,Math.max(0,(p-0.45)/0.35));
+    shell.setAttribute('d',outline(0.35+0.65*e,a));
+    liq.setAttribute('d',outline((0.35+0.65*e)*0.86,a)); liq.setAttribute('fill',fills[pick].col);
+    jet.setAttribute('stroke',fills[pick].col); jet.setAttribute('opacity',p<0.8?1:0);
+    lbl.textContent=p<0.45?'前段：對稱撐開 → 圓端':p<0.8?'末段：'+(c>3?'內料流不過去，模具已開始收合…':'流動順暢，對稱到位'):'封合定形';
+    v('ca').textContent='×'+c.toFixed(1)+'（石蠟油＝1）';
+    v('res').textContent=asym<0.15?'對稱橢圓 ✔':asym<0.45?'輕微不對稱 △':'明顯梨形 ✘';
+  }
+  function loop(){ p+=0.006; if(p>1.35)p=0; if(visible(box))draw(); requestAnimationFrame(loop);}
+  btns.forEach(function(b){b.addEventListener('click',function(){btns.forEach(function(x){x.classList.remove('on');});b.classList.add('on');pick=+b.getAttribute('data-pick');p=0;});});
+  selH.addEventListener('change',function(){p=0;});
+  requestAnimationFrame(loop);
+})();
+
+/* ---------- 5) shipping oxidation ---------- */
+(function(){
+  var box=document.getElementById('anim-ship'); if(!box) return;
+  var svg=box.querySelector('svg'), selQ=box.querySelector('[data-k=Q]'), btn=box.querySelector('[data-act=play]');
+  var X0=50,X1=470,Y=function(T){return 220-T*3;};
+  [0,20,40,60].forEach(function(T){el('line',{x1:X0,y1:Y(T),x2:X1,y2:Y(T),stroke:'#e8e8ed'},svg);el('text',{x:X0-8,y:Y(T)+4,'text-anchor':'end','font-size':11,fill:'#6e6e73'},svg).textContent=T+'℃';});
+  [0,10,20,30].forEach(function(d){el('text',{x:X0+(X1-X0)*d/30,y:238,'text-anchor':'middle','font-size':11,fill:'#6e6e73'},svg).textContent='第'+d+'天';});
+  el('rect',{x:X0,y:Y(60),width:X1-X0,height:Y(40)-Y(60),fill:'#fdeaea',opacity:.55},svg);
+  function dry(d){var eq=d>8&&d<22?1:0.35;return 30+eq*(12+13*Math.sin(d*2*Math.PI))+ (1-eq)*(-4+4*Math.sin(d*2*Math.PI));}
+  function reefer(d){return 18+0.6*Math.sin(d*2*Math.PI);}
+  function air(d){return d<1?35:d<3?18:20;}
+  var S=[{n:'普通乾櫃',f:dry,c:'#c0392b'},{n:'冷藏貨櫃 18℃',f:reefer,c:'#248a3d'},{n:'空運（含地面段）',f:air,c:'#0071e3'}];
+  S.forEach(function(s,i){s.path=el('path',{fill:'none',stroke:s.c,'stroke-width':2.2},svg);
+    s.bar=el('rect',{x:520,y:44+i*72,height:26,width:0,rx:6,fill:s.c},svg);
+    el('text',{x:520,y:38+i*72,'font-size':12,fill:'#1d1d1f'},svg).textContent=s.n;
+    s.val=el('text',{x:520,y:88+i*72,'font-size':12,'font-weight':600,fill:s.c},svg);});
+  el('text',{x:520,y:16,'font-size':12,fill:'#6e6e73'},svg).textContent='累積氧化量（20℃×30 天＝100）';
+  var day=30, run=false;
+  function draw(){
+    var Q=+selQ.value, dt=0.05;
+    S.forEach(function(s){var pts=[],acc=0;for(var d=0;d<=day+1e-9;d+=dt){var T=s.f(d);acc+=Math.pow(Q,(T-20)/10)*dt;pts.push((X0+(X1-X0)*d/30).toFixed(1)+','+Y(T).toFixed(1));}
+      s.path.setAttribute('d','M'+pts.join(' L')); var val=acc/30*100; s.bar.setAttribute('width',Math.min(185,val*185/600)); s.val.textContent=Math.round(val);});
+  }
+  function loop(){ if(run){day+=0.08; if(day>=30){day=30;run=false;btn.textContent='播放航程';} draw();} requestAnimationFrame(loop);}
+  btn.addEventListener('click',function(){day=0;run=true;btn.textContent='播放中…';});
+  selQ.addEventListener('change',draw);
+  draw(); requestAnimationFrame(loop);
+})();
+})();
+</script>
 <script>
 document.querySelectorAll('table').forEach(function(tb){
   if(tb.parentElement && tb.parentElement.classList.contains('tablewrap')) return;
