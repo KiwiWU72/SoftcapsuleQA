@@ -153,6 +153,22 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 .blogo img{height:18px;width:auto;vertical-align:-3px;margin-right:6px;}
 @media (max-width:760px){.tabbar{margin:0 -18px;padding:0 18px;}.pager a{max-width:none;}.pager{flex-direction:column;}}
 @media print{.tab{display:block !important;}.tabbar,.pager{display:none !important;}}
+.sev{display:inline-block;border-radius:999px;padding:0 10px;font-size:.8rem;font-weight:600;white-space:nowrap;}
+.sev.h{background:#fdecea !important;color:#c0392b !important;}
+.sev.m{background:#fff4e5 !important;color:#b25e09 !important;}
+.sev.l{background:#f5f5f7 !important;color:#6e6e73 !important;}
+.errtab td{font-size:.92rem;}
+.chk{background:#f5f5f7 !important;border-radius:18px;padding:20px 24px;margin:20px 0;}
+.chk h4{margin:18px 0 6px;}
+.chk label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid #e8e8ed;cursor:pointer;color:#1d1d1f !important;}
+.chk input{margin-top:6px;accent-color:#0071e3;width:16px;height:16px;flex:none;}
+.chk label.done{color:#6e6e73 !important;}
+.chkhead{display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:600;}
+.chkhead b{color:#0071e3 !important;}
+.chkhead button{font:inherit;font-size:.85rem;border:none;border-radius:999px;padding:5px 14px;background:#ffffff !important;color:#0071e3 !important;cursor:pointer;}
+.chkbar{height:6px;background:#e8e8ed !important;border-radius:999px;margin:10px 0 4px;overflow:hidden;}
+.chkbar div{height:100%;width:0;background:#0071e3 !important;transition:width .25s;}
+@media (max-width:760px){.errtab{min-width:820px;}}
 </style>
 </head>
 <body>
@@ -169,7 +185,7 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
   <path d="M34 49 L35 57 M35 57 L31 58 M35 57 L38 59" stroke="#c9a46a" stroke-width="2" fill="none" stroke-linecap="round"/>
 </svg>
 </div>
-<nav class="tabbar"><div class="tabin"><a href="#tab-home" data-tab="tab-home">首頁</a><a href="#tab-c1" data-tab="tab-c1">第一章 化膠</a><a href="#tab-c2" data-tab="tab-c2">第二章 封裝</a><a href="#tab-c3" data-tab="tab-c3">第三章 內料物流</a><a href="#tab-c4" data-tab="tab-c4">第四章 競爭廠<span class="newdot">NEW</span></a><a href="#tab-appx" data-tab="tab-appx">附錄　Q&amp;A</a><a href="#tab-refs" data-tab="tab-refs">參考文獻</a></div></nav>
+<nav class="tabbar"><div class="tabin"><a href="#tab-home" data-tab="tab-home">首頁</a><a href="#tab-c1" data-tab="tab-c1">第一章 化膠</a><a href="#tab-c2" data-tab="tab-c2">第二章 封裝</a><a href="#tab-c3" data-tab="tab-c3">第三章 內料物流</a><a href="#tab-c4" data-tab="tab-c4">第四章 競爭廠</a><a href="#tab-c5" data-tab="tab-c5">第五章 錯誤與盲點<span class="newdot">NEW</span></a><a href="#tab-appx" data-tab="tab-appx">附錄　Q&amp;A</a><a href="#tab-refs" data-tab="tab-refs">參考文獻</a></div></nav>
 <section class="tab" id="tab-home" data-title="首頁">
 <div class="cover">
   <div class="eyebrow">第一性原理（First Principles）系列</div>
@@ -179,16 +195,26 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
     <div class="chap"><b>01</b>明膠溶膠化、真空脫氣之流變學控制與環境熱力學干擾</div>
     <div class="chap"><b>02</b>模具封裝動力學、界面融合與幾何形狀異常之流變學解析</div>
     <div class="chap"><b>03</b>內容物化學交互作用、膠殼物理化學穩定性與跨國物流熱力學風險評估</div>
-    <div class="chap"><b>04</b>競爭指標廠：明膠產能版圖與軟膠囊新技術對照<span class="newtag">NEW</span></div>
+    <div class="chap"><b>04</b>競爭指標廠：明膠產能版圖與軟膠囊新技術對照</div>
+    <div class="chap"><b>05</b>軟膠囊製程的常見錯誤與容易沒注意到的事項<span class="newtag">NEW</span></div>
   </div>
   <div class="meta">參考 GELITA（EASYSEAL®、RXL®、RAPISOL®、DELASOL®）、Rousselot（StabiCaps™）、PB Leiner（gelwoRx™）等原廠技術文獻與公開財報</div>
-  <div class="ver">版本 3.0　｜　2026 年 11 月更新</div>
+  <div class="ver">版本 3.1　｜　2026 年 11 月更新</div>
 </div>
 
 
 <div class="callout">
   <span class="t">本白皮書的閱讀方式</span>
   全文以「第一性原理」拆解每個製程現象到最底層的分子與物理機制，但每個艱澀概念都附上 <b>🎓 白話解釋</b>（大學程度即可理解）與 <b>📝 名詞備註</b>。凡涉及製程異常，皆提供 <b>⚙️ 修正優先順序</b>：<u>一律先從一般加工製程與配方（明膠添加量、甘油／山梨醇、水比例、溫度時間）著手，特殊型明膠僅列為最後的進階選項</u>。
+</div>
+
+<div class="callout">
+  <span class="t">v3.1 更新了什麼（2026 年 11 月下旬）</span>
+  <ol style="margin:4px 0 0;padding-left:22px">
+    <li><b>新增第五章</b>：依製程六站（原料配方、化膠保溫、展膜、注射封合、定型乾燥、檢驗儲運）整理常見錯誤與容易被忽略的事項，每一項都附第一性機制、抓法與修法，並連回前四章的相關段落。</li>
+    <li><b>新增內料 pH 對交聯的影響</b>：說明鹼性內料如何活化明膠胺基、加速交聯。</li>
+    <li><b>新增現場自我檢查表</b>（5.7），可在換線、換季或客訴時逐項勾選。</li>
+  </ol>
 </div>
 
 <div class="callout">
@@ -237,6 +263,17 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
         <li><a href="#s43">4.3　軟膠囊痛點 × 各廠對應新技術</a></li>
         <li><a href="#s44">4.4　植物性膠殼：替代還是補位？</a></li>
         <li><a href="#s45">4.5　對軟膠囊廠的採購與技術意涵</a></li>
+      </ul>
+    </li>
+    <li><a href="#c5">第五章　軟膠囊製程的常見錯誤與容易沒注意到的事項</a>
+      <ul>
+        <li><a href="#s51">5.1　原料與配方階段</a></li>
+        <li><a href="#s52">5.2　化膠與保溫階段</a></li>
+        <li><a href="#s53">5.3　展膜、注射與封合階段</a></li>
+        <li><a href="#s54">5.4　定型與乾燥階段</a></li>
+        <li><a href="#s55">5.5　檢驗、包裝與儲運階段</a></li>
+        <li><a href="#s56">5.6　最容易被忽略的四個「管理型」盲點</a></li>
+        <li><a href="#s57">5.7　現場自我檢查表</a></li>
       </ul>
     </li>
     <li><a href="#appx">附錄 A　軟膠囊製程技術 Q&amp;A 與極限故障排除指南</a>
@@ -1663,6 +1700,153 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
 
 <nav class="pager"></nav>
 </section>
+<section class="tab" id="tab-c5" data-title="第五章　易犯錯誤與盲點">
+<div class="chap-band" id="c5">
+  <div class="n">CHAPTER 05</div>
+  <div class="ti">第五章　軟膠囊製程的常見錯誤與容易沒注意到的事項</div>
+</div>
+
+<p class="lead" style="margin-top:22px">前四章是「把機制講清楚」；本章反過來，用現場的角度把<b>最常出錯、或根本沒人發現在出錯</b>的地方，依製程順序一站一站列出來。每一項都寫出：錯在哪、為什麼會出事（第一性機制）、怎麼抓到它、怎麼修。</p>
+
+<div class="callout">
+  <span class="t">怎麼讀這一章</span>
+  每站的表格分三個嚴重度：<span class="sev h">高</span>會直接造成漏油、不崩解或整批報廢；<span class="sev m">中</span>造成良率下降或批間不穩；<span class="sev l">低</span>平常沒事，但遇到換季、換內料、換人時會爆。本章不新增任何未經查證的數值；凡提到的溫濕度、條件都回扣前面章節或原廠資料，<b>實際管制值仍以各廠自己驗證過的 SOP 與原廠建議為準</b>。
+</div>
+
+<figure>
+<svg viewBox="0 0 900 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="軟膠囊製程六站與各站最常見錯誤">
+  <g font-family="-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC',sans-serif" text-anchor="middle">
+    <g fill="#f5f5f7"><rect x="12" y="20" width="130" height="58" rx="14"/><rect x="160" y="20" width="130" height="58" rx="14"/><rect x="308" y="20" width="130" height="58" rx="14"/><rect x="456" y="20" width="130" height="58" rx="14"/><rect x="604" y="20" width="130" height="58" rx="14"/><rect x="752" y="20" width="136" height="58" rx="14"/></g>
+    <g fill="#1d1d1f" font-size="15" font-weight="600"><text x="77" y="45">① 原料配方</text><text x="225" y="45">② 化膠保溫</text><text x="373" y="45">③ 展膜</text><text x="521" y="45">④ 注射封合</text><text x="669" y="45">⑤ 定型乾燥</text><text x="820" y="45">⑥ 檢驗儲運</text></g>
+    <g fill="#6e6e73" font-size="11.5"><text x="77" y="64">5.1</text><text x="225" y="64">5.2</text><text x="373" y="64">5.3</text><text x="521" y="64">5.3</text><text x="669" y="64">5.4</text><text x="820" y="64">5.5</text></g>
+    <g stroke="#c7c7cc" stroke-width="2"><line x1="142" y1="49" x2="160" y2="49"/><line x1="290" y1="49" x2="308" y2="49"/><line x1="438" y1="49" x2="456" y2="49"/><line x1="586" y1="49" x2="604" y2="49"/><line x1="734" y1="49" x2="752" y2="49"/></g>
+    <g fill="#c0392b" font-size="12"><text x="77" y="104">內料 pH、含水</text><text x="77" y="122">沒做相容性</text><text x="225" y="104">保溫過久</text><text x="225" y="122">回收膠比例</text><text x="373" y="104">左右膠帶</text><text x="373" y="122">厚度不一</text><text x="521" y="104">楔溫、對位</text><text x="521" y="122">潤滑油過量</text><text x="669" y="104">乾太快表面硬化</text><text x="669" y="122">只看時間不看水分</text><text x="820" y="104">出廠測完就結案</text><text x="820" y="122">包材透濕</text></g>
+    <text x="450" y="156" fill="#6e6e73" font-size="11.5">紅字＝各站最常見、最容易被忽略的錯誤</text>
+  </g>
+</svg>
+<figcaption>圖 5-1　六站流程與各站最常見的盲點。錯誤多半不是出在「做錯」，而是出在「以為沒變」：換內料、換季、換批原料、換人。</figcaption>
+</figure>
+
+<h2 id="s51">5.1　原料與配方階段</h2>
+<p>這一站的錯誤最貴，因為它們在壓丸時往往看不出來，要等到儲存幾個月後才以「不崩解」「變硬」「漏油」的形式出現。</p>
+
+<div class="tablewrap"><table class="errtab">
+<thead><tr><th style="width:9%">嚴重度</th><th style="width:22%">常見錯誤</th><th>為什麼會出事（第一性機制）</th><th style="width:27%">怎麼抓、怎麼修</th></tr></thead>
+<tbody>
+<tr><td class="c"><span class="sev h">高</span></td><td><b>沒確認內料的 pH 就直接上機</b>（特別是鹼性或強酸性內料）</td><td>明膠交聯的主要攻擊點是 Lysine 側鏈的 ε-NH₂，其 pKa 約 10.5。內料偏鹼時，原本帶正電（–NH₃⁺）、不太活潑的胺基被去質子化成 –NH₂，親核性大增，更容易與醛、酮、還原糖反應形成 Schiff 鹼交聯，膠殼變硬、崩解延遲。強酸則反過來加速胜肽鏈水解，膠殼變軟、強度下降（見 <a href="#s13">1.3</a>）。</td><td>上機前先量內料 pH（必要時以水萃取後量測）；鹼性內料評估緩衝或改配方，再考慮抗交聯明膠（<a href="#s31">3.1.3</a>）。一律以 40℃／75% RH 加速儲存追蹤崩解。</td></tr>
+<tr><td class="c"><span class="sev h">高</span></td><td><b>內料含水或親水溶劑（PEG、乙醇、甘油）沒有控管</b></td><td>膠殼與內料之間會往化學勢低的方向交換水與甘油。親水內料會把膠殼的水和甘油「拉」進來，膠殼變脆；反之內料的水跑進膠殼，膠殼軟化、變形甚至溶穿。這是濃度梯度驅動的擴散，時間一久一定發生，只是快慢問題。</td><td>建立內料含水規格並每批檢驗；親水性內料需先做小量相容性試驗（膠殼硬度、重量變化隨時間追蹤），再決定甘油量。</td></tr>
+<tr><td class="c"><span class="sev h">高</span></td><td><b>換了內料配方、只換一個原料供應商，就當成同一個產品</b></td><td>交聯風險取決於內料中的醛、酮、過氧化物與多酚含量（見 <a href="#s31">3.1</a>）。同一種植物油，不同產地、不同精煉程度、不同存放時間，過氧化值與醛負荷可以差很多，膠殼的反應也就不同。</td><td>變更管理：任何內料原料變更都要重做相容性與加速安定性；植物油進料檢驗過氧化值與酸價。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>明膠只看 Bloom，不看黏度與批間差</b></td><td>Bloom 反映冷卻後的凝膠網絡強度，黏度反映熱膠液中的分子量分佈，兩者對分子量敏感的區段不同，可以各自變動。同樣 Bloom 的兩批明膠，黏度不同，膠液的展膜性、接縫癒合速度就不同（見 <a href="#s21">2.1</a>）。</td><td>進料同時管 Bloom、黏度、水分；批間黏度差異大時，配方的水量需要隨之微調，並記錄每批的調整。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>甘油／山梨醇比例長年不變，不隨季節調整</b></td><td>水和甘油都是增塑劑。夏季高濕時膠皮本身就吸水變軟，若甘油不減，增塑過度，膠皮軟黏、接縫強度下降；冬季乾冷則反之（見 <a href="#s14">1.4</a>、<a href="#s15b">1.5</a>）。</td><td>建立夏季版與冬季版配方，切換時機寫入 SOP，不靠老師傅臨場判斷。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>製程用水沒有管金屬離子</b></td><td>鐵、銅等過渡金屬離子會催化油脂過氧化，產生的醛類再去交聯明膠；在膠液中也可能與色素反應造成變色。</td><td>使用純化水；定期檢驗；設備管路與槽體避免鏽蝕。</td></tr>
+<tr><td class="c"><span class="sev l">低</span></td><td><b>外銷產品沒查目的地對色素、遮光劑的法規</b></td><td>例如歐盟自 2022 年起已不再允許二氧化鈦（E171）作為食品添加物使用（Commission Regulation (EU) 2022/63）。配方在國內合法，不代表在出口國合法。</td><td>開發階段就依目的地法規確認膠殼每個成分；外銷歐盟的食品類軟膠囊改用其他遮光方案。</td></tr>
+</tbody>
+</table></div>
+
+<div class="plain">
+  <span class="t"></span>
+  把明膠上的胺基想成一隻隻的手。中性或酸性時，這些手上戴著「手套」（多一個氫、帶正電），不太會去抓別人；環境變鹼，手套被脫掉，手就會去抓內料裡的醛、酮，一抓就是一條新的連結。連結多了，膠殼就像被縫起來，越來越硬、遇水也打不開。所以內料的 pH，本身就是一個交聯開關。
+</div>
+
+<h2 id="s52">5.2　化膠與保溫階段</h2>
+<div class="tablewrap"><table class="errtab">
+<thead><tr><th style="width:9%">嚴重度</th><th style="width:22%">常見錯誤</th><th>為什麼會出事（第一性機制）</th><th style="width:27%">怎麼抓、怎麼修</th></tr></thead>
+<tbody>
+<tr><td class="c"><span class="sev h">高</span></td><td><b>膠液保溫太久或溫度太高</b>（例如週末停機、膠液在保溫罐放過頭）</td><td>熱膠液中的胜肽鏈會持續水解，分子量下降。黏度與凝膠強度一起掉，膠皮變軟、接縫癒合變差（見 <a href="#s13">1.3</a>）。這個損失不可逆，回溫攪拌救不回來。</td><td>保溫時間設上限並記錄；用前量黏度，超出範圍不得上機。排程上盡量讓化膠量配合當班用量。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>回收膠皮（網狀殘膠）回用比例沒有上限</b></td><td>回收膠已經歷過一次以上加熱、展膜、冷卻與再熔解，分子量比新膠低，也可能夾帶微量內料油。比例一高，膠液黏度、凝膠強度與接縫品質都會漂移，而且每次回收都會再降一點。</td><td>訂定回收比例上限與回用次數；回收膠需過濾、確認無油污；高風險產品（抗交聯要求高）避免回用。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>脫氣做完就以為沒氣泡</b></td><td>氣泡上浮速度依 Stokes 定律與粒徑平方成正比、與黏度成反比（見 <a href="#s12">1.2</a>）。微氣泡在高黏度膠液裡幾乎不上浮；保溫罐若沒有維持真空、或輸送時捲入空氣，又會重新帶入氣泡，成為膠皮上的薄點與漏油起點。</td><td>保溫罐維持真空；膠液管路避免高速翻攪與開放落料；定期以透光檢查膠帶氣泡。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>保溫罐溫度不均（上熱下冷、靠壁與中心不同）</b></td><td>黏度對溫度非常敏感；罐內溫度分層，就等於同時供應幾種不同黏度的膠液，膠帶厚度與性質跟著波動。</td><td>確認攪拌與夾套加熱均勻；在出料口量溫，而不只看罐體儀表。</td></tr>
+<tr><td class="c"><span class="sev l">低</span></td><td><b>色素、遮光劑沒有充分分散就加入</b></td><td>顏料團聚會在膠帶上形成色點，也是局部的應力集中點，乾燥收縮時可能從這裡裂開。</td><td>顏料先預分散成色漿再加入；過濾後再上機。</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="s53">5.3　展膜、注射與封合階段</h2>
+<p>這一站的問題多半「當場看得到」，但常被誤判原因，例如把梨形當成壓力問題、把漏油當成明膠品質問題。</p>
+<div class="tablewrap"><table class="errtab">
+<thead><tr><th style="width:9%">嚴重度</th><th style="width:22%">常見錯誤</th><th>為什麼會出事（第一性機制）</th><th style="width:27%">怎麼抓、怎麼修</th></tr></thead>
+<tbody>
+<tr><td class="c"><span class="sev h">高</span></td><td><b>左右兩條膠帶厚度不一致</b></td><td>封合時兩片膠帶要在接縫處互相擴散、纏結（見 <a href="#s21">2.1</a>）。一邊厚一邊薄，熱容量與冷卻速度不同，兩側表面的可塑狀態不同步，接縫一側癒合不足；薄的那側也承受較大拉伸，容易破。</td><td>每班開機與定時量測兩側膠帶厚度並記錄；展膜盒刮刀定期校正。</td></tr>
+<tr><td class="c"><span class="sev h">高</span></td><td><b>楔形溫度只看設定值，不看實際值與左右均勻</b></td><td>楔形溫度決定接縫成形瞬間膠帶表面的黏度與可塑性。溫度不足，兩片膠帶表面鏈段擴散不夠，留下一層弱邊界層；溫度過高，膠帶過軟被拉薄。楔塊表面若有溫差，接縫品質會沿著模輪寬度方向不一致（見 <a href="#s22">2.2</a>）。</td><td>以表面溫度計定期實測楔塊多點溫度；漏油批次優先查楔溫紀錄，再查明膠。</td></tr>
+<tr><td class="c"><span class="sev h">高</span></td><td><b>膠帶潤滑油（MCT／礦物油）給太多</b></td><td>潤滑油是為了讓膠帶順利通過滾輪與模具，但它若跑到接縫面，會阻擋兩片膠帶表面的鏈段互相擴散，等於在接縫中間夾了一層油膜。</td><td>潤滑油量設定上限並定期檢查；漏油集中在接縫時，先檢查潤滑油量。</td></tr>
+<tr><td class="c"><span class="sev h">高</span></td><td><b>以為梨形、漏油都可以靠調模具壓力解決</b></td><td>壓力管的是封合與切斷。梨形的根因是內料液滴在封合前被拉歪（Ca、Bo、We 偏大），與壓力無關（見 <a href="#s23">2.3</a>）；過度加壓反而把接縫壓薄、增加漏油。</td><td>依 <a href="#s23">2.3.5</a> 的診斷表先查內料黏度、溫度、注射時序與點位。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>注射泵磨耗、單向閥漏，丸重慢慢漂移卻沒人發現</b></td><td>計量泵的柱塞與閥門磨耗後，每一衝程的實際注射量會逐漸偏離設定值，而且各注射孔不一定同步偏離。混懸內料的顆粒更會加速磨耗。</td><td>定時抽樣秤重並以管制圖追蹤，而不是只看平均值是否在規格內；依處理量訂定泵與閥的保養週期。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>內料填充溫度與攪拌沒有管</b></td><td>內料黏度隨溫度改變，直接影響毛細數 Ca 與充填對稱性；混懸料停止攪拌就開始沉降，前後段丸重與成分不同。</td><td>填充槽恆溫並記錄；混懸料持續適度攪拌，但避免捲入空氣（見 <a href="#s23">2.3.7</a>）。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>成型區溫濕度沒有獨立管控</b></td><td>膠帶在冷卻鼓上要靠過冷度重建三股螺旋，環境越熱過冷度越小；環境越濕膠帶越容易吸水軟化（見 <a href="#s14">1.4</a>）。冷卻鼓若低於露點還會結露。</td><td>成型區溫濕度連續記錄；冷卻鼓溫度設定須同時考慮露點。</td></tr>
+<tr><td class="c"><span class="sev l">低</span></td><td><b>模具對位與模具磨耗沒有定期檢查</b></td><td>左右模輪相位或凹穴對位偏移，會造成接縫偏一邊、接縫寬度不均；凹穴邊緣磨鈍則切斷不俐落，接縫處留下毛邊或薄點。</td><td>換模與定期檢查對位；以放大鏡抽檢接縫寬度與位置。</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="s54">5.4　定型與乾燥階段</h2>
+<div class="tablewrap"><table class="errtab">
+<thead><tr><th style="width:9%">嚴重度</th><th style="width:22%">常見錯誤</th><th>為什麼會出事（第一性機制）</th><th style="width:27%">怎麼抓、怎麼修</th></tr></thead>
+<tbody>
+<tr><td class="c"><span class="sev h">高</span></td><td><b>為了趕交期把乾燥條件開得太猛</b>（溫度太高、風太乾）</td><td>表面水分蒸發得比內部擴散出來還快，表層先乾硬成殼（表面硬化），把內部水分封在裡面。外表看似乾了，事後內部水分慢慢重新分佈，膠囊變形、黏連，或乾燥應力造成日後裂開。高溫也加速交聯反應。</td><td>乾燥以溫和、穩定的條件進行；用硬度與水分作為終點，而不是縮短時間。</td></tr>
+<tr><td class="c"><span class="sev h">高</span></td><td><b>乾燥終點只看時間，不看膠殼水分或硬度</b></td><td>乾燥速度取決於膠殼表面與空氣的水蒸氣分壓差（見附錄 <a href="#q1">Q1</a>）。同樣的時間，在夏季高濕與冬季乾冷完成的程度完全不同。</td><td>以膠殼水分、硬度或重量趨於穩定作為放行條件；季節切換時重新確認乾燥時間。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>滾筒初乾不足就上托盤</b></td><td>剛成型的膠囊很軟且表面黏，若沒先在滾筒中初步定型就疊放到托盤，接觸點會壓扁、互相黏連。</td><td>確認滾筒段的停留時間與出料時的膠囊硬度。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>過度乾燥</b></td><td>水是明膠的增塑劑，乾過頭玻璃轉移溫度上升、膠殼變脆，運輸中的碰撞就可能碎裂；之後在包裝內吸濕回彈，尺寸與硬度又再變化。</td><td>設定乾燥終點的上下限，而不是越乾越好。</td></tr>
+<tr><td class="c"><span class="sev l">低</span></td><td><b>洗丸溶劑或洗油殘留</b></td><td>洗去表面潤滑油時若溶劑殘留，可能影響外觀、氣味與法規符合性；洗得不乾淨則表面油膜讓印字、包衣附著不良。</td><td>確認洗丸條件與溶劑揮散時間；有溶劑使用就要有殘留管控。</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="s55">5.5　檢驗、包裝與儲運階段</h2>
+<div class="tablewrap"><table class="errtab">
+<thead><tr><th style="width:9%">嚴重度</th><th style="width:22%">常見錯誤</th><th>為什麼會出事（第一性機制）</th><th style="width:27%">怎麼抓、怎麼修</th></tr></thead>
+<tbody>
+<tr><td class="c"><span class="sev h">高</span></td><td><b>出廠崩解合格就結案，沒有做加速安定性</b></td><td>交聯是時間的函數。出廠時膠殼還沒被內料的醛類「釘住」，崩解當然正常；幾個月後才出現不溶薄膜與崩解延遲（見附錄 <a href="#q3">Q3</a>）。</td><td>新品與變更品一律做 40℃／75% RH 加速儲存，追蹤崩解與溶離，而不只測出廠一次。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>包材只看外觀，不看透濕與透氧</b></td><td>包裝內的濕度決定膠殼的平衡含水量；透濕高的瓶子或袋子，等於把倉庫的濕度直接帶進膠殼，軟化、黏連、交聯一起來。高不飽和油還需要擋氧。</td><td>依內料敏感度選擇包材（鋁箔、高阻隔瓶）並放乾燥劑；乾燥劑容量要與包裝內空間與貨架期匹配。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>倉儲沒有溫濕度記錄</b></td><td>成品在倉庫的時間常常比在工廠裡長。高溫高濕的倉庫等於在做一場沒有記錄的加速試驗（見 <a href="#s33">3.3</a>）。</td><td>倉庫設溫濕度記錄器；高敏感品項分區控溫。</td></tr>
+<tr><td class="c"><span class="sev m">中</span></td><td><b>外銷海運只問運費，不問貨櫃型態與航線</b></td><td>跨赤道的普通乾貨櫃白天高溫、夜間凝露，膠囊在到港前就已軟化、黏連、交聯（見 <a href="#s33">3.3</a>、附錄 <a href="#q4">Q4</a>）。</td><td>高敏感產品使用冷藏貨櫃或空運，並全程放溫濕度記錄器。</td></tr>
+<tr><td class="c"><span class="sev l">低</span></td><td><b>客訴樣品沒有留樣可對照</b></td><td>沒有同批留樣，就無法區分是製程問題、包裝問題，還是客戶端儲存問題。</td><td>每批依規定留樣並記錄儲存條件；客訴時同時檢驗留樣與退回品。</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="s56">5.6　最容易被忽略的四個「管理型」盲點</h2>
+<p>前面各站的錯誤大多是技術問題；但現場實際發生的事故，很多是技術上早就知道、管理上卻沒有接住的。</p>
+<ol>
+  <li><b>變更沒有被當成變更</b>：換明膠批號、換內料供應商、換包材、換季節配方，都會改變上面某一列的條件。只要沒有正式的變更評估，就等於把產品重新做一次，卻沒有重新驗證。</li>
+  <li><b>只記錄設定值，不記錄實際值</b>：楔溫、膠液溫度、乾燥室濕度的「設定」與「實際」常常不同。事故發生時，只有實際值的紀錄才能追得回原因。</li>
+  <li><b>經驗只存在老師傅腦中</b>：季節調整、膠液好不好用的判斷，若沒有寫成 SOP 與判定標準，人員一換，良率就跟著換。</li>
+  <li><b>把特殊明膠當成第一個解法</b>：EASYSEAL®、RXL®、StabiCaps™ 等原廠特殊等級可以拓寬容錯窗口，但若製程與配方的基本面沒有先管好，換了明膠也只是把問題延後出現（見 <a href="#s24">2.4</a>）。</li>
+</ol>
+
+<h2 id="s57">5.7　現場自我檢查表</h2>
+<p>以下清單可在換線、換季或發生客訴時逐項勾選。勾選只存在您這次開啟的頁面中，重新整理後會清空。</p>
+<div class="chk" id="chk">
+  <div class="chkhead"><span>已確認 <b id="chkn">0</b> ／ <span id="chkt">0</span> 項</span><button type="button" id="chkreset">全部清除</button></div>
+  <div class="chkbar"><div id="chkfill"></div></div>
+  <h4>原料與配方</h4>
+  <label><input type="checkbox">內料 pH 已量測，鹼性或強酸性內料已評估</label>
+  <label><input type="checkbox">內料含水與親水溶劑已有規格並每批檢驗</label>
+  <label><input type="checkbox">內料原料或供應商變更後已重做相容性與加速安定性</label>
+  <label><input type="checkbox">明膠進料同時檢驗 Bloom、黏度與水分</label>
+  <label><input type="checkbox">夏季／冬季配方已寫入 SOP，切換時機明確</label>
+  <label><input type="checkbox">外銷目的地對色素與遮光劑的法規已確認</label>
+  <h4>化膠與保溫</h4>
+  <label><input type="checkbox">膠液保溫時間有上限，使用前量黏度</label>
+  <label><input type="checkbox">回收膠皮有比例上限與回用次數限制</label>
+  <label><input type="checkbox">保溫罐維持真空，出料口實測溫度</label>
+  <h4>展膜、注射與封合</h4>
+  <label><input type="checkbox">左右膠帶厚度定時量測並記錄</label>
+  <label><input type="checkbox">楔塊多點表面溫度定期實測</label>
+  <label><input type="checkbox">膠帶潤滑油量有上限並定期檢查</label>
+  <label><input type="checkbox">丸重以管制圖追蹤，泵與閥有保養週期</label>
+  <label><input type="checkbox">內料填充溫度恆定、混懸料持續攪拌</label>
+  <label><input type="checkbox">成型區溫濕度連續記錄，冷卻鼓溫度高於露點</label>
+  <h4>定型與乾燥</h4>
+  <label><input type="checkbox">乾燥終點以水分或硬度判定，而不是只看時間</label>
+  <label><input type="checkbox">乾燥條件有上下限，避免表面硬化與過度乾燥</label>
+  <h4>檢驗、包裝與儲運</h4>
+  <label><input type="checkbox">新品與變更品已做 40℃／75% RH 加速儲存</label>
+  <label><input type="checkbox">包材透濕、透氧與乾燥劑容量已依產品評估</label>
+  <label><input type="checkbox">倉庫與運輸全程有溫濕度紀錄</label>
+  <label><input type="checkbox">每批留樣並記錄儲存條件</label>
+</div>
+
+<h2>第五章結論</h2>
+<p>軟膠囊的事故很少來自一個單一的大錯，多半是幾個「平常沒事」的小偏差在換季、換料或換人時疊在一起。把本章每一列對回前四章的機制，就會發現它們都回到同幾件事：<b>水與甘油怎麼分配、胺基有沒有被活化、接縫的鏈段有沒有時間擴散、膠殼在哪個溫濕度下度過它的貨架期</b>。管好這幾件事的實際值與紀錄，大部分的錯誤在發生前就能被看見。</p>
+
+<nav class="pager"></nav>
+</section>
 <section class="tab" id="tab-appx" data-title="附錄　Q&amp;A">
 <div class="chap-band" id="appx">
   <div class="n">APPENDIX A</div>
@@ -1775,13 +1959,13 @@ hr{border:none;border-top:1px solid #d2d2d7;margin:48px 0;}
   <li><a href="https://www.marketsandmarkets.com/Market-Reports/content-creation-market-850.html">MarketsandMarkets 明膠市場報告（2025：43.1 億美元；2026：45.9 億；2031：64.3 億美元）</a>；<a href="https://issuu.com/inpharma/docs/b2b_nutramedic_cosmetics_no._7/s/39567524">GELITA 引述之軟膠囊藥用明膠市場（2022 年逾 2.15 億美元）</a>。</li>
   <li><a href="https://www.foodnavigator.com/Article/2024/05/28/Roquette-champions-flexibility-with-new-pea-starch-softgel">FoodNavigator，2024-05-28（明膠約 90%／素食約 10%）</a>；<a href="https://www.roquette.com/health-pharma/press-releases/lycagel-flex-softgel-capsule-shell-system">Roquette LYCAGEL® Flex，2024-05-14</a>；<a href="https://www.ingredientsnetwork.com/47/resourcefile/16/94/53/roquette-softgel-brochure-04-2026.pdf">Roquette Softgel Solutions 型錄，2026-04</a>；<a href="https://www.roquette.com/health-pharma/resources/soft-capsule-modified-pea-starch">Roquette 技術文章，2026-02-07</a>。</li>
   <li><a href="https://pdf.directindustry.com/pdf/carrier-transport-refrigeration-container-products/dehumidification/29142-334365.html">Carrier 冷藏貨櫃除濕規格（PrimeLINE 50–95% RH）</a>；<a href="https://www.emea-user-manuals.thermoking.com/etech-emea-public/thermoking-emea/Minneapolis%20-%20Container%20-%20Generator%20Sets/Literature/Maintenance%20or%20Service/0005725493.xml/$/0005725892">Thermo King 控制器手冊（50–99% RH）</a>；<a href="https://iifiir.org/en/fridoc/142452">IIR 2020 冷鏈研討會（溼熱環境下 60% RH 設定多半達不到）</a>。</li>
+  <li><a href="https://eur-lex.europa.eu/eli/reg/2022/63/oj">Commission Regulation (EU) 2022/63</a>（歐盟不再允許二氧化鈦 E171 作為食品添加物，見 5.1）。</li>
 </ol>
-
 <nav class="pager"></nav>
 </section>
 <hr>
 <p style="text-align:center;margin-top:40px">有任何製程狀況想一起拆解，隨時找我聊。</p>
-<p class="src" style="text-align:center">軟膠囊製程技術白皮書　｜　第一性原理系列　｜　版本 3.0　｜　2026 年 11 月</p>
+<p class="src" style="text-align:center">軟膠囊製程技術白皮書　｜　第一性原理系列　｜　版本 3.1　｜　2026 年 11 月</p>
 
 </div>
 <script>
@@ -2071,6 +2255,19 @@ document.querySelectorAll('table').forEach(function(tb){
     }
   }
   vac.addEventListener('input',upd); temp.addEventListener('input',upd); time.addEventListener('input',upd); upd();
+})();
+</script>
+<script>
+(function(){
+  var box=document.getElementById('chk'); if(!box) return;
+  var cbs=[].slice.call(box.querySelectorAll('input[type=checkbox]'));
+  cbs.forEach(function(c,i){c.id='chk'+i;});
+  document.getElementById('chkt').textContent=cbs.length;
+  function upd(){var n=0;cbs.forEach(function(c){if(c.checked)n++;c.parentNode.classList.toggle('done',c.checked);});
+    document.getElementById('chkn').textContent=n;document.getElementById('chkfill').style.width=(n/cbs.length*100)+'%';}
+  cbs.forEach(function(c){c.addEventListener('change',upd);});
+  document.getElementById('chkreset').addEventListener('click',function(){cbs.forEach(function(c){c.checked=false;});upd();});
+  upd();
 })();
 </script>
 </body>
